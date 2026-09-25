@@ -1,0 +1,26 @@
+[
+  {
+    "certificate_number": "CM/L-7890123",
+    "company": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "product": "Low Voltage Switchgear and Controlgear Assemblies",
+    "standard_number": "IS/IEC 61439",
+    "status": "VALID",
+    "valid_until": "2027-10-31"
+  },
+  {
+    "certificate_number": "CM/L-7890124",
+    "company": "ABC Technologies Pvt. Ltd.",
+    "product": "Industrial Electronic Control Units",
+    "standard_number": "IS 13252",
+    "status": "VALID",
+    "valid_until": "2027-12-31"
+  },
+  {
+    "certificate_number": "CM/L-7890125",
+    "company": "Apex Automation Systems Pvt. Ltd.",
+    "product": "Industrial Programmable Controllers",
+    "standard_number": "IS/IEC 61131",
+    "status": "VALID",
+    "valid_until": "2027-05-31"
+  }
+]

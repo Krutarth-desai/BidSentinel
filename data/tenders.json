@@ -1,0 +1,44 @@
+[
+  {
+    "tender_id": "GEM/2026/B/100001",
+    "title": "Supply of Industrial Control Units",
+    "department": "Public Sector Engineering Division",
+    "ministry": "Ministry of Heavy Industries",
+    "reference_number": "PSED-PROC-2026-ICU-01",
+    "created_date": "2026-09-01",
+    "closing_date": "2026-10-15",
+    "estimated_value_inr": 45000000,
+    "status": "UNDER_EVALUATION",
+    "category": "Goods - Electronic Equipment",
+    "bidders_count": 5,
+    "description": "Procurement of programmable Industrial Control Units (IC-9000 class) with embedded real-time diagnostic telemetry, dual redundant power inputs, and Class-1 environmental compliance."
+  },
+  {
+    "tender_id": "GEM/2026/B/100002",
+    "title": "Supply of UAV Engine Components",
+    "department": "Defense & Aerospace R&D Organisation",
+    "ministry": "Ministry of Defence",
+    "reference_number": "DARDO-AERO-2026-UAV-42",
+    "created_date": "2026-09-10",
+    "closing_date": "2026-11-01",
+    "estimated_value_inr": 120000000,
+    "status": "ACTIVE",
+    "category": "Defence & Aerospace Products",
+    "bidders_count": 3,
+    "description": "High-precision titanium-alloy turbine blisk sets and electronic throttle governing assemblies for tactical UAV propulsion systems."
+  },
+  {
+    "tender_id": "GEM/2026/B/100003",
+    "title": "Supply of Electrical Protection Equipment",
+    "department": "National Power Transmission Corp",
+    "ministry": "Ministry of Power",
+    "reference_number": "NPTC-SUBSTATION-2026-PROT-109",
+    "created_date": "2026-09-15",
+    "closing_date": "2026-10-30",
+    "estimated_value_inr": 32000000,
+    "status": "ACTIVE",
+    "category": "Power & Electrical Gear",
+    "bidders_count": 4,
+    "description": "Numerical distance protection relays and high-speed busbar differential protection panels for 400kV automated grid substations."
+  }
+]

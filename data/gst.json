@@ -1,0 +1,102 @@
+[
+  {
+    "gstin": "27DEMOA1234F1Z5",
+    "legal_name": "ABC Technologies Pvt. Ltd.",
+    "trade_name": "ABC Tech",
+    "registration_date": "2020-06-14",
+    "status": "ACTIVE",
+    "state": "Maharashtra",
+    "last_return_period": "2026-08",
+    "return_status": "FILED"
+  },
+  {
+    "gstin": "27DEMOX5678F1Z2",
+    "legal_name": "XYZ Engineering Solutions Pvt. Ltd.",
+    "trade_name": "XYZ Engg",
+    "registration_date": "2019-04-10",
+    "status": "ACTIVE",
+    "state": "Maharashtra",
+    "last_return_period": "2026-08",
+    "return_status": "FILED"
+  },
+  {
+    "gstin": "27DEMOP9012F1Z9",
+    "legal_name": "PQR Industries Limited",
+    "trade_name": "PQR Systems",
+    "registration_date": "2018-09-22",
+    "status": "ACTIVE",
+    "state": "Maharashtra",
+    "last_return_period": "2026-07",
+    "return_status": "DELAYED"
+  },
+  {
+    "gstin": "06DEMOZ3456F1Z1",
+    "legal_name": "Zenith Micro Devices LLP",
+    "trade_name": "Zenith Micro",
+    "registration_date": "2024-02-01",
+    "status": "ACTIVE",
+    "state": "Haryana",
+    "last_return_period": "2026-07",
+    "return_status": "DELAYED"
+  },
+  {
+    "gstin": "07DEMOB7890F1Z4",
+    "legal_name": "Bharat Heavy Spares Corp",
+    "trade_name": "Bharat Spares",
+    "registration_date": "2015-11-19",
+    "status": "INACTIVE",
+    "state": "Delhi",
+    "last_return_period": "2025-10",
+    "return_status": "NOT_FILED"
+  },
+  {
+    "gstin": "29DEMOA6543F1Z8",
+    "legal_name": "Apex Automation Systems Pvt. Ltd.",
+    "trade_name": "Apex Automation",
+    "registration_date": "2017-03-12",
+    "status": "ACTIVE",
+    "state": "Karnataka",
+    "last_return_period": "2026-08",
+    "return_status": "FILED"
+  },
+  {
+    "gstin": "33DEMOT2109F1Z3",
+    "legal_name": "Titan Electro Dynamics Ltd.",
+    "trade_name": "Titan Dynamics",
+    "registration_date": "2012-08-05",
+    "status": "ACTIVE",
+    "state": "Tamil Nadu",
+    "last_return_period": "2026-08",
+    "return_status": "FILED"
+  },
+  {
+    "gstin": "24DEMOK8765F1Z7",
+    "legal_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "trade_name": "Kavach Shield",
+    "registration_date": "2016-12-01",
+    "status": "ACTIVE",
+    "state": "Gujarat",
+    "last_return_period": "2026-08",
+    "return_status": "FILED"
+  },
+  {
+    "gstin": "36DEMON4321F1Z6",
+    "legal_name": "Nova Robotics India Pvt. Ltd.",
+    "trade_name": "Nova Robotics",
+    "registration_date": "2021-05-18",
+    "status": "ACTIVE",
+    "state": "Telangana",
+    "last_return_period": "2026-07",
+    "return_status": "DELAYED"
+  },
+  {
+    "gstin": "19DEMOD9876F1Z0",
+    "legal_name": "Delta Power Equipments LLP",
+    "trade_name": "Delta Power",
+    "registration_date": "2020-10-15",
+    "status": "ACTIVE",
+    "state": "West Bengal",
+    "last_return_period": "2026-08",
+    "return_status": "FILED"
+  }
+]

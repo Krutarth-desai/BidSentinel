@@ -1,0 +1,125 @@
+[
+  {
+    "udyam_number": "UDYAM-MH-12-0001001",
+    "enterprise_name": "ABC Technologies Pvt. Ltd.",
+    "enterprise_type": "SMALL",
+    "organisation_type": "Private Limited Company",
+    "registration_date": "2020-06-14",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2610",
+      "2620"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-MH-12-0001002",
+    "enterprise_name": "XYZ Engineering Solutions Pvt. Ltd.",
+    "enterprise_type": "MEDIUM",
+    "organisation_type": "Private Limited Company",
+    "registration_date": "2019-04-10",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2610"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-MH-12-0001003",
+    "enterprise_name": "PQR Manufacturing Units Enterprise",
+    "enterprise_type": "SMALL",
+    "organisation_type": "Proprietary",
+    "registration_date": "2018-09-22",
+    "major_activity": "SERVICES",
+    "nic_codes": [
+      "6201"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-HR-01-0001004",
+    "enterprise_name": "Zenith Micro Devices LLP",
+    "enterprise_type": "MICRO",
+    "organisation_type": "Limited Liability Partnership",
+    "registration_date": "2024-02-01",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2610"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-DL-02-0001005",
+    "enterprise_name": "Bharat Heavy Spares Corp",
+    "enterprise_type": "MEDIUM",
+    "organisation_type": "Private Limited Company",
+    "registration_date": "2015-11-19",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2819"
+    ],
+    "status": "EXPIRED"
+  },
+  {
+    "udyam_number": "UDYAM-KR-03-0001006",
+    "enterprise_name": "Apex Automation Systems Pvt. Ltd.",
+    "enterprise_type": "MEDIUM",
+    "organisation_type": "Private Limited Company",
+    "registration_date": "2017-03-12",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2610",
+      "2710"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-TN-02-0001007",
+    "enterprise_name": "Titan Electro Dynamics Ltd.",
+    "enterprise_type": "MEDIUM",
+    "organisation_type": "Public Limited Company",
+    "registration_date": "2012-08-05",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2790"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-GJ-01-0001008",
+    "enterprise_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "enterprise_type": "SMALL",
+    "organisation_type": "Private Limited Company",
+    "registration_date": "2016-12-01",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2610",
+      "2829"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-TS-09-0001009",
+    "enterprise_name": "Nova Robotics India Pvt. Ltd.",
+    "enterprise_type": "MICRO",
+    "organisation_type": "Private Limited Company",
+    "registration_date": "2021-05-18",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2829"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "udyam_number": "UDYAM-WB-10-0001010",
+    "enterprise_name": "Delta Power Equipments LLP",
+    "enterprise_type": "SMALL",
+    "organisation_type": "Limited Liability Partnership",
+    "registration_date": "2020-10-15",
+    "major_activity": "MANUFACTURING",
+    "nic_codes": [
+      "2710"
+    ],
+    "status": "ACTIVE"
+  }
+]

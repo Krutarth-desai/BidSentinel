@@ -1,0 +1,23 @@
+[
+  {
+    "entity_name": "Bharat Heavy Spares Corp",
+    "pan": "DEMOB7890C",
+    "authority": "GeM Incident Management & Debarment Committee",
+    "reference_number": "GEM-INC-2025-0891",
+    "status": "UNDER_INVESTIGATION",
+    "start_date": "2025-11-15",
+    "end_date": "2026-11-14",
+    "reason": "Repeated supply delay and non-submission of genuine OEM warranty certificate in Tender GEM/2025/B/90812.",
+    "recommendation_flag": "Potential record found in GeM Debarment Watchlist — Procurement Officer Review Required"
+  },
+  {
+    "entity_name": "Eastern Infra Power Allied Pvt. Ltd.",
+    "pan": "DEMOE9999M",
+    "authority": "Central Vigilance Commission (CVC)",
+    "reference_number": "CVC-ADV-2024-110",
+    "status": "DEBARRED",
+    "start_date": "2024-01-01",
+    "end_date": "2027-01-01",
+    "reason": "Debarment under GFR 151(iii) for fraudulent declaration of local content."
+  }
+]

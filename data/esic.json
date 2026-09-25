@@ -1,0 +1,72 @@
+[
+  {
+    "employer_id": "31000123450001001",
+    "employer_name": "ABC Technologies Pvt. Ltd.",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "31000123460001002",
+    "employer_name": "XYZ Engineering Solutions Pvt. Ltd.",
+    "status": "PENDING",
+    "compliance_status": "PENDING_VERIFICATION",
+    "last_contribution_month": "2026-05"
+  },
+  {
+    "employer_id": "31000123470001003",
+    "employer_name": "PQR Industrial Systems Pvt. Ltd.",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "13000123480001004",
+    "employer_name": "Zenith Micro Devices LLP",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "20000123490001005",
+    "employer_name": "Bharat Heavy Spares Corp",
+    "status": "INACTIVE",
+    "compliance_status": "MISMATCH",
+    "last_contribution_month": "2025-09"
+  },
+  {
+    "employer_id": "53000123500001006",
+    "employer_name": "Apex Automation Systems Pvt. Ltd.",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "51000123510001007",
+    "employer_name": "Titan Electro Dynamics Ltd.",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "37000123520001008",
+    "employer_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "52000123530001009",
+    "employer_name": "Nova Robotics India Pvt. Ltd.",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  },
+  {
+    "employer_id": "41000123540001010",
+    "employer_name": "Delta Power Equipments LLP",
+    "status": "ACTIVE",
+    "compliance_status": "COMPLIANT",
+    "last_contribution_month": "2026-08"
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "cin": "U12345MH2020PTC100001",
+    "company_name": "ABC Technologies Pvt. Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2020-01-15",
+    "registered_address": "Plot 42, Tech Park Phase 2, Pune, Maharashtra 411057",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 5000000,
+    "paid_up_capital_inr": 2500000
+  },
+  {
+    "cin": "U12345MH2019PTC100002",
+    "company_name": "XYZ Engineering Solutions Pvt. Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2019-02-20",
+    "registered_address": "Sector 18, Electronic Zone, Navi Mumbai, Maharashtra 400705",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 10000000,
+    "paid_up_capital_inr": 7500000
+  },
+  {
+    "cin": "U12345MH2018PTC100003",
+    "company_name": "PQR Industrial Systems Pvt. Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2018-05-11",
+    "registered_address": "MIDC Bhosari, Industrial Area, Pune, Maharashtra 411026",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 5000000,
+    "paid_up_capital_inr": 3000000
+  },
+  {
+    "cin": "AAA-1234",
+    "company_name": "Zenith Micro Devices LLP",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2024-01-10",
+    "registered_address": "Udyog Vihar Phase 4, Gurugram, Haryana 122016",
+    "company_type": "Limited Liability Partnership",
+    "authorized_capital_inr": 1000000,
+    "paid_up_capital_inr": 1000000
+  },
+  {
+    "cin": "U12345DL2015PTC100005",
+    "company_name": "Bharat Heavy Spares Corp",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2015-08-14",
+    "registered_address": "Okhla Industrial Area Phase 1, New Delhi 110020",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 20000000,
+    "paid_up_capital_inr": 18000000
+  },
+  {
+    "cin": "U12345KA2017PTC100006",
+    "company_name": "Apex Automation Systems Pvt. Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2017-02-14",
+    "registered_address": "Peenya 2nd Stage, Bengaluru, Karnataka 560058",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 10000000,
+    "paid_up_capital_inr": 8000000
+  },
+  {
+    "cin": "L12345TN2012PLC100007",
+    "company_name": "Titan Electro Dynamics Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2012-04-18",
+    "registered_address": "Ambattur Industrial Estate, Chennai, Tamil Nadu 600058",
+    "company_type": "Public company",
+    "authorized_capital_inr": 50000000,
+    "paid_up_capital_inr": 35000000
+  },
+  {
+    "cin": "U12345GJ2016PTC100008",
+    "company_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2016-10-05",
+    "registered_address": "GIDC Makarpura, Vadodara, Gujarat 390010",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 8000000,
+    "paid_up_capital_inr": 6000000
+  },
+  {
+    "cin": "U12345TG2021PTC100009",
+    "company_name": "Nova Robotics India Pvt. Ltd.",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2021-03-22",
+    "registered_address": "HITEC City Phase 1, Hyderabad, Telangana 500081",
+    "company_type": "Non-govt company",
+    "authorized_capital_inr": 5000000,
+    "paid_up_capital_inr": 2000000
+  },
+  {
+    "cin": "AAB-5678",
+    "company_name": "Delta Power Equipments LLP",
+    "company_status": "ACTIVE",
+    "incorporation_date": "2020-07-29",
+    "registered_address": "Sector 5, Salt Lake, Kolkata, West Bengal 700091",
+    "company_type": "Limited Liability Partnership",
+    "authorized_capital_inr": 2500000,
+    "paid_up_capital_inr": 2500000
+  }
+]

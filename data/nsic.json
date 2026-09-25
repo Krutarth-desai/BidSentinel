@@ -1,0 +1,34 @@
+[
+  {
+    "certificate_number": "NSIC/GP/PUN/2023/00142",
+    "enterprise_name": "ABC Technologies Pvt. Ltd.",
+    "scheme": "Single Point Registration Scheme (SPRS)",
+    "status": "VALID",
+    "valid_until": "2027-05-31",
+    "monetary_limit_inr": 25000000
+  },
+  {
+    "certificate_number": "NSIC/GP/BLR/2023/00298",
+    "enterprise_name": "Apex Automation Systems Pvt. Ltd.",
+    "scheme": "Single Point Registration Scheme (SPRS)",
+    "status": "VALID",
+    "valid_until": "2027-03-31",
+    "monetary_limit_inr": 50000000
+  },
+  {
+    "certificate_number": "NSIC/GP/VAD/2023/00311",
+    "enterprise_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "scheme": "Single Point Registration Scheme (SPRS)",
+    "status": "VALID",
+    "valid_until": "2027-09-30",
+    "monetary_limit_inr": 35000000
+  },
+  {
+    "certificate_number": "NSIC/GP/KOL/2024/00085",
+    "enterprise_name": "Delta Power Equipments LLP",
+    "scheme": "Single Point Registration Scheme (SPRS)",
+    "status": "VALID",
+    "valid_until": "2027-11-30",
+    "monetary_limit_inr": 20000000
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "establishment_id": "MHPUN0012345000",
+    "establishment_name": "ABC Technologies Pvt. Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2020-07-01",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 48
+  },
+  {
+    "establishment_id": "MHPUN0012346000",
+    "establishment_name": "XYZ Engineering Solutions Pvt. Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2019-05-15",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 110
+  },
+  {
+    "establishment_id": "MHPUN0012347000",
+    "establishment_name": "PQR Industrial Systems Pvt. Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2018-10-10",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 35
+  },
+  {
+    "establishment_id": "HRGGN0012348000",
+    "establishment_name": "Zenith Micro Devices LLP",
+    "status": "ACTIVE",
+    "registration_date": "2024-03-01",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 16
+  },
+  {
+    "establishment_id": "DLCPM0012349000",
+    "establishment_name": "Bharat Heavy Spares Corp",
+    "status": "INACTIVE",
+    "registration_date": "2015-09-01",
+    "compliance_status": "PENDING_DUES",
+    "last_ecr_month": "2025-11",
+    "covered_employees": 85
+  },
+  {
+    "establishment_id": "KNBLR0012350000",
+    "establishment_name": "Apex Automation Systems Pvt. Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2017-04-01",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 72
+  },
+  {
+    "establishment_id": "TNMAS0012351000",
+    "establishment_name": "Titan Electro Dynamics Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2012-09-01",
+    "compliance_status": "PENDING_DUES",
+    "last_ecr_month": "2026-06",
+    "covered_employees": 320
+  },
+  {
+    "establishment_id": "GJBDA0012352000",
+    "establishment_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2017-01-01",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 58
+  },
+  {
+    "establishment_id": "TSHYD0012353000",
+    "establishment_name": "Nova Robotics India Pvt. Ltd.",
+    "status": "ACTIVE",
+    "registration_date": "2021-06-01",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 22
+  },
+  {
+    "establishment_id": "WBCAL0012354000",
+    "establishment_name": "Delta Power Equipments LLP",
+    "status": "ACTIVE",
+    "registration_date": "2020-11-01",
+    "compliance_status": "COMPLIANT",
+    "last_ecr_month": "2026-08",
+    "covered_employees": 28
+  }
+]

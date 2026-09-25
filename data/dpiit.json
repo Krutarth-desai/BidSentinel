@@ -1,0 +1,20 @@
+[
+  {
+    "certificate_number": "DPIIT-ST-2024-9876",
+    "startup_name": "Zenith Micro Devices LLP",
+    "recognition_status": "RECOGNIZED",
+    "recognition_date": "2024-02-15",
+    "validity_status": "VALID",
+    "sector": "Electronics & Hardware Systems",
+    "valid_until": "2034-02-14"
+  },
+  {
+    "certificate_number": "DPIIT-ST-2024-5544",
+    "startup_name": "Nova Robotics India Pvt. Ltd.",
+    "recognition_status": "RECOGNIZED",
+    "recognition_date": "2024-04-10",
+    "validity_status": "VALID",
+    "sector": "Robotics & Automation",
+    "valid_until": "2034-04-09"
+  }
+]
