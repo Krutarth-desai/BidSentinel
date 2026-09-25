@@ -124,12 +124,19 @@ BidSentinel/
 - Node.js v18+ and npm
 - Git
 
-### 1. Clone & Setup Backend
+### 🚀 One-Click Run (Recommended)
+You can directly run the entire platform (both FastAPI backend and Next.js frontend with auto-checks and auto-seed) using:
 ```bash
-git clone https://github.com/Krutarth-desai/BidSentinel.git
-cd BidSentinel
+python run.py
+```
+This automatically verifies prerequisites, launches both servers, and opens `http://localhost:3000` in your default browser.
 
-# Initialize Python virtual environment
+---
+
+### Manual Setup & Execution (Alternative)
+
+#### 1. Setup Backend
+```bash
 cd backend
 python -m venv .venv
 
@@ -143,28 +150,22 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Generate Data & Seed Database
+#### 2. Generate Data & Seed Database
 ```bash
-# Return to project root
 cd ..
-
-# Generate synthetic datasets
 python scripts/generate_mock_data.py
-
-# Seed database with demo tenders, bidders, and documents
 python scripts/seed_database.py
 ```
 
-### 3. Run Backend API Server
+#### 3. Run Backend API Server
 ```bash
 cd backend
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 API Documentation (Swagger UI): `http://localhost:8000/docs`
 
-### 4. Setup & Run Frontend
+#### 4. Setup & Run Frontend
 ```bash
-# Open a new terminal in project root
 cd frontend
 npm install
 npm run dev

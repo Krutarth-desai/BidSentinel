@@ -23,15 +23,15 @@ from app.compliance_engine.recommendation_engine import generate_recommendation
 # 1. GST Connector Tests
 def test_gst_active_success():
     conn = connector_registry.get("gst")
-    res = conn.query("27DEMOA1234F1Z5")
+    res = conn.query("27AABCT1234A1Z5")
     assert res.found is True
     assert res.status == "ACTIVE"
     assert res.verified is True
-    assert res.data["legal_name"] == "ABC Technologies Pvt. Ltd."
+    assert res.data["legal_name"] == "TechVista Solutions Private Limited"
 
 def test_gst_inactive_status():
     conn = connector_registry.get("gst")
-    res = conn.query("07DEMOB7890F1Z4")
+    res = conn.query("06AAMPG5678P1Z5")
     assert res.found is True
     assert res.status == "INACTIVE"
     assert res.verified is False
@@ -45,12 +45,12 @@ def test_gst_not_found():
 
 # 2. PAN and Entity Cross-Matching Tests
 def test_pan_matches_gstin_binding():
-    # 27DEMOA1234F1Z5 contains PAN 'DEMOA1234X'? Let's check chars 2:12 = DEMOA1234F
-    is_valid, msg = cross_check_gst_and_pan("27DEMOA1234F1Z5", "DEMOA1234F")
+    # 27AABCT1234A1Z5 contains PAN 'AABCT1234A'
+    is_valid, msg = cross_check_gst_and_pan("27AABCT1234A1Z5", "AABCT1234A")
     assert is_valid is True
 
 def test_pan_mismatch_with_gstin():
-    is_valid, msg = cross_check_gst_and_pan("27DEMOA1234F1Z5", "WRONGP1234")
+    is_valid, msg = cross_check_gst_and_pan("27AABCT1234A1Z5", "WRONGP1234")
     assert is_valid is False
     assert "does not match" in msg
 
@@ -60,8 +60,8 @@ def test_entity_name_normalization():
 
 def test_entity_name_exact_and_likely_match():
     is_match, score, label = match_entity_names(
-        "ABC Technologies Pvt. Ltd.",
-        "ABC Technologies Private Limited"
+        "TechVista Solutions Pvt Ltd",
+        "TechVista Solutions Private Limited"
     )
     assert is_match is True
     assert score >= 0.90
@@ -69,8 +69,8 @@ def test_entity_name_exact_and_likely_match():
 
 def test_entity_name_deliberate_mismatch():
     is_match, score, label = match_entity_names(
-        "PQR Industrial Systems Pvt. Ltd.",
-        "PQR Industries Limited"
+        "TechVista Solutions Pvt Ltd",
+        "Different Solutions Limited"
     )
     assert is_match is False
     assert label in ["REVIEW_REQUIRED", "MISMATCH"]
@@ -78,7 +78,7 @@ def test_entity_name_deliberate_mismatch():
 # 3. Udyam Connector & Rules
 def test_udyam_active_lookup():
     conn = connector_registry.get("udyam")
-    res = conn.query("UDYAM-MH-12-0001001")
+    res = conn.query("UDYAM-MH-01-0012345")
     assert res.found is True
     assert res.status == "ACTIVE"
     assert res.data["enterprise_type"] == "SMALL"
@@ -107,8 +107,8 @@ def test_udyam_name_discrepancy_detection():
         "rule_code": "RULE_UDYAM_CATEGORY"
     }]
     bidder = {
-        "company_name": "PQR Industrial Systems Pvt. Ltd.",
-        "udyam_number": "UDYAM-MH-12-0001003",
+        "company_name": "Unrelated Random Enterprise Pvt Ltd",
+        "udyam_number": "UDYAM-MH-01-0012345",
         "claimed_msme_benefit": True
     }
     res = evaluate_requirements(req, bidder, [], {})
@@ -221,36 +221,36 @@ def test_itr_missing_mandatory():
 # 7. Labor & Statutory Connectors (EPFO & ESIC)
 def test_epfo_compliant():
     conn = connector_registry.get("epfo")
-    res = conn.query("MHPUN0012345000")
+    res = conn.query("MHPUN0000001000")
     assert res.found is True
     assert res.status == "COMPLIANT"
     assert res.verified is True
 
 def test_epfo_pending_dues():
     conn = connector_registry.get("epfo")
-    res = conn.query("TNMAS0012351000")
+    res = conn.query("HRGUR0000016000")
     assert res.found is True
-    assert res.status == "PENDING_DUES"
+    assert res.status == "DEFAULTER"
     assert res.verified is False
 
 def test_esic_pending_verification():
     conn = connector_registry.get("esic")
-    res = conn.query("31000123460001002")
+    res = conn.query("3100000016001001")
     assert res.found is True
-    assert res.status == "PENDING_VERIFICATION"
+    assert res.status == "PENDING_DUES"
     assert res.verified is False
 
 # 8. Blacklist & Debarment Screening
 def test_blacklist_clean_bidder():
     conn = connector_registry.get("blacklist")
-    res = conn.query("ABC Technologies Pvt. Ltd.")
+    res = conn.query("TechVista Solutions Private Limited")
     assert res.found is False
     assert res.verified is True
     assert res.status == "CLEAN"
 
 def test_blacklist_potential_record_never_autodisqualifies():
     conn = connector_registry.get("blacklist")
-    res = conn.query("DEMOB7890C")
+    res = conn.query("AAMPG5678P")
     assert res.found is True
     assert res.verified is False # Requires review
     assert "Officer Review Required" in res.message

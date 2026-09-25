@@ -438,3 +438,51 @@ class BlacklistConnector(GovernmentConnector):
             ],
             message="Potential record found — Officer Review Required."
         )
+
+
+class ITDConnector(GovernmentConnector):
+    @property
+    def name(self) -> str:
+        return "itd"
+
+    @property
+    def display_name(self) -> str:
+        return "Income Tax Department (ITD / NSDL PAN Portal)"
+
+    def query(self, pan_number: str, **kwargs) -> ConnectorResult:
+        records = _load_json("pan.json")
+        clean_pan = pan_number.strip().upper()
+        match = next((r for r in records if r.get("pan", "").upper() == clean_pan), None)
+
+        if not match:
+            return ConnectorResult(
+                connector_name=self.name,
+                display_name=self.display_name,
+                found=False,
+                verified=False,
+                status="NOT_FOUND",
+                flags=["PAN record not located in ITD/NSDL database"],
+                message=f"No taxpayer record found for PAN {clean_pan}"
+            )
+
+        status = match.get("pan_status", "ACTIVE")
+        is_active = (status == "ACTIVE")
+        flags = []
+        if not is_active:
+            flags.append(f"PAN status is {status}")
+        if match.get("has_tax_notice"):
+            flags.append(f"Active Tax Scrutiny Notice: Outstanding demand INR {match.get('tax_demand_pending_cr', 0)} Cr")
+        if match.get("itr_filed_ay_2024_25") != "Filed":
+            flags.append("ITR AY 2024-25 not filed")
+
+        return ConnectorResult(
+            connector_name=self.name,
+            display_name=self.display_name,
+            found=True,
+            verified=is_active and not match.get("has_tax_notice"),
+            status=status,
+            data=match,
+            flags=flags,
+            message=f"PAN {clean_pan} is {status} in Income Tax Department records for {match.get('pan_holder_name')}."
+        )
+

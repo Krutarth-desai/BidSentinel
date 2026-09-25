@@ -41,9 +41,11 @@ def list_tenders(db: Session = Depends(get_db)):
         })
     return result
 
-@router.get("/{tender_id}")
+@router.get("/{tender_id:path}")
 def get_tender_detail(tender_id: str, db: Session = Depends(get_db)):
-    tender = db.query(Tender).filter(Tender.tender_id == tender_id).first()
+    tender = db.query(Tender).filter(
+        (Tender.tender_id == tender_id) | (Tender.reference_number == tender_id)
+    ).first()
     if not tender:
         raise HTTPException(status_code=404, detail="Tender not found")
 
@@ -201,7 +203,7 @@ def load_demo_tenders(
     db.commit()
     return {"message": "Demo tenders and requirements successfully loaded", "tenders_count": len(tenders_data)}
 
-@router.post("/{tender_id}/extract-requirements")
+@router.post("/{tender_id:path}/extract-requirements")
 async def extract_requirements_from_upload(
     tender_id: str,
     file: Optional[UploadFile] = File(None),
@@ -257,7 +259,7 @@ async def extract_requirements_from_upload(
     db.commit()
     return {"message": f"Successfully extracted {len(extracted)} requirements", "requirements": extracted}
 
-@router.post("/{tender_id}/requirements")
+@router.post("/{tender_id:path}/requirements")
 def add_custom_requirement(
     tender_id: str,
     payload: TenderRequirementCreate,
@@ -295,7 +297,7 @@ def add_custom_requirement(
 
     return {"message": "Requirement added", "requirement_id": req_id}
 
-@router.delete("/{tender_id}/requirements/{req_id}")
+@router.delete("/{tender_id:path}/requirements/{req_id}")
 def delete_requirement(
     tender_id: str,
     req_id: str,

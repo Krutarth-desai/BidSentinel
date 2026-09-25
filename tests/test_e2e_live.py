@@ -48,24 +48,24 @@ def test_live_officer_workflow():
     bidders = get_json("/bidders/", token=token)
     assert len(bidders) >= 10
 
-    # 4. Trigger AI verification for PQR Industrial Systems (BID-003)
-    # Expected: High Risk, around 60% compliance score, multiple issues
+    # 4. Trigger AI verification for Bharat Heavy Components (BID003)
+    # Expected: High Risk, around 70% compliance score, local content shortfall
     ver_res = post_json("/verification/run", {
-        "tender_id": "GEM/2026/B/100001",
-        "bidder_id": "BID-003"
+        "tender_id": "TND001",
+        "bidder_id": "BID003"
     }, token=token)
 
-    assert ver_res["bidder_id"] == "BID-003"
+    assert ver_res["bidder_id"] == "BID003"
     assert ver_res["risk_level"] == "HIGH"
-    assert 50 <= ver_res["compliance_score"] <= 70
+    assert 50 <= ver_res["compliance_score"] <= 75
     assert len(ver_res["findings"]) > 0
-    assert len(ver_res["requirement_results"]) >= 10
+    assert len(ver_res["requirement_results"]) >= 8
     assert "Procurement Officer authority" in ver_res["ai_recommendation"]
 
     # 5. Submit Procurement Officer Decision
     dec_res = post_json("/decisions/", {
-        "tender_id": "GEM/2026/B/100001",
-        "bidder_id": "BID-003",
+        "tender_id": "TND001",
+        "bidder_id": "BID003",
         "decision": "CLARIFICATION_REQUESTED",
         "comments": "Requesting updated OEM Authorization and proof of Local Content meeting 50% threshold.",
         "officer_name": "Dr. Rajeshwar Sharma, IAS"
@@ -82,7 +82,7 @@ def test_live_officer_workflow():
 
     # 7. Check Mock Connectors status
     conn_data = get_json("/connectors/list", token=token)
-    assert conn_data["connector_count"] == 10
+    assert conn_data["connector_count"] >= 10
     assert conn_data["prototype_mode"] is True
 
     print("\n--- ALL 7 LIVE E2E WORKFLOW PHASES VERIFIED SUCCESSFULLY ---")

@@ -1,14 +1,36 @@
 [
   {
-    "entity_name": "Bharat Heavy Spares Corp",
-    "pan": "DEMOB7890C",
+    "entity_name": "Gupta Trading Company",
+    "pan": "AAMPG5678P",
     "authority": "GeM Incident Management & Debarment Committee",
-    "reference_number": "GEM-INC-2025-0891",
+    "reference_number": "GEM-INC-2026-0891",
+    "status": "DEBARRED",
+    "start_date": "2026-06-15",
+    "end_date": "2029-06-14",
+    "reason": "PAN deactivated; unfiled ITR for 3 consecutive assessment years; pending tax demand INR 8.2 Cr; cancelled Udyam.",
+    "recommendation_flag": "Potential record found in Central Debarment Watchlist — Procurement Officer Review Required"
+  },
+  {
+    "entity_name": "Metro Construction Company",
+    "pan": "AAKPM0123H",
+    "authority": "Income Tax Department Scrutiny Division",
+    "reference_number": "ITD-SCRUTINY-2026-441",
     "status": "UNDER_INVESTIGATION",
-    "start_date": "2025-11-15",
-    "end_date": "2026-11-14",
-    "reason": "Repeated supply delay and non-submission of genuine OEM warranty certificate in Tender GEM/2025/B/90812.",
-    "recommendation_flag": "Potential record found in GeM Debarment Watchlist — Procurement Officer Review Required"
+    "start_date": "2026-04-10",
+    "end_date": "2027-04-09",
+    "reason": "Pending tax demand of INR 4.5 Cr; active scrutiny assessment notice under Section 143(2); unfiled AY 2022-23.",
+    "recommendation_flag": "Potential record found in ITD Scrutiny Division — Procurement Officer Review Required"
+  },
+  {
+    "entity_name": "Jharkhand Minerals Trading Co",
+    "pan": "AAKPJ3456G",
+    "authority": "Income Tax Department & MSME Vigilance",
+    "reference_number": "MSME-VIG-2026-102",
+    "status": "UNDER_INVESTIGATION",
+    "start_date": "2026-05-01",
+    "end_date": "2027-04-30",
+    "reason": "Expired Udyam registration, unfiled AY 2023-24 returns, pending recovery demand INR 2.1 Cr.",
+    "recommendation_flag": "Potential record found in MSME Vigilance Registry — Procurement Officer Review Required"
   },
   {
     "entity_name": "Eastern Infra Power Allied Pvt. Ltd.",

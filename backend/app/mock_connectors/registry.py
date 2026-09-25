@@ -15,7 +15,8 @@ from app.mock_connectors.connectors import (
     NSICConnector,
     DigiLockerConnector,
     BISConnector,
-    BlacklistConnector
+    BlacklistConnector,
+    ITDConnector
 )
 
 class ConnectorRegistry:
@@ -30,7 +31,9 @@ class ConnectorRegistry:
             "nsic": NSICConnector(),
             "digilocker": DigiLockerConnector(),
             "bis": BISConnector(),
-            "blacklist": BlacklistConnector()
+            "blacklist": BlacklistConnector(),
+            "itd": ITDConnector(),
+            "pan": ITDConnector()
         }
 
     def get(self, name: str) -> GovernmentConnector:
@@ -77,6 +80,11 @@ class ConnectorRegistry:
         # BIS
         if bidder_dict.get("company_name"):
             results["bis"] = self.get("bis").query(bidder_dict["company_name"])
+
+        # ITD / PAN
+        if bidder_dict.get("pan"):
+            results["itd"] = self.get("itd").query(bidder_dict["pan"])
+            results["pan"] = results["itd"]
 
         # Blacklist / Debarment Screening
         search_term = bidder_dict.get("pan") or bidder_dict.get("company_name", "")

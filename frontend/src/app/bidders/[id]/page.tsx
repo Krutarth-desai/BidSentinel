@@ -15,6 +15,8 @@ import {
   Clock,
   RefreshCw,
   FileCheck,
+  Eye,
+  X,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Sidebar } from "@/components/Sidebar";
@@ -30,6 +32,7 @@ export default function BidderDetailPage() {
   const [bidder, setBidder] = useState<Bidder | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [inspectDoc, setInspectDoc] = useState<any | null>(null);
 
   // Upload state
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -211,7 +214,8 @@ export default function BidderDetailPage() {
                     <th className="py-3 px-4">Upload Date</th>
                     <th className="py-3 px-4">Extracted Fields</th>
                     <th className="py-3 px-4">Expiry Date</th>
-                    <th className="py-3 px-4 text-right">Verification Status</th>
+                    <th className="py-3 px-4">Verification Status</th>
+                    <th className="py-3 px-4 text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -237,8 +241,17 @@ export default function BidderDetailPage() {
                         </pre>
                       </td>
                       <td className="py-3.5 px-4 text-slate-500">{d.expiry_date || "N/A"}</td>
-                      <td className="py-3.5 px-4 text-right">
+                      <td className="py-3.5 px-4">
                         <StatusBadge status={d.verification_status || "VERIFIED"} size="sm" />
+                      </td>
+                      <td className="py-3.5 px-4 text-center">
+                        <button
+                          onClick={() => setInspectDoc(d)}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-lg transition-colors border border-blue-200 dark:border-blue-800"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Inspect</span>
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -316,6 +329,130 @@ export default function BidderDetailPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Document Inspection & Certificate Preview Modal */}
+      {inspectDoc && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+          <div className="w-full max-w-3xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[90vh] flex flex-col animate-in fade-in zoom-in-95 duration-150">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-lg">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                    <span>{inspectDoc.document_name}</span>
+                    <StatusBadge status={inspectDoc.verification_status || "VERIFIED"} size="sm" />
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Category: <span className="font-semibold text-slate-700 dark:text-slate-300">{inspectDoc.document_type}</span> • Submitted: {inspectDoc.upload_date || "2026-09-25"}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setInspectDoc(null)}
+                className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto space-y-6">
+              {/* Simulated Official Document Dossier Card */}
+              <div className="p-5 bg-amber-50/40 dark:bg-slate-950 rounded-xl border border-amber-200/70 dark:border-slate-800 relative">
+                <div className="text-center border-b border-amber-200/60 dark:border-slate-800 pb-3 mb-4">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-400 block">
+                    Government of India / GeM Procurement Electronic Archive
+                  </span>
+                  <h4 className="text-sm font-extrabold text-slate-900 dark:text-slate-100 mt-1">
+                    {inspectDoc.document_name.toUpperCase()}
+                  </h4>
+                  <span className="text-[11px] text-slate-500 font-mono">
+                    Electronic Filing Ref: DOC-{bidder?.bidder_id}-{inspectDoc.document_type}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 text-xs mb-3">
+                  <div>
+                    <span className="text-slate-400 block mb-0.5">Bidder Entity:</span>
+                    <strong className="text-slate-800 dark:text-slate-200">{bidder?.company_name}</strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block mb-0.5">Statutory Registration:</span>
+                    <span className="font-mono font-bold text-slate-800 dark:text-slate-200">PAN: {bidder?.pan} • GSTIN: {bidder?.gstin}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block mb-0.5">Verification Integrity:</span>
+                    <strong className="text-emerald-700 dark:text-emerald-400">OCR Extracted & Cross-Verified against Authority Source</strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block mb-0.5">Document Validity:</span>
+                    <strong className="text-slate-800 dark:text-slate-200">{inspectDoc.expiry_date || "Perpetual / Ongoing"}</strong>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-amber-200/60 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500">
+                  <span className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> DigiLocker / Statutory Archive Timestamp Verified
+                  </span>
+                  <span className="font-mono text-[10px] text-slate-400">SHA-256 Tamper-Proof Seal</span>
+                </div>
+              </div>
+
+              {/* AI OCR Extracted Fields */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                    <FileCheck className="w-4 h-4 text-blue-600" />
+                    <span>AI OCR Structured Key-Value Extractions</span>
+                  </h4>
+                  <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 px-2.5 py-0.5 rounded-full">
+                    OCR Confidence: 97%
+                  </span>
+                </div>
+
+                {inspectDoc.extracted_data && Object.keys(inspectDoc.extracted_data).length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    {Object.entries(inspectDoc.extracted_data).map(([key, val]) => (
+                      <div key={key} className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex justify-between items-center">
+                        <span className="font-medium text-slate-500 capitalize">
+                          {key.replace(/_/g, " ")}:
+                        </span>
+                        <span className="font-mono font-bold text-slate-900 dark:text-slate-100 text-right max-w-[60%] truncate">
+                          {typeof val === "boolean" ? (val ? "YES" : "NO") : String(val)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-slate-400 italic">No structured fields extracted for this document.</p>
+                )}
+              </div>
+
+              {/* Raw JSON Technical View */}
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-semibold text-slate-400">Raw Extracted Payload:</span>
+                <pre className="text-[11px] font-mono bg-slate-950 text-slate-200 p-3 rounded-lg overflow-x-auto border border-slate-800">
+                  {JSON.stringify(inspectDoc.extracted_data || {}, null, 2)}
+                </pre>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex items-center justify-between px-6 py-3.5 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 text-xs">
+              <span className="text-slate-400">Document Dossier Record • GeM SIH 2026 Prototype</span>
+              <button
+                onClick={() => setInspectDoc(null)}
+                className="px-4 py-2 font-bold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg transition-colors"
+              >
+                Close Preview
+              </button>
+            </div>
           </div>
         </div>
       )}

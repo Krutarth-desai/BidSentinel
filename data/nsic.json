@@ -1,34 +1,42 @@
 [
   {
-    "certificate_number": "NSIC/GP/PUN/2023/00142",
-    "enterprise_name": "ABC Technologies Pvt. Ltd.",
+    "registration_number": "NSIC/SPRS/2023/001",
+    "enterprise_name": "TechVista Solutions Private Limited",
     "scheme": "Single Point Registration Scheme (SPRS)",
+    "monetary_limit_inr": 50000000,
     "status": "VALID",
-    "valid_until": "2027-05-31",
-    "monetary_limit_inr": 25000000
+    "valid_until": "2027-06-30"
   },
   {
-    "certificate_number": "NSIC/GP/BLR/2023/00298",
-    "enterprise_name": "Apex Automation Systems Pvt. Ltd.",
+    "registration_number": "NSIC/SPRS/2023/002",
+    "enterprise_name": "GreenLeaf Enterprises",
     "scheme": "Single Point Registration Scheme (SPRS)",
+    "monetary_limit_inr": 15000000,
     "status": "VALID",
-    "valid_until": "2027-03-31",
-    "monetary_limit_inr": 50000000
+    "valid_until": "2027-08-31"
   },
   {
-    "certificate_number": "NSIC/GP/VAD/2023/00311",
-    "enterprise_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "registration_number": "NSIC/SPRS/2023/005",
+    "enterprise_name": "Rajasthan Steel Works",
     "scheme": "Single Point Registration Scheme (SPRS)",
+    "monetary_limit_inr": 20000000,
     "status": "VALID",
-    "valid_until": "2027-09-30",
-    "monetary_limit_inr": 35000000
+    "valid_until": "2027-05-15"
   },
   {
-    "certificate_number": "NSIC/GP/KOL/2024/00085",
-    "enterprise_name": "Delta Power Equipments LLP",
+    "registration_number": "NSIC/SPRS/2023/007",
+    "enterprise_name": "Sai Pharma Industries Private Limited",
     "scheme": "Single Point Registration Scheme (SPRS)",
+    "monetary_limit_inr": 80000000,
     "status": "VALID",
-    "valid_until": "2027-11-30",
-    "monetary_limit_inr": 20000000
+    "valid_until": "2027-11-20"
+  },
+  {
+    "registration_number": "NSIC/SPRS/2023/009",
+    "enterprise_name": "Sunrise Textiles Private Limited",
+    "scheme": "Single Point Registration Scheme (SPRS)",
+    "monetary_limit_inr": 35000000,
+    "status": "VALID",
+    "valid_until": "2027-04-10"
   }
 ]

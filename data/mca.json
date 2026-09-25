@@ -1,102 +1,332 @@
 [
   {
-    "cin": "U12345MH2020PTC100001",
-    "company_name": "ABC Technologies Pvt. Ltd.",
+    "cin": "U6200272015PTC000001",
+    "company_name": "TechVista Solutions Private Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2020-01-15",
-    "registered_address": "Plot 42, Tech Park Phase 2, Pune, Maharashtra 411057",
-    "company_type": "Non-govt company",
-    "authorized_capital_inr": 5000000,
-    "paid_up_capital_inr": 2500000
+    "class_of_company": "Private",
+    "date_of_incorporation": "2015-03-12",
+    "registered_state": "Maharashtra",
+    "authorized_capital_inr": 456000000,
+    "paid_up_capital_inr": 364800000
   },
   {
-    "cin": "U12345MH2019PTC100002",
-    "company_name": "XYZ Engineering Solutions Pvt. Ltd.",
+    "cin": "L2800272001PTC000003",
+    "company_name": "Bharat Heavy Components Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2019-02-20",
-    "registered_address": "Sector 18, Electronic Zone, Navi Mumbai, Maharashtra 400705",
-    "company_type": "Non-govt company",
-    "authorized_capital_inr": 10000000,
-    "paid_up_capital_inr": 7500000
+    "class_of_company": "Public",
+    "date_of_incorporation": "2001-11-05",
+    "registered_state": "Maharashtra",
+    "authorized_capital_inr": 3205000000,
+    "paid_up_capital_inr": 2564000000
   },
   {
-    "cin": "U12345MH2018PTC100003",
-    "company_name": "PQR Industrial Systems Pvt. Ltd.",
+    "cin": "AAA-0004",
+    "company_name": "Pinnacle InfoTech LLP",
     "company_status": "ACTIVE",
-    "incorporation_date": "2018-05-11",
-    "registered_address": "MIDC Bhosari, Industrial Area, Pune, Maharashtra 411026",
-    "company_type": "Non-govt company",
-    "authorized_capital_inr": 5000000,
-    "paid_up_capital_inr": 3000000
+    "class_of_company": "Public",
+    "date_of_incorporation": "2019-01-15",
+    "registered_state": "Tamil Nadu",
+    "authorized_capital_inr": 128000000,
+    "paid_up_capital_inr": 102400000
   },
   {
-    "cin": "AAA-1234",
-    "company_name": "Zenith Micro Devices LLP",
+    "cin": "U72900DL2020PTC345678",
+    "company_name": "NovaTech Digital Private Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2024-01-10",
-    "registered_address": "Udyog Vihar Phase 4, Gurugram, Haryana 122016",
-    "company_type": "Limited Liability Partnership",
-    "authorized_capital_inr": 1000000,
-    "paid_up_capital_inr": 1000000
+    "class_of_company": "Private",
+    "date_of_incorporation": "2020-02-14",
+    "registered_state": "Delhi",
+    "authorized_capital_inr": 35000000,
+    "paid_up_capital_inr": 28000000
   },
   {
-    "cin": "U12345DL2015PTC100005",
-    "company_name": "Bharat Heavy Spares Corp",
+    "cin": "U2100362012PTC000007",
+    "company_name": "Sai Pharma Industries Private Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2015-08-14",
-    "registered_address": "Okhla Industrial Area Phase 1, New Delhi 110020",
-    "company_type": "Non-govt company",
-    "authorized_capital_inr": 20000000,
-    "paid_up_capital_inr": 18000000
+    "class_of_company": "Private",
+    "date_of_incorporation": "2012-09-18",
+    "registered_state": "Telangana",
+    "authorized_capital_inr": 283000000,
+    "paid_up_capital_inr": 226400000
   },
   {
-    "cin": "U12345KA2017PTC100006",
-    "company_name": "Apex Automation Systems Pvt. Ltd.",
+    "cin": "U1300242016PTC000009",
+    "company_name": "Sunrise Textiles Private Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2017-02-14",
-    "registered_address": "Peenya 2nd Stage, Bengaluru, Karnataka 560058",
-    "company_type": "Non-govt company",
-    "authorized_capital_inr": 10000000,
-    "paid_up_capital_inr": 8000000
+    "class_of_company": "Private",
+    "date_of_incorporation": "2016-05-20",
+    "registered_state": "Gujarat",
+    "authorized_capital_inr": 157000000,
+    "paid_up_capital_inr": 125600000
   },
   {
-    "cin": "L12345TN2012PLC100007",
-    "company_name": "Titan Electro Dynamics Ltd.",
+    "cin": "L3000292005PTC000011",
+    "company_name": "Apex Defence Systems Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2012-04-18",
-    "registered_address": "Ambattur Industrial Estate, Chennai, Tamil Nadu 600058",
-    "company_type": "Public company",
-    "authorized_capital_inr": 50000000,
-    "paid_up_capital_inr": 35000000
+    "class_of_company": "Public",
+    "date_of_incorporation": "2005-08-15",
+    "registered_state": "Karnataka",
+    "authorized_capital_inr": 5800000000,
+    "paid_up_capital_inr": 4640000000
   },
   {
-    "cin": "U12345GJ2016PTC100008",
-    "company_name": "Kavach Safety & Shielding Solutions Pvt. Ltd.",
+    "cin": "U72200KA2021PTC456789",
+    "company_name": "Digi Cloud Services Private Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2016-10-05",
-    "registered_address": "GIDC Makarpura, Vadodara, Gujarat 390010",
-    "company_type": "Non-govt company",
+    "class_of_company": "Private",
+    "date_of_incorporation": "2021-03-01",
+    "registered_state": "Karnataka",
+    "authorized_capital_inr": 19000000,
+    "paid_up_capital_inr": 15200000
+  },
+  {
+    "cin": "L2700072003PTC000014",
+    "company_name": "National Power Equipment Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2003-01-25",
+    "registered_state": "Delhi",
+    "authorized_capital_inr": 2108000000,
+    "paid_up_capital_inr": 1686400000
+  },
+  {
+    "cin": "U72200TN2019PTC345678",
+    "company_name": "Pratham Software Solutions Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2019-06-15",
+    "registered_state": "Tamil Nadu",
+    "authorized_capital_inr": 63000000,
+    "paid_up_capital_inr": 50400000
+  },
+  {
+    "cin": "U2000192011PTC000017",
+    "company_name": "Eastern Chemicals Private Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Private",
+    "date_of_incorporation": "2011-11-11",
+    "registered_state": "West Bengal",
+    "authorized_capital_inr": 221000000,
+    "paid_up_capital_inr": 176800000
+  },
+  {
+    "cin": "U2900272009PTC000018",
+    "company_name": "Reliable Motors Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2009-07-19",
+    "registered_state": "Maharashtra",
+    "authorized_capital_inr": 185000000,
+    "paid_up_capital_inr": 148000000
+  },
+  {
+    "cin": "U31200KA2022PTC567890",
+    "company_name": "Smart Grid Technologies Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2022-01-10",
+    "registered_state": "Karnataka",
     "authorized_capital_inr": 8000000,
-    "paid_up_capital_inr": 6000000
+    "paid_up_capital_inr": 6400000
   },
   {
-    "cin": "U12345TG2021PTC100009",
-    "company_name": "Nova Robotics India Pvt. Ltd.",
+    "cin": "L3000322006PTC000021",
+    "company_name": "Coastal Marine Services Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2021-03-22",
-    "registered_address": "HITEC City Phase 1, Hyderabad, Telangana 500081",
-    "company_type": "Non-govt company",
-    "authorized_capital_inr": 5000000,
-    "paid_up_capital_inr": 2000000
+    "class_of_company": "Public",
+    "date_of_incorporation": "2006-04-10",
+    "registered_state": "Kerala",
+    "authorized_capital_inr": 953000000,
+    "paid_up_capital_inr": 762400000
   },
   {
-    "cin": "AAB-5678",
-    "company_name": "Delta Power Equipments LLP",
+    "cin": "U72200DL2023PTC890123",
+    "company_name": "InnoAI Labs Private Limited",
     "company_status": "ACTIVE",
-    "incorporation_date": "2020-07-29",
-    "registered_address": "Sector 5, Salt Lake, Kolkata, West Bengal 700091",
-    "company_type": "Limited Liability Partnership",
-    "authorized_capital_inr": 2500000,
-    "paid_up_capital_inr": 2500000
+    "class_of_company": "Private",
+    "date_of_incorporation": "2023-05-22",
+    "registered_state": "Delhi",
+    "authorized_capital_inr": 4000000,
+    "paid_up_capital_inr": 3200000
+  },
+  {
+    "cin": "L0700212000PTC000023",
+    "company_name": "Odisha Mining Corporation",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2000-10-15",
+    "registered_state": "Odisha",
+    "authorized_capital_inr": 1452000000,
+    "paid_up_capital_inr": 1161600000
+  },
+  {
+    "cin": "U1700092014PTC000024",
+    "company_name": "Swadeshi Paper Mills Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2014-08-20",
+    "registered_state": "Uttar Pradesh",
+    "authorized_capital_inr": 112000000,
+    "paid_up_capital_inr": 89600000
+  },
+  {
+    "cin": "U72200TN2020PTC567890",
+    "company_name": "SecureNet Cyber Solutions Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2020-09-05",
+    "registered_state": "Tamil Nadu",
+    "authorized_capital_inr": 57000000,
+    "paid_up_capital_inr": 45600000
+  },
+  {
+    "cin": "U72300MH2021PTC678901",
+    "company_name": "CloudFirst India Private Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Private",
+    "date_of_incorporation": "2021-07-12",
+    "registered_state": "Maharashtra",
+    "authorized_capital_inr": 23000000,
+    "paid_up_capital_inr": 18400000
+  },
+  {
+    "cin": "L2500242004PTC000030",
+    "company_name": "Diamond Tools India Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2004-12-01",
+    "registered_state": "Gujarat",
+    "authorized_capital_inr": 785000000,
+    "paid_up_capital_inr": 628000000
+  },
+  {
+    "cin": "U2700082018PTC000031",
+    "company_name": "GreenEnergy Solar Private Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Private",
+    "date_of_incorporation": "2018-04-22",
+    "registered_state": "Rajasthan",
+    "authorized_capital_inr": 146000000,
+    "paid_up_capital_inr": 116800000
+  },
+  {
+    "cin": "U3200032017PTC000032",
+    "company_name": "Shanti Medical Devices Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2017-02-14",
+    "registered_state": "Punjab",
+    "authorized_capital_inr": 89000000,
+    "paid_up_capital_inr": 71200000
+  },
+  {
+    "cin": "U2800272019PTC000034",
+    "company_name": "TechStar Automation Private Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Private",
+    "date_of_incorporation": "2019-11-28",
+    "registered_state": "Maharashtra",
+    "authorized_capital_inr": 74000000,
+    "paid_up_capital_inr": 59200000
+  },
+  {
+    "cin": "U72200KA2022PTC901234",
+    "company_name": "DataBridge Analytics Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2022-08-18",
+    "registered_state": "Karnataka",
+    "authorized_capital_inr": 12000000,
+    "paid_up_capital_inr": 9600000
+  },
+  {
+    "cin": "U72200TN2023PTC234567",
+    "company_name": "Quantum Computing India Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2023-01-09",
+    "registered_state": "Tamil Nadu",
+    "authorized_capital_inr": 3000000,
+    "paid_up_capital_inr": 2400000
+  },
+  {
+    "cin": "U3000272016PTC000042",
+    "company_name": "Falcon Aerospace Components Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2016-12-01",
+    "registered_state": "Maharashtra",
+    "authorized_capital_inr": 421000000,
+    "paid_up_capital_inr": 336800000
+  },
+  {
+    "cin": "U15200HP2018PTC567890",
+    "company_name": "Himachal Organic Foods Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2018-08-15",
+    "registered_state": "Himachal Pradesh",
+    "authorized_capital_inr": 21000000,
+    "paid_up_capital_inr": 16800000
+  },
+  {
+    "cin": "U2700052017PTC000044",
+    "company_name": "Uttarakhand Hydro Tech Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2017-05-30",
+    "registered_state": "Uttarakhand",
+    "authorized_capital_inr": 65000000,
+    "paid_up_capital_inr": 52000000
+  },
+  {
+    "cin": "U15500SK2020PTC234567",
+    "company_name": "Sikkim Organic Beverages Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2020-10-10",
+    "registered_state": "Sikkim",
+    "authorized_capital_inr": 9000000,
+    "paid_up_capital_inr": 7200000
+  },
+  {
+    "cin": "L1500092002PTC000047",
+    "company_name": "Kanpur Leather Exports Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2002-06-22",
+    "registered_state": "Uttar Pradesh",
+    "authorized_capital_inr": 552000000,
+    "paid_up_capital_inr": 441600000
+  },
+  {
+    "cin": "U72200NL2021PTC345678",
+    "company_name": "NorthEast IT Solutions Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2021-09-15",
+    "registered_state": "Nagaland",
+    "authorized_capital_inr": 7000000,
+    "paid_up_capital_inr": 5600000
+  },
+  {
+    "cin": "U2500372015PTC000049",
+    "company_name": "Andhra Precision Tools Pvt Ltd",
+    "company_status": "ACTIVE",
+    "class_of_company": "Public",
+    "date_of_incorporation": "2015-11-08",
+    "registered_state": "Andhra Pradesh",
+    "authorized_capital_inr": 103000000,
+    "paid_up_capital_inr": 82400000
+  },
+  {
+    "cin": "U4200072007PTC000050",
+    "company_name": "JK Infrastructure Private Limited",
+    "company_status": "ACTIVE",
+    "class_of_company": "Private",
+    "date_of_incorporation": "2007-03-14",
+    "registered_state": "Delhi",
+    "authorized_capital_inr": 356000000,
+    "paid_up_capital_inr": 284800000
   }
 ]

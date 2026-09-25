@@ -52,7 +52,12 @@ def list_bidders(db: Session = Depends(get_db)):
 
 @router.get("/{bidder_id}")
 def get_bidder_profile(bidder_id: str, db: Session = Depends(get_db)):
-    bidder = db.query(Bidder).filter(Bidder.bidder_id == bidder_id).first()
+    clean_id = bidder_id.replace("-", "")
+    bidder = db.query(Bidder).filter(
+        (Bidder.bidder_id == bidder_id) |
+        (Bidder.bidder_id == clean_id) |
+        (Bidder.bidder_id == f"BID-{clean_id[3:]}")
+    ).first()
     if not bidder:
         raise HTTPException(status_code=404, detail="Bidder not found")
 
@@ -70,11 +75,11 @@ def get_bidder_profile(bidder_id: str, db: Session = Depends(get_db)):
         })
 
     latest_ver = db.query(VerificationResult).filter(
-        VerificationResult.bidder_id == bidder_id
+        VerificationResult.bidder_id == bidder.bidder_id
     ).order_by(VerificationResult.verified_at.desc()).first()
 
     decision = db.query(OfficerDecision).filter(
-        OfficerDecision.bidder_id == bidder_id
+        OfficerDecision.bidder_id == bidder.bidder_id
     ).order_by(OfficerDecision.decided_at.desc()).first()
 
     ver_dict = None

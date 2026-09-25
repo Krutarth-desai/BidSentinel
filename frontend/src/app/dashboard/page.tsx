@@ -48,8 +48,9 @@ export default function DashboardPage() {
 
   const handleQuickDemoBatch = async () => {
     setIsDemoLoading(true);
+    const targetTenderId = tenders[0]?.tender_id || "TND001";
     try {
-      await api.runBatchVerification("GEM/2026/B/100001");
+      await api.runBatchVerification(targetTenderId);
       await loadData();
     } catch (err) {
       console.error("Batch run error:", err);

@@ -25,11 +25,18 @@ def run_bidder_verification(
     Executes end-to-end verification for a bidder against a tender.
     Returns structured results suitable for UI and report generation.
     """
-    tender = db.query(Tender).filter(Tender.tender_id == tender_id).first()
+    tender = db.query(Tender).filter(
+        (Tender.tender_id == tender_id) | (Tender.reference_number == tender_id)
+    ).first()
     if not tender:
         raise ValueError(f"Tender {tender_id} not found")
 
-    bidder = db.query(Bidder).filter(Bidder.bidder_id == bidder_id).first()
+    clean_bid_id = bidder_id.replace("-", "")
+    bidder = db.query(Bidder).filter(
+        (Bidder.bidder_id == bidder_id) |
+        (Bidder.bidder_id == clean_bid_id) |
+        (Bidder.bidder_id == f"BID-{clean_bid_id[3:]}")
+    ).first()
     if not bidder:
         raise ValueError(f"Bidder {bidder_id} not found")
 
@@ -115,8 +122,8 @@ def run_bidder_verification(
 
     # 5. Save or update VerificationResult in DB
     existing_res = db.query(VerificationResult).filter(
-        VerificationResult.tender_id == tender_id,
-        VerificationResult.bidder_id == bidder_id
+        VerificationResult.tender_id == tender.tender_id,
+        VerificationResult.bidder_id == bidder.bidder_id
     ).first()
 
     if existing_res:
@@ -133,8 +140,8 @@ def run_bidder_verification(
         existing_res.verified_at = datetime.now(timezone.utc)
     else:
         new_res = VerificationResult(
-            tender_id=tender_id,
-            bidder_id=bidder_id,
+            tender_id=tender.tender_id,
+            bidder_id=bidder.bidder_id,
             compliance_score=scores["total_score"],
             risk_level=risk_level,
             statutory_score=scores["statutory"],

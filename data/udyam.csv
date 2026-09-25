@@ -1,0 +1,42 @@
+bidder_id,udyam_number,enterprise_name,enterprise_type,major_activity,nic_2_digit,nic_4_digit,date_of_registration,date_of_commencement,social_category,gender,date_of_udyam_registration,status,investment_plant_machinery_cr,turnover_cr,district,state,is_valid,last_verified_date,verification_source
+BID001,UDYAM-MH-01-0012345,TechVista Solutions Pvt Ltd,Small,Services,62,6201,2015-03-12,2015-04-01,General,Male,2021-07-15,Active,1.8,45.6,Mumbai,Maharashtra,TRUE,2026-08-15,Udyam Portal API
+BID002,UDYAM-KA-02-0045678,GreenLeaf Enterprises,Micro,Manufacturing,10,1030,2018-07-22,2018-08-01,OBC,Female,2021-09-20,Active,0.3,8.2,Bengaluru Urban,Karnataka,TRUE,2026-08-10,Udyam Portal API
+BID004,UDYAM-TN-03-0098765,Pinnacle InfoTech LLP,Micro,Services,62,6202,2019-01-15,2019-02-01,General,Male,2021-08-05,Active,0.2,12.8,Chennai,Tamil Nadu,TRUE,2026-07-22,Udyam Portal API
+BID005,UDYAM-RJ-04-0034567,Rajasthan Steel Works,Micro,Manufacturing,24,2410,2010-06-30,2010-07-15,SC,Male,2021-06-10,Active,0.8,5.1,Jaipur,Rajasthan,TRUE,2026-09-01,Udyam Portal API
+BID006,UDYAM-DL-05-0056789,NovaTech Digital Pvt Ltd,Micro,Services,62,6209,2020-02-14,2020-03-01,General,Male,2021-10-25,Active,0.1,3.5,New Delhi,Delhi,TRUE,2026-08-20,Udyam Portal API
+BID007,UDYAM-TS-06-0078901,Sai Pharma Industries,Small,Manufacturing,21,2100,2012-09-18,2012-10-01,General,Male,2021-11-30,Active,3.5,28.3,Hyderabad,Telangana,TRUE,2026-09-05,Udyam Portal API
+BID009,UDYAM-GJ-07-0012345,Sunrise Textiles Pvt Ltd,Small,Manufacturing,13,1311,2016-05-20,2016-06-01,General,Female,2021-07-08,Active,2.1,15.7,Ahmedabad,Gujarat,TRUE,2026-08-28,Udyam Portal API
+BID010,UDYAM-KL-08-0056789,Kiran Electronics,Micro,Manufacturing,26,2610,2014-12-10,2015-01-01,General,Male,2021-12-15,Active,0.15,2.8,Ernakulam,Kerala,TRUE,2026-07-30,Udyam Portal API
+BID012,UDYAM-KA-09-0089012,Digi Cloud Services Pvt Ltd,Micro,Services,63,6311,2021-03-01,2021-04-01,General,Male,2022-01-10,Active,0.05,1.9,Bengaluru Urban,Karnataka,TRUE,2026-09-10,Udyam Portal API
+BID013,UDYAM-MP-10-0023456,MP Agro Products,Micro,Manufacturing,10,1010,2017-10-02,2017-11-01,ST,Male,2021-08-22,Active,0.4,4.6,Bhopal,Madhya Pradesh,TRUE,2026-08-12,Udyam Portal API
+BID015,UDYAM-TN-11-0045678,Pratham Software Solutions,Small,Services,62,6201,2019-06-15,2019-07-01,General,Male,2021-09-15,Active,1.2,6.3,Coimbatore,Tamil Nadu,TRUE,2026-07-25,Udyam Portal API
+BID016,UDYAM-HR-12-0067890,Gupta Trading Co,Micro,Services,46,4659,2013-03-08,2013-04-01,General,Male,2021-10-05,Cancelled,0.5,9.4,Gurugram,Haryana,FALSE,2026-06-15,Udyam Portal API
+BID017,UDYAM-WB-13-0089012,Eastern Chemicals Pvt Ltd,Small,Manufacturing,20,2011,2011-11-11,2011-12-01,General,Male,2021-11-20,Active,4.2,22.1,Kolkata,West Bengal,TRUE,2026-08-18,Udyam Portal API
+BID018,UDYAM-MH-14-0011234,Reliable Motors Pvt Ltd,Small,Manufacturing,29,2910,2009-07-19,2009-08-01,OBC,Male,2021-07-28,Active,3.8,18.5,Nagpur,Maharashtra,TRUE,2026-09-02,Udyam Portal API
+BID019,UDYAM-KA-15-0033456,Smart Grid Technologies,Micro,Manufacturing,27,2710,2022-01-10,2022-02-01,General,Female,2022-03-15,Active,0.08,0.8,Mysuru,Karnataka,TRUE,2026-08-22,Udyam Portal API
+BID020,UDYAM-PB-16-0055678,Punjab Agri Implements,Micro,Manufacturing,28,2821,2007-02-28,2007-03-15,General,Male,2021-06-30,Active,0.6,7.6,Ludhiana,Punjab,TRUE,2026-07-15,Udyam Portal API
+BID022,UDYAM-DL-17-0077890,InnoAI Labs Pvt Ltd,Micro,Services,62,6209,2023-05-22,2023-06-01,General,Male,2023-06-10,Active,0.02,0.4,New Delhi,Delhi,TRUE,2026-09-08,Udyam Portal API
+BID024,UDYAM-UP-18-0099012,Swadeshi Paper Mills,Small,Manufacturing,17,1701,2014-08-20,2014-09-01,General,Male,2021-08-10,Active,2.5,11.2,Saharanpur,Uttar Pradesh,TRUE,2026-08-05,Udyam Portal API
+BID025,UDYAM-TN-19-0011234,SecureNet Cyber Solutions,Micro,Services,62,6209,2020-09-05,2020-10-01,General,Male,2021-10-15,Active,0.3,5.7,Chennai,Tamil Nadu,TRUE,2026-09-12,Udyam Portal API
+BID026,UDYAM-BR-20-0033456,Bihar Food Processing Co,Micro,Manufacturing,10,1010,2016-01-20,2016-02-01,EWS,Male,2021-09-08,Active,0.25,3.1,Patna,Bihar,TRUE,2026-07-20,Udyam Portal API
+BID027,UDYAM-GJ-21-0055678,Vishwakarma Fabricators,Micro,Manufacturing,25,2511,2011-06-14,2011-07-01,OBC,Male,2021-11-05,Active,0.7,6.8,Rajkot,Gujarat,TRUE,2026-08-30,Udyam Portal API
+BID028,UDYAM-MH-22-0077890,CloudFirst India Pvt Ltd,Micro,Services,63,6311,2021-07-12,2021-08-01,General,Male,2022-02-20,Active,0.04,2.3,Pune,Maharashtra,TRUE,2026-09-15,Udyam Portal API
+BID029,UDYAM-AS-23-0099012,Assam Tea Machinery Works,Micro,Manufacturing,28,2825,2009-03-25,2009-04-10,ST,Male,2021-07-05,Active,0.55,4.2,Kamrup Metropolitan,Assam,TRUE,2026-08-08,Udyam Portal API
+BID031,UDYAM-RJ-24-0011234,GreenEnergy Solar Pvt Ltd,Small,Manufacturing,27,2712,2018-04-22,2018-05-01,General,Male,2021-08-30,Active,4.5,14.6,Jodhpur,Rajasthan,TRUE,2026-09-18,Udyam Portal API
+BID032,UDYAM-PB-25-0033456,Shanti Medical Devices,Micro,Manufacturing,32,3250,2017-02-14,2017-03-01,General,Female,2021-10-12,Active,0.9,8.9,SAS Nagar,Punjab,TRUE,2026-08-25,Udyam Portal API
+BID033,UDYAM-JH-26-0055678,Jharkhand Minerals Trading,Micro,Services,46,4669,2015-09-10,2015-10-01,ST,Male,2021-06-20,Expired,0.8,11.5,Ranchi,Jharkhand,FALSE,2026-04-10,Udyam Portal API
+BID034,UDYAM-MH-27-0077890,TechStar Automation Pvt Ltd,Micro,Manufacturing,28,2818,2019-11-28,2019-12-15,General,Male,2021-12-05,Active,0.95,7.4,Mumbai Suburban,Maharashtra,TRUE,2026-09-20,Udyam Portal API
+BID035,UDYAM-CG-28-0099012,CG Steel Rolling Mills,Micro,Manufacturing,24,2410,2012-05-05,2012-06-01,OBC,Male,2021-07-18,Active,0.75,9.7,Raipur,Chhattisgarh,TRUE,2026-08-02,Udyam Portal API
+BID036,UDYAM-KA-29-0011234,DataBridge Analytics,Micro,Services,63,6311,2022-08-18,2022-09-01,General,Male,2022-10-05,Active,0.03,1.2,Bengaluru Urban,Karnataka,TRUE,2026-09-22,Udyam Portal API
+BID037,UDYAM-ML-30-0033456,Meghalaya Bamboo Crafts,Micro,Manufacturing,16,1629,2019-04-14,2019-05-01,ST,Female,2021-11-10,Active,0.1,0.6,East Khasi Hills,Meghalaya,TRUE,2026-07-28,Udyam Portal API
+BID038,UDYAM-HR-31-0055678,Rathi Iron and Steel,Small,Manufacturing,24,2410,2006-10-20,2006-11-01,General,Male,2021-06-25,Active,3.0,25.3,Faridabad,Haryana,TRUE,2026-08-15,Udyam Portal API
+BID039,UDYAM-TN-32-0077890,Quantum Computing India,Micro,Services,62,6209,2023-01-09,2023-02-01,General,Male,2023-03-20,Active,0.01,0.3,Chennai,Tamil Nadu,TRUE,2026-09-25,Udyam Portal API
+BID040,UDYAM-MH-33-0099012,Nagpur Cement Products,Small,Manufacturing,23,2394,2008-07-15,2008-08-01,General,Male,2021-08-15,Active,2.8,13.8,Nagpur,Maharashtra,TRUE,2026-08-10,Udyam Portal API
+BID041,UDYAM-TR-34-0011234,Tripura Handloom Co-op,Micro,Manufacturing,13,1312,2020-06-05,2020-07-01,ST,Female,2021-09-25,Active,0.05,0.5,West Tripura,Tripura,TRUE,2026-07-18,Udyam Portal API
+BID042,UDYAM-MH-35-0033456,Falcon Aerospace Components,Medium,Manufacturing,30,3030,2016-12-01,2017-01-01,General,Male,2021-10-30,Active,8.5,42.1,Pune,Maharashtra,TRUE,2026-09-08,Udyam Portal API
+BID043,UDYAM-HP-36-0055678,HP Organic Foods,Micro,Manufacturing,10,1010,2018-08-15,2018-09-01,General,Female,2021-11-18,Active,0.15,2.1,Shimla,Himachal Pradesh,TRUE,2026-08-20,Udyam Portal API
+BID044,UDYAM-UK-37-0077890,Uttarakhand Hydro Tech,Micro,Manufacturing,27,2711,2017-05-30,2017-06-15,General,Male,2021-07-22,Active,0.6,6.5,Dehradun,Uttarakhand,TRUE,2026-08-28,Udyam Portal API
+BID045,UDYAM-GA-38-0099012,Goa Marine Engineering Works,Micro,Manufacturing,33,3315,2013-02-18,2013-03-01,General,Male,2021-08-08,Active,0.7,7.8,South Goa,Goa,TRUE,2026-07-12,Udyam Portal API
+BID046,UDYAM-SK-39-0011234,Sikkim Organic Beverages,Micro,Manufacturing,11,1104,2020-10-10,2020-11-01,ST,Male,2021-12-20,Active,0.08,0.9,East Sikkim,Sikkim,TRUE,2026-09-15,Udyam Portal API
+BID048,UDYAM-NL-40-0033456,NorthEast IT Solutions,Micro,Services,62,6201,2021-09-15,2021-10-01,ST,Male,2022-01-25,Active,0.02,0.7,Dimapur,Nagaland,TRUE,2026-08-05,Udyam Portal API
+BID049,UDYAM-AP-41-0055678,Andhra Precision Tools,Small,Manufacturing,25,2593,2015-11-08,2015-12-01,General,Male,2021-09-12,Active,1.5,10.3,Visakhapatnam,Andhra Pradesh,TRUE,2026-08-30,Udyam Portal API

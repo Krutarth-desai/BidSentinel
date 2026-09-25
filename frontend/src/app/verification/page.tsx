@@ -38,8 +38,8 @@ import {
 
 function VerificationContent() {
   const searchParams = useSearchParams();
-  const initialTender = searchParams.get("tender") || "GEM/2026/B/100001";
-  const initialBidder = searchParams.get("bidder") || "BID-001";
+  const initialTender = searchParams.get("tender") || "TND001";
+  const initialBidder = searchParams.get("bidder") || "BID001";
 
   const [tenders, setTenders] = useState<Tender[]>([]);
   const [bidders, setBidders] = useState<Bidder[]>([]);
@@ -188,47 +188,58 @@ function VerificationContent() {
           </span>
           <div className="flex flex-wrap gap-2 text-xs">
             <button
-              onClick={() => setSelectedBidderId("BID-001")}
+              onClick={() => setSelectedBidderId("BID001")}
               className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
-                selectedBidderId === "BID-001"
+                selectedBidderId === "BID001"
                   ? "bg-emerald-50 text-emerald-800 border-emerald-400 dark:bg-emerald-950/40 dark:text-emerald-300 ring-2 ring-emerald-500/20"
                   : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
               }`}
             >
-              Scenario A: ABC Tech (96 • Low Risk • Compliant)
+              Scenario A: TechVista Solutions (100 • Low Risk • Compliant MSME)
             </button>
 
             <button
-              onClick={() => setSelectedBidderId("BID-002")}
+              onClick={() => setSelectedBidderId("BID004")}
               className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
-                selectedBidderId === "BID-002"
+                selectedBidderId === "BID004"
+                  ? "bg-blue-50 text-blue-800 border-blue-400 dark:bg-blue-950/40 dark:text-blue-300 ring-2 ring-blue-500/20"
+                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+              }`}
+            >
+              Scenario B: Pinnacle InfoTech (100 • Low Risk • DPIIT Startup)
+            </button>
+
+            <button
+              onClick={() => setSelectedBidderId("BID008")}
+              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+                selectedBidderId === "BID008"
                   ? "bg-amber-50 text-amber-900 border-amber-400 dark:bg-amber-950/40 dark:text-amber-300 ring-2 ring-amber-500/20"
                   : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
               }`}
             >
-              Scenario B: XYZ Engg (74 • Med Risk • Missing ITR)
+              Scenario C: Metro Construction (80 • High Risk • Tax Scrutiny Notice)
             </button>
 
             <button
-              onClick={() => setSelectedBidderId("BID-003")}
+              onClick={() => setSelectedBidderId("BID016")}
               className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
-                selectedBidderId === "BID-003"
-                  ? "bg-rose-50 text-rose-800 border-rose-400 dark:bg-rose-950/40 dark:text-rose-300 ring-2 ring-rose-500/20"
-                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              Scenario C: PQR Industrial (58 • High Risk • Mismatch/Expired)
-            </button>
-
-            <button
-              onClick={() => setSelectedBidderId("BID-005")}
-              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
-                selectedBidderId === "BID-005"
+                selectedBidderId === "BID016"
                   ? "bg-red-50 text-red-900 border-red-500 dark:bg-red-950/40 dark:text-red-300 ring-2 ring-red-500/20"
                   : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
               }`}
             >
-              Scenario D: Bharat Heavy (42 • Watchlist Flag)
+              Scenario D: Gupta Trading (48 • High Risk • Inactive PAN / Debarred)
+            </button>
+
+            <button
+              onClick={() => setSelectedBidderId("BID003")}
+              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+                selectedBidderId === "BID003"
+                  ? "bg-rose-50 text-rose-800 border-rose-400 dark:bg-rose-950/40 dark:text-rose-300 ring-2 ring-rose-500/20"
+                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+              }`}
+            >
+              Scenario E: Bharat Heavy (70 • High Risk • Local Content Shortfall)
             </button>
           </div>
         </div>

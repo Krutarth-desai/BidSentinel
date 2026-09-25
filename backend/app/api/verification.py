@@ -39,18 +39,25 @@ def trigger_verification(
 
 @router.post("/run-all")
 def trigger_batch_verification(
-    tender_id: str = Query("GEM/2026/B/100001"),
+    tender_id: str = Query("TND001"),
     db: Session = Depends(get_db),
     officer_email: str = Depends(get_current_user_email)
 ):
     """
-    One-click demo batch: runs AI verification across all active bidders for the demo tender.
+    One-click demo batch: runs AI verification across active bidders for the selected tender.
     """
+    t_obj = db.query(Tender).filter(
+        (Tender.tender_id == tender_id) | (Tender.reference_number == tender_id)
+    ).first()
+    if not t_obj:
+        t_obj = db.query(Tender).first()
+    actual_tender_id = t_obj.tender_id if t_obj else tender_id
+
     bidders = db.query(Bidder).all()
     results = []
-    for b in bidders[:5]: # Top 5 primary demo bidders
+    for b in bidders[:8]: # Top demo bidders
         try:
-            res = run_bidder_verification(db, tender_id, b.bidder_id, officer_email)
+            res = run_bidder_verification(db, actual_tender_id, b.bidder_id, officer_email)
             results.append({
                 "bidder_id": b.bidder_id,
                 "company_name": b.company_name,
@@ -65,26 +72,39 @@ def trigger_batch_verification(
 
     return {
         "message": "Batch AI verification completed",
-        "tender_id": tender_id,
+        "tender_id": actual_tender_id,
         "processed_count": len(results),
         "results": results
     }
 
-@router.get("/{tender_id}/{bidder_id}")
+@router.get("/{tender_id:path}/{bidder_id}")
 def get_verification_result(
     tender_id: str,
     bidder_id: str,
     db: Session = Depends(get_db)
 ):
+    t_obj = db.query(Tender).filter(
+        (Tender.tender_id == tender_id) | (Tender.reference_number == tender_id)
+    ).first()
+    actual_tender_id = t_obj.tender_id if t_obj else tender_id
+
+    clean_bid_id = bidder_id.replace("-", "")
+    b_obj = db.query(Bidder).filter(
+        (Bidder.bidder_id == bidder_id) |
+        (Bidder.bidder_id == clean_bid_id) |
+        (Bidder.bidder_id == f"BID-{clean_bid_id[3:]}")
+    ).first()
+    actual_bidder_id = b_obj.bidder_id if b_obj else bidder_id
+
     # Try fetching existing
     existing = db.query(VerificationResult).filter(
-        VerificationResult.tender_id == tender_id,
-        VerificationResult.bidder_id == bidder_id
+        VerificationResult.tender_id == actual_tender_id,
+        VerificationResult.bidder_id == actual_bidder_id
     ).first()
 
     if not existing:
         # Run on-demand if not already verified
-        return run_bidder_verification(db, tender_id, bidder_id)
+        return run_bidder_verification(db, actual_tender_id, actual_bidder_id)
 
     import json
     return {

@@ -81,12 +81,19 @@ def evaluate_requirements(
         elif rule_code == "RULE_PAN_VALID" or "PAN" in title.upper():
             pan = bidder.get("pan", "").upper()
             gstin = bidder.get("gstin", "").upper()
+            pan_res = govt_lookups.get("itd") or govt_lookups.get("pan")
             if not pan:
                 status = "MISSING"
                 ev = "No PAN provided"
                 reason = "Mandatory PAN identity missing"
                 conf = 1.0
                 disc = None
+            elif pan_res and not pan_res.verified:
+                status = "REVIEW_REQUIRED"
+                ev = f"PAN {pan} status is {pan_res.status}"
+                reason = f"PAN verification flagged in ITD records: {', '.join(pan_res.flags)}"
+                conf = 0.99
+                disc = {"field": "PAN Status", "submitted": pan, "government_source": pan_res.status, "flags": pan_res.flags}
             else:
                 is_valid, msg = cross_check_gst_and_pan(gstin, pan)
                 if not is_valid and gstin:
@@ -220,12 +227,12 @@ def evaluate_requirements(
                 reason = "Missing mandatory financial proof (ITR AY 2025-26)"
                 conf = 1.0
                 disc = {"field": "ITR Acknowledgment", "submitted": "None", "required": "AY 2025-26 / FY 2024-25"}
-            elif itr_year != "2025-26":
+            elif itr_year not in ["2024-25", "2025-26"]:
                 status = "REVIEW_REQUIRED"
                 ev = f"ITR submitted for earlier year: {itr_year}"
-                reason = f"Submitted ITR is for FY {itr_year}, but tender specifies latest FY 2025-26"
+                reason = f"Submitted ITR is for AY {itr_year}, but tender specifies latest AY 2024-25"
                 conf = 0.95
-                disc = {"field": "Assessment Year", "submitted": itr_year, "required": "2025-26"}
+                disc = {"field": "Assessment Year", "submitted": itr_year, "required": "2024-25"}
             else:
                 status = "COMPLIANT"
                 ev = f"ITR Acknowledgment filed for Assessment Year {itr_year}"

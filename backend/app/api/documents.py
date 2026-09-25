@@ -88,3 +88,32 @@ async def upload_document(
         "extracted_data": fields,
         "verification_status": doc.verification_status
     }
+
+
+@router.get("/{doc_id}")
+def get_document_details(doc_id: str, db: Session = Depends(get_db)):
+    """Fetch details and extracted data for a specific document."""
+    doc = db.query(BidderDocument).filter(BidderDocument.id == doc_id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    extracted_data = {}
+    if doc.extracted_data_json:
+        try:
+            extracted_data = json.loads(doc.extracted_data_json)
+        except Exception:
+            extracted_data = {}
+
+    return {
+        "id": doc.id,
+        "bidder_id": doc.bidder_id,
+        "tender_id": doc.tender_id,
+        "document_name": doc.document_name,
+        "document_type": doc.document_type,
+        "upload_date": doc.upload_date,
+        "status": doc.status,
+        "expiry_date": doc.expiry_date,
+        "extracted_data": extracted_data,
+        "verification_status": doc.verification_status,
+        "file_exists": bool(doc.file_path and Path(doc.file_path).exists())
+    }

@@ -83,7 +83,7 @@ def submit_officer_decision(
         "decided_at": decision_record.decided_at.isoformat()
     }
 
-@router.get("/{tender_id}/{bidder_id}")
+@router.get("/{tender_id:path}/{bidder_id}")
 def get_officer_decision(
     tender_id: str,
     bidder_id: str,

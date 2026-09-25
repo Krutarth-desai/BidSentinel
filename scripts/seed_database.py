@@ -18,8 +18,11 @@ from app.core.config import settings, DATA_DIR
 from app.core.security import get_password_hash
 from app.services.verification_service import run_bidder_verification
 
-def seed_all():
+def seed_all(reset: bool = True):
     print("Initializing database tables...")
+    if reset:
+        print("Reset flag detected: dropping and recreating all database tables...")
+        Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
 
@@ -33,7 +36,7 @@ def seed_all():
                 hashed_password=get_password_hash(settings.DEMO_OFFICER_PASSWORD),
                 role="PROCUREMENT_OFFICER",
                 designation=settings.DEMO_OFFICER_DESIGNATION,
-                department="Public Sector Engineering Division"
+                department="Public Sector Procurement & Contracts Directorate"
             )
             db.add(demo_user)
             print(f"Created demo officer: {settings.DEMO_OFFICER_EMAIL}")
@@ -123,7 +126,7 @@ def seed_all():
 
                     # Pre-seed documents for this bidder
                     docs = [
-                        ("GST Certificate", "GST_CERTIFICATE", "2026-09-02", "VERIFIED", None, {
+                        ("GST Registration Certificate", "GST_CERTIFICATE", "2026-09-02", "VERIFIED", None, {
                             "gstin": bd["gstin"],
                             "legal_name": bd["company_name"],
                             "status": "ACTIVE"
@@ -138,9 +141,15 @@ def seed_all():
                     ]
 
                     if bd.get("udyam_number"):
-                        docs.append(("Udyam Registration Certificate", "UDYAM_CERTIFICATE", "2026-09-02", "VERIFIED", None, {
+                        docs.append(("Udyam MSME Registration Certificate", "UDYAM_CERTIFICATE", "2026-09-02", "VERIFIED", None, {
                             "udyam_number": bd["udyam_number"],
                             "enterprise_name": bd["company_name"]
+                        }))
+
+                    if bd.get("startup_certificate"):
+                        docs.append(("DPIIT Certificate of Recognition", "DPIIT_CERTIFICATE", "2026-09-02", "VERIFIED", None, {
+                            "certificate_number": bd["startup_certificate"],
+                            "startup_name": bd["company_name"]
                         }))
 
                     if bd.get("oem_authorized"):
@@ -162,7 +171,7 @@ def seed_all():
                         db.add(BidderDocument(
                             id=d_id,
                             bidder_id=bd["bidder_id"],
-                            tender_id="GEM/2026/B/100001",
+                            tender_id="TND001",
                             document_name=f"{d_name}.pdf",
                             document_type=d_type,
                             upload_date=u_date,
@@ -175,25 +184,27 @@ def seed_all():
 
         db.commit()
 
-        # 5. Pre-run verification on primary demo bidders (BID-001, BID-002, BID-003)
-        print("Pre-executing AI verification for primary demo bidders...")
-        for bid_id in ["BID-001", "BID-002", "BID-003"]:
+        # 5. Pre-run verification on primary demo bidders on TND001
+        print("Pre-executing AI verification for primary demo bidders on TND001...")
+        for bid_id in ["BID001", "BID002", "BID003", "BID004", "BID006", "BID008", "BID016", "BID033"]:
             try:
-                run_bidder_verification(db, "GEM/2026/B/100001", bid_id, settings.DEMO_OFFICER_EMAIL)
+                run_bidder_verification(db, "TND001", bid_id, settings.DEMO_OFFICER_EMAIL)
+                print(f"  Verified bidder {bid_id}")
             except Exception as e:
                 print(f"Notice during pre-verification for {bid_id}: {e}")
 
-        # 6. Pre-seed initial officer decision for BID-001 (optional baseline example)
-        if not db.query(OfficerDecision).filter(OfficerDecision.bidder_id == "BID-001").first():
+        # 6. Pre-seed initial officer decision for BID001
+        if not db.query(OfficerDecision).filter(OfficerDecision.bidder_id == "BID001").first():
             db.add(OfficerDecision(
-                tender_id="GEM/2026/B/100001",
-                bidder_id="BID-001",
+                tender_id="TND001",
+                bidder_id="BID001",
                 officer_email=settings.DEMO_OFFICER_EMAIL,
                 officer_name=settings.DEMO_OFFICER_NAME,
                 decision="APPROVED",
-                comments="All statutory criteria and OEM authorizations verified with 96% concordance. Qualified for technical round."
+                comments="All statutory criteria (GSTN, PAN, Udyam Small Enterprise), local content declaration, and OEM authorizations verified with 96% concordance. Qualified for commercial evaluation."
             ))
             db.commit()
+            print("Seeded initial officer approval for BID001.")
 
         print("Database seeding completed successfully.")
 
@@ -201,4 +212,5 @@ def seed_all():
         db.close()
 
 if __name__ == "__main__":
-    seed_all()
+    reset_db = "--no-reset" not in sys.argv
+    seed_all(reset=reset_db)
