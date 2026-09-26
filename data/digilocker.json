@@ -1,0 +1,26 @@
+[
+  {
+    "uri": "in.gov.gst-GSTCER-27AABCT1234A1Z5",
+    "document_type": "GST_CERTIFICATE",
+    "holder": "TechVista Solutions Private Limited",
+    "issuer": "Goods and Services Tax Network (GSTN)",
+    "issued_date": "2020-06-14",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "uri": "in.gov.msme-UDYAM-UDYAM-MH-01-0012345",
+    "document_type": "UDYAM_CERTIFICATE",
+    "holder": "TechVista Solutions Pvt Ltd",
+    "issuer": "Ministry of Micro, Small and Medium Enterprises",
+    "issued_date": "2021-07-15",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "uri": "in.gov.incometax-ITR-AABCT1234A-2024",
+    "document_type": "ITR_ACKNOWLEDGMENT",
+    "holder": "TechVista Solutions Private Limited",
+    "issuer": "Income Tax Department (ITD)",
+    "issued_date": "2024-07-28",
+    "verification_status": "VERIFIED"
+  }
+]

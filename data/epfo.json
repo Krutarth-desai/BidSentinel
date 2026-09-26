@@ -1,0 +1,402 @@
+[
+  {
+    "establishment_id": "MHPUN0000001000",
+    "establishment_name": "TechVista Solutions Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KABAN0000002000",
+    "establishment_name": "GreenLeaf Enterprises",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000003000",
+    "establishment_name": "Bharat Heavy Components Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "TNMAD0000004000",
+    "establishment_name": "Pinnacle InfoTech LLP",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "RJJAI0000005000",
+    "establishment_name": "Rajasthan Steel Works",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "DLCPM0000006000",
+    "establishment_name": "NovaTech Digital Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "TSHYD0000007000",
+    "establishment_name": "Sai Pharma Industries Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "DLCPM0000008000",
+    "establishment_name": "Metro Construction Company",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "GJAHM0000009000",
+    "establishment_name": "Sunrise Textiles Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KLKOC0000010000",
+    "establishment_name": "Kiran Electronics",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KABAN0000011000",
+    "establishment_name": "Apex Defence Systems Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KABAN0000012000",
+    "establishment_name": "Digi Cloud Services Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MPBHO0000013000",
+    "establishment_name": "MP Agro Products",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "DLCPM0000014000",
+    "establishment_name": "National Power Equipment Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "TNMAD0000015000",
+    "establishment_name": "Pratham Software Solutions Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "HRGUR0000016000",
+    "establishment_name": "Gupta Trading Company",
+    "compliance_status": "DEFAULTER",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 2500000
+  },
+  {
+    "establishment_id": "WBKOL0000017000",
+    "establishment_name": "Eastern Chemicals Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000018000",
+    "establishment_name": "Reliable Motors Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KABAN0000019000",
+    "establishment_name": "Smart Grid Technologies Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "PBLUD0000020000",
+    "establishment_name": "Punjab Agri Implements",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KLKOC0000021000",
+    "establishment_name": "Coastal Marine Services Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "DLCPM0000022000",
+    "establishment_name": "InnoAI Labs Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "ORBBS0000023000",
+    "establishment_name": "Odisha Mining Corporation",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "UPKAN0000024000",
+    "establishment_name": "Swadeshi Paper Mills Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "TNMAD0000025000",
+    "establishment_name": "SecureNet Cyber Solutions Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "BRPAT0000026000",
+    "establishment_name": "Bihar Food Processing Company",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "GJAHM0000027000",
+    "establishment_name": "Vishwakarma Fabricators",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000028000",
+    "establishment_name": "CloudFirst India Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "ASGHY0000029000",
+    "establishment_name": "Assam Tea Machinery Works",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "GJAHM0000030000",
+    "establishment_name": "Diamond Tools India Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "RJJAI0000031000",
+    "establishment_name": "GreenEnergy Solar Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "PBLUD0000032000",
+    "establishment_name": "Shanti Medical Devices Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "JHRAN0000033000",
+    "establishment_name": "Jharkhand Minerals Trading Co",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000034000",
+    "establishment_name": "TechStar Automation Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "CGRAI0000035000",
+    "establishment_name": "CG Steel Rolling Mills",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "KABAN0000036000",
+    "establishment_name": "DataBridge Analytics Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MLSHL0000037000",
+    "establishment_name": "Meghalaya Bamboo Crafts Cooperative",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "HRGUR0000038000",
+    "establishment_name": "Rathi Iron and Steel Works",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "TNMAD0000039000",
+    "establishment_name": "Quantum Computing India Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000040000",
+    "establishment_name": "Nagpur Cement Products Co",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000041000",
+    "establishment_name": "Tripura Handloom Cooperative Society",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "MHPUN0000042000",
+    "establishment_name": "Falcon Aerospace Components Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "HPSHI0000043000",
+    "establishment_name": "Himachal Organic Foods Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "UKDEH0000044000",
+    "establishment_name": "Uttarakhand Hydro Tech Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "GAPNJ0000045000",
+    "establishment_name": "Goa Marine Engineering Works",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "SKGTK0000046000",
+    "establishment_name": "Sikkim Organic Beverages Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "UPKAN0000047000",
+    "establishment_name": "Kanpur Leather Exports Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "NLDMR0000048000",
+    "establishment_name": "NorthEast IT Solutions Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "APVZG0000049000",
+    "establishment_name": "Andhra Precision Tools Pvt Ltd",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 35,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  },
+  {
+    "establishment_id": "DLCPM0000050000",
+    "establishment_name": "JK Infrastructure Private Limited",
+    "compliance_status": "COMPLIANT",
+    "covered_employees": 180,
+    "last_ecr_month": "2026-08",
+    "dues_pending_inr": 0
+  }
+]
