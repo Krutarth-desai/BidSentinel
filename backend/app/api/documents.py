@@ -10,7 +10,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from app.db.session import get_db
-from app.db.models import BidderDocument, Bidder, SubmittedDocument
+from app.db.models import BidderDocument, Bidder, SubmittedDocument, DocumentClassification
 from app.ai_engine.document_classifier import classify_document
 from app.ai_engine.ocr_extractor import extract_text_from_file
 from app.ai_engine.field_extractor import extract_fields
@@ -93,6 +93,11 @@ async def upload_document(
 @router.get("/{doc_id}")
 def get_document_details(doc_id: str, db: Session = Depends(get_db)):
     """Fetch details and status for a specific document (SubmittedDocument or legacy BidderDocument)."""
+    cls = db.query(DocumentClassification).filter(
+        DocumentClassification.document_id == doc_id,
+        DocumentClassification.is_latest == True
+    ).first()
+
     # 1. Check SubmittedDocument (Phase 1 model)
     s_doc = db.query(SubmittedDocument).filter(SubmittedDocument.document_id == doc_id).first()
     if s_doc:
@@ -114,6 +119,14 @@ def get_document_details(doc_id: str, db: Session = Depends(get_db)):
             "validation_error": s_doc.validation_error,
             "is_duplicate": s_doc.is_duplicate,
             "version": s_doc.version,
+            "classification": {
+                "predicted_type": cls.predicted_type,
+                "confidence": cls.confidence,
+                "confidence_level": cls.confidence_level,
+                "classification_status": cls.classification_status,
+                "classification_method": cls.classification_method,
+                "model_version": cls.model_version
+            } if cls else None,
             "created_at": s_doc.created_at.isoformat() if s_doc.created_at else "",
             "updated_at": s_doc.updated_at.isoformat() if s_doc.updated_at else ""
         }

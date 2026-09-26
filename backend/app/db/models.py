@@ -137,6 +137,28 @@ class SubmittedDocument(Base):
     submission = relationship("BidSubmission", back_populates="submitted_documents")
     bidder = relationship("Bidder")
     tender = relationship("Tender")
+    classifications = relationship("DocumentClassification", back_populates="document", cascade="all, delete-orphan")
+
+class DocumentClassification(Base):
+    __tablename__ = "document_classifications"
+    classification_id = Column(String(100), primary_key=True, index=True) # e.g. CLS-DOC-001-V1
+    document_id = Column(String(100), ForeignKey("submitted_documents.document_id"), nullable=False, index=True)
+    submission_id = Column(String(100), nullable=True, index=True)
+    predicted_type = Column(String(100), nullable=False)
+    confidence = Column(Float, nullable=False)
+    classification_method = Column(String(50), default="RULE_BASED") # RULE_BASED, FILENAME_HEURISTIC, HYBRID_MULTI_LAYER
+    classification_status = Column(String(50), default="CLASSIFIED") # CLASSIFIED, REVIEW_REQUIRED, CLASSIFICATION_FAILED
+    confidence_level = Column(String(50), default="HIGH_CONFIDENCE") # HIGH_CONFIDENCE, MEDIUM_CONFIDENCE, LOW_CONFIDENCE
+    alternatives_json = Column(Text, nullable=True) # JSON list of alternative candidate predictions
+    evidence_json = Column(Text, nullable=True) # JSON list of evidence snippets pointing back to Phase 2 text evidence
+    section_metadata_json = Column(Text, nullable=True) # JSON list of section-level classifications
+    model_version = Column(String(50), default="v1.0.0-phase3")
+    version = Column(Integer, default=1)
+    is_latest = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=utc_now)
+    updated_at = Column(DateTime, default=utc_now, onupdate=utc_now)
+
+    document = relationship("SubmittedDocument", back_populates="classifications")
 
 class BidderDocument(Base):
     __tablename__ = "bidder_documents"

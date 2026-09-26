@@ -23,6 +23,7 @@ from app.api.tenders import router as tenders_router
 from app.api.bidders import router as bidders_router
 from app.api.documents import router as documents_router
 from app.api.submissions import router as submissions_router
+from app.api.classification import router as classification_router
 from app.api.verification import router as verification_router
 from app.api.decisions import router as decisions_router
 from app.api.audit import router as audit_router
@@ -67,8 +68,10 @@ app.include_router(tenders_router, prefix=settings.API_V1_PREFIX)
 app.include_router(bidders_router, prefix=settings.API_V1_PREFIX)
 app.include_router(documents_router, prefix=settings.API_V1_PREFIX)
 app.include_router(submissions_router, prefix=settings.API_V1_PREFIX)
+app.include_router(classification_router, prefix=settings.API_V1_PREFIX)
 app.include_router(submissions_router, prefix="/api")
 app.include_router(documents_router, prefix="/api")
+app.include_router(classification_router, prefix="/api")
 app.include_router(verification_router, prefix=settings.API_V1_PREFIX)
 app.include_router(decisions_router, prefix=settings.API_V1_PREFIX)
 app.include_router(audit_router, prefix=settings.API_V1_PREFIX)
