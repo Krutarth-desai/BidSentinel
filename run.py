@@ -62,24 +62,22 @@ def is_port_in_use(port: int, host: str = "127.0.0.1") -> bool:
 
 def find_python_executable() -> str:
     """Locates the preferred Python interpreter (virtual environment first)."""
-    # Check backend/.venv
-    if os.name == "nt":
-        venv_py = BACKEND_DIR / ".venv" / "Scripts" / "python.exe"
-    else:
-        venv_py = BACKEND_DIR / ".venv" / "bin" / "python"
+    for folder in [".venv", "venv"]:
+        if os.name == "nt":
+            venv_py = BACKEND_DIR / folder / "Scripts" / "python.exe"
+        else:
+            venv_py = BACKEND_DIR / folder / "bin" / "python"
+        if venv_py.exists():
+            return str(venv_py)
     
-    if venv_py.exists():
-        return str(venv_py)
-    
-    # Check root .venv
-    if os.name == "nt":
-        root_venv_py = ROOT_DIR / ".venv" / "Scripts" / "python.exe"
-    else:
-        root_venv_py = ROOT_DIR / ".venv" / "bin" / "python"
+    for folder in [".venv", "venv"]:
+        if os.name == "nt":
+            root_venv_py = ROOT_DIR / folder / "Scripts" / "python.exe"
+        else:
+            root_venv_py = ROOT_DIR / folder / "bin" / "python"
+        if root_venv_py.exists():
+            return str(root_venv_py)
         
-    if root_venv_py.exists():
-        return str(root_venv_py)
-    
     # Fallback to active interpreter
     return sys.executable
 

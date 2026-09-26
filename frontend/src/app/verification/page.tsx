@@ -19,6 +19,7 @@ import {
   Printer,
   History,
   Info,
+  RefreshCw,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Sidebar } from "@/components/Sidebar";
@@ -118,18 +119,23 @@ function VerificationContent() {
   const currentTender = tenders.find((t) => t.tender_id === selectedTenderId);
 
   return (
-    <main className="flex-1 p-6 max-w-7xl mx-auto space-y-6">
+    <main className="flex-1 p-6 lg:p-10 space-y-8 min-w-0">
       {/* Top Header Card */}
-      <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <span className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
-              AI Decision-Support System
-            </span>
-            <h1 className="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mt-0.5">
+      <div className="relative rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.6)] space-y-6 overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16" />
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                AI DECISION-SUPPORT SYSTEM
+              </span>
+            </div>
+            <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
               Integrated Bid Compliance Verification Console
             </h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs lg:text-sm text-slate-400 font-normal leading-relaxed">
               Select tender and bidder to execute multi-source statutory checks and AI risk evaluation.
             </p>
           </div>
@@ -137,23 +143,23 @@ function VerificationContent() {
           <button
             onClick={handleRunVerification}
             disabled={isVerifying}
-            className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-blue-900/20 flex items-center gap-2 transition-all disabled:opacity-50"
+            className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(59,130,246,0.35)] hover:shadow-[0_0_35px_rgba(59,130,246,0.5)] border border-blue-400/40 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all duration-200 disabled:opacity-50 cursor-pointer shrink-0"
           >
-            <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+            <Sparkles className="w-4 h-4 text-blue-200 animate-pulse" />
             <span>{isVerifying ? "Verifying..." : "RUN AI VERIFICATION"}</span>
           </button>
         </div>
 
         {/* Selection Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
-          <div>
-            <label className="block font-bold text-slate-500 uppercase tracking-wider mb-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/[0.06] text-xs">
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">
               Active GeM Tender:
             </label>
             <select
               value={selectedTenderId}
               onChange={(e) => setSelectedTenderId(e.target.value)}
-              className="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-semibold text-slate-800 dark:text-slate-200"
+              className="w-full p-3 rounded-xl border border-white/[0.08] bg-black text-white font-medium focus:outline-none focus:border-blue-500/50"
             >
               {tenders.map((t) => (
                 <option key={t.tender_id} value={t.tender_id}>
@@ -163,14 +169,14 @@ function VerificationContent() {
             </select>
           </div>
 
-          <div>
-            <label className="block font-bold text-slate-500 uppercase tracking-wider mb-1">
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">
               Select Bidder to Verify:
             </label>
             <select
               value={selectedBidderId}
               onChange={(e) => setSelectedBidderId(e.target.value)}
-              className="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-semibold text-slate-800 dark:text-slate-200"
+              className="w-full p-3 rounded-xl border border-white/[0.08] bg-black text-white font-medium focus:outline-none focus:border-blue-500/50"
             >
               {bidders.map((b) => (
                 <option key={b.bidder_id} value={b.bidder_id}>
@@ -183,16 +189,16 @@ function VerificationContent() {
 
         {/* Quick Demo Scenario Switcher Chips */}
         <div className="pt-2">
-          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">
             Quick SIH Evaluation Scenarios:
           </span>
           <div className="flex flex-wrap gap-2 text-xs">
             <button
               onClick={() => setSelectedBidderId("BID001")}
-              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+              className={`px-3 py-1.5 rounded-xl font-medium border transition-all cursor-pointer hover:-translate-y-0.5 ${
                 selectedBidderId === "BID001"
-                  ? "bg-emerald-50 text-emerald-800 border-emerald-400 dark:bg-emerald-950/40 dark:text-emerald-300 ring-2 ring-emerald-500/20"
-                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+                  ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.2)] font-semibold"
+                  : "bg-white/[0.06] border-white/[0.10] text-slate-400 hover:text-white hover:bg-white/[0.09]"
               }`}
             >
               Scenario A: TechVista Solutions (100 • Low Risk • Compliant MSME)
@@ -200,10 +206,10 @@ function VerificationContent() {
 
             <button
               onClick={() => setSelectedBidderId("BID004")}
-              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+              className={`px-3 py-1.5 rounded-xl font-medium border transition-all cursor-pointer hover:-translate-y-0.5 ${
                 selectedBidderId === "BID004"
-                  ? "bg-blue-50 text-blue-800 border-blue-400 dark:bg-blue-950/40 dark:text-blue-300 ring-2 ring-blue-500/20"
-                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+                  ? "bg-blue-500/15 text-blue-300 border-blue-500/40 shadow-[0_0_12px_rgba(59,130,246,0.2)] font-semibold"
+                  : "bg-white/[0.06] border-white/[0.10] text-slate-400 hover:text-white hover:bg-white/[0.09]"
               }`}
             >
               Scenario B: Pinnacle InfoTech (100 • Low Risk • DPIIT Startup)
@@ -211,10 +217,10 @@ function VerificationContent() {
 
             <button
               onClick={() => setSelectedBidderId("BID008")}
-              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+              className={`px-3 py-1.5 rounded-xl font-medium border transition-all cursor-pointer hover:-translate-y-0.5 ${
                 selectedBidderId === "BID008"
-                  ? "bg-amber-50 text-amber-900 border-amber-400 dark:bg-amber-950/40 dark:text-amber-300 ring-2 ring-amber-500/20"
-                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+                  ? "bg-amber-500/15 text-amber-300 border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.2)] font-semibold"
+                  : "bg-white/[0.06] border-white/[0.10] text-slate-400 hover:text-white hover:bg-white/[0.09]"
               }`}
             >
               Scenario C: Metro Construction (80 • High Risk • Tax Scrutiny Notice)
@@ -222,10 +228,10 @@ function VerificationContent() {
 
             <button
               onClick={() => setSelectedBidderId("BID016")}
-              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+              className={`px-3 py-1.5 rounded-xl font-medium border transition-all cursor-pointer hover:-translate-y-0.5 ${
                 selectedBidderId === "BID016"
-                  ? "bg-red-50 text-red-900 border-red-500 dark:bg-red-950/40 dark:text-red-300 ring-2 ring-red-500/20"
-                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+                  ? "bg-red-500/15 text-red-300 border-red-500/40 shadow-[0_0_12px_rgba(239,68,68,0.2)] font-semibold"
+                  : "bg-white/[0.06] border-white/[0.10] text-slate-400 hover:text-white hover:bg-white/[0.09]"
               }`}
             >
               Scenario D: Gupta Trading (48 • High Risk • Inactive PAN / Debarred)
@@ -233,10 +239,10 @@ function VerificationContent() {
 
             <button
               onClick={() => setSelectedBidderId("BID003")}
-              className={`px-3 py-1.5 rounded-lg font-semibold border transition-all ${
+              className={`px-3 py-1.5 rounded-xl font-medium border transition-all cursor-pointer hover:-translate-y-0.5 ${
                 selectedBidderId === "BID003"
-                  ? "bg-rose-50 text-rose-800 border-rose-400 dark:bg-rose-950/40 dark:text-rose-300 ring-2 ring-rose-500/20"
-                  : "bg-white dark:bg-slate-800 text-slate-600 border-slate-200 hover:bg-slate-50"
+                  ? "bg-red-500/15 text-red-300 border-red-500/40 shadow-[0_0_12px_rgba(239,68,68,0.2)] font-semibold"
+                  : "bg-white/[0.06] border-white/[0.10] text-slate-400 hover:text-white hover:bg-white/[0.09]"
               }`}
             >
               Scenario E: Bharat Heavy (70 • High Risk • Local Content Shortfall)
@@ -253,25 +259,25 @@ function VerificationContent() {
 
       {/* Verification Results Panel */}
       {verificationResult && (
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Top Score & Risk Summary Card */}
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950 flex flex-col items-center justify-center border border-blue-200 dark:border-blue-900">
-                  <span className="text-2xl font-black text-blue-700 dark:text-blue-300">
+          <div className="relative rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.6)] space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-white/[0.06]">
+              <div className="flex items-center gap-5">
+                <div className="w-18 h-18 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex flex-col items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                  <span className="text-3xl font-extrabold text-blue-400 leading-none">
                     {verificationResult.compliance_score}
                   </span>
-                  <span className="text-[10px] font-bold text-slate-400">/100</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">/ 100</span>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-xl font-bold text-white tracking-tight">
                       {currentBidder?.company_name}
                     </h2>
-                    <StatusBadge status={verificationResult.risk_level} />
+                    <StatusBadge status={verificationResult.risk_level} size="sm" />
                   </div>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-400 mt-1 font-mono">
                     PAN: {currentBidder?.pan} • GSTIN: {currentBidder?.gstin} • Verified on{" "}
                     {new Date(verificationResult.verified_at).toLocaleTimeString([], {
                       hour: "2-digit",
@@ -281,19 +287,19 @@ function VerificationContent() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 shrink-0">
                 <Link
                   href={`/reports/${encodeURIComponent(selectedTenderId)}/${encodeURIComponent(selectedBidderId)}`}
                   target="_blank"
-                  className="px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 rounded-lg flex items-center gap-1.5 transition-colors"
+                  className="px-4 py-2.5 text-xs font-semibold text-slate-300 hover:text-white bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] rounded-xl flex items-center gap-2 transition-all cursor-pointer"
                 >
-                  <Printer className="w-3.5 h-3.5" />
+                  <Printer className="w-3.5 h-3.5 text-blue-400" />
                   <span>Print Dossier</span>
                 </Link>
 
                 <button
                   onClick={() => setIsDecisionOpen(true)}
-                  className="px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-xs flex items-center gap-1.5 transition-colors"
+                  className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] flex items-center gap-2 transition-all cursor-pointer"
                 >
                   <Scale className="w-4 h-4" />
                   <span>Record Officer Determination</span>
@@ -308,23 +314,23 @@ function VerificationContent() {
 
             {/* Risk Drivers (if any) */}
             {verificationResult.risk_factors && verificationResult.risk_factors.length > 0 && (
-              <div className="mt-4 p-4 bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/50 rounded-xl space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-rose-800 dark:text-rose-300 uppercase tracking-wider">
+              <div className="p-5 bg-red-500/[0.03] border border-red-500/20 rounded-2xl space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-red-400 uppercase tracking-wider">
                   <AlertTriangle className="w-4 h-4" />
                   <span>Identified Risk Drivers ({verificationResult.risk_factors.length})</span>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                   {verificationResult.risk_factors.map((rf, idx) => (
                     <div
                       key={idx}
-                      className="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-rose-100 dark:border-rose-900/30 flex items-start gap-2"
+                      className="p-3.5 bg-white/[0.06] hover:bg-white/[0.09] rounded-xl border border-red-500/25 flex items-start gap-3 hover:-translate-y-0.5 transition-all duration-200"
                     >
                       <StatusBadge status={rf.severity} size="sm" />
-                      <div>
-                        <strong className="block text-slate-900 dark:text-slate-100 text-[11px]">
+                      <div className="space-y-0.5">
+                        <strong className="block text-white text-xs">
                           {rf.factor}
                         </strong>
-                        <span className="text-[11px] text-slate-500">{rf.impact}</span>
+                        <span className="text-[11px] text-slate-400 leading-relaxed block">{rf.impact}</span>
                       </div>
                     </div>
                   ))}
@@ -333,29 +339,30 @@ function VerificationContent() {
             )}
 
             {/* AI Executive Findings & Advisory Box */}
-            <div className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40 rounded-xl space-y-3">
-              <div className="flex items-center gap-2 text-xs font-bold text-blue-900 dark:text-blue-200 uppercase tracking-wider">
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span>AI Verification Advisory & Executive Findings</span>
+            <div className="p-5 bg-white/[0.06] border border-blue-500/30 rounded-2xl space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-wider">
+                <Sparkles className="w-4 h-4 text-blue-400" />
+                <span>AI Verification Advisory &amp; Executive Findings</span>
               </div>
 
-              <div className="space-y-1 text-xs">
+              <div className="space-y-1.5 text-xs text-slate-300 leading-relaxed">
                 {verificationResult.findings.map((f, i) => (
-                  <div key={i} className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {f}
+                  <div key={i} className="flex items-start gap-2">
+                    <span className="text-blue-400 shrink-0">•</span>
+                    <span>{f}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-blue-200 dark:border-blue-900 text-xs">
-                <strong className="text-blue-900 dark:text-blue-200 block mb-1">
+              <div className="p-4 bg-white/[0.04] rounded-xl border border-blue-500/25 text-xs space-y-1.5">
+                <strong className="text-blue-300 uppercase text-[10px] tracking-wider block">
                   Recommended Officer Action:
                 </strong>
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                <p className="text-white leading-relaxed font-medium">
                   {verificationResult.ai_recommendation}
                 </p>
-                <div className="mt-2 text-[10px] text-slate-400 font-semibold flex items-center gap-1">
-                  <Info className="w-3 h-3" />
+                <div className="pt-2 text-[10px] text-slate-500 font-normal flex items-center gap-1.5">
+                  <Info className="w-3.5 h-3.5 text-slate-400" />
                   <span>Decision Support Only • Final determination rests exclusively with Procurement Officer</span>
                 </div>
               </div>
@@ -363,22 +370,20 @@ function VerificationContent() {
           </div>
 
           {/* Full Requirement Verification Matrix Table */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs">
-            <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
-                  Requirement Verification Matrix
-                </h3>
-                <p className="text-xs text-slate-400">
-                  Click &apos;View Evidence&apos; on any row to drill into document and source cross-concordance
-                </p>
-              </div>
+          <div className="rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-7 shadow-[0_4px_30px_rgba(0,0,0,0.6)] space-y-6">
+            <div className="pb-3 border-b border-white/[0.06]">
+              <h3 className="text-base font-bold text-white tracking-tight">
+                Requirement Verification Matrix
+              </h3>
+              <p className="text-xs text-slate-400 font-normal mt-0.5">
+                Click &apos;View Evidence&apos; on any row to drill into document extractions and source cross-concordance
+              </p>
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left">
-                <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-500 font-semibold border-b border-slate-200 dark:border-slate-700">
-                  <tr>
+              <table className="w-full text-xs text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/[0.08] text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     <th className="py-3 px-4">Requirement</th>
                     <th className="py-3 px-4">Status</th>
                     <th className="py-3 px-4">Category</th>
@@ -389,37 +394,37 @@ function VerificationContent() {
                     <th className="py-3 px-4 text-right">Evidence</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                <tbody className="divide-y divide-white/[0.04]">
                   {verificationResult.requirement_results.map((req) => (
-                    <tr key={req.req_id} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/30">
-                      <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-slate-100">
+                    <tr key={req.req_id} className="hover:bg-white/[0.05] transition-colors duration-150">
+                      <td className="py-4 px-4 font-semibold text-white">
                         {req.title}
                       </td>
-                      <td className="py-3.5 px-4">
+                      <td className="py-4 px-4">
                         <StatusBadge status={req.status} size="sm" />
                       </td>
-                      <td className="py-3.5 px-4">
-                        <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-[11px]">
+                      <td className="py-4 px-4">
+                        <span className="px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.10] text-slate-300 font-medium text-[10px] uppercase">
                           {req.category}
                         </span>
                       </td>
-                      <td className="py-3.5 px-4 text-slate-500">{req.mandatory}</td>
-                      <td className="py-3.5 px-4 font-semibold text-slate-700 dark:text-slate-300">
+                      <td className="py-4 px-4 text-slate-400">{req.mandatory}</td>
+                      <td className="py-4 px-4 font-mono font-medium text-blue-400">
                         {req.source}
                       </td>
-                      <td className="py-3.5 px-4 text-slate-600 dark:text-slate-400 max-w-xs truncate">
+                      <td className="py-4 px-4 text-slate-300 max-w-xs truncate">
                         {req.evidence_summary}
                       </td>
-                      <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400 max-w-xs truncate">
+                      <td className="py-4 px-4 text-slate-400 max-w-xs truncate">
                         {req.reason}
                       </td>
-                      <td className="py-3.5 px-4 text-right">
+                      <td className="py-4 px-4 text-right">
                         <button
                           onClick={() => {
                             setEvidenceResult(req);
                             setIsEvidenceOpen(true);
                           }}
-                          className="px-2.5 py-1 text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 rounded-md transition-colors inline-flex items-center gap-1 shadow-2xs"
+                          className="px-3 py-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/25 hover:border-blue-500/40 rounded-lg transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-[0_0_12px_rgba(59,130,246,0.1)] hover:-translate-y-0.5"
                         >
                           <Eye className="w-3 h-3" />
                           <span>View</span>
@@ -433,11 +438,11 @@ function VerificationContent() {
           </div>
 
           {/* Officer Determination Recorded State */}
-          <div className="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Scale className="w-5 h-5 text-blue-600" />
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+          <div className="rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-7 shadow-[0_4px_30px_rgba(0,0,0,0.6)] space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+              <div className="flex items-center gap-3">
+                <Scale className="w-5 h-5 text-blue-400" />
+                <h3 className="text-base font-bold text-white tracking-tight">
                   Procurement Officer Final Determination
                 </h3>
               </div>
@@ -445,29 +450,29 @@ function VerificationContent() {
             </div>
 
             {officerDecision ? (
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2 text-xs">
-                <div className="flex justify-between">
-                  <span className="font-semibold text-slate-500">Official Decision:</span>
-                  <span className="font-bold text-slate-900 dark:text-slate-100">{officerDecision.decision}</span>
+              <div className="p-5 bg-white/[0.06] rounded-xl border border-white/[0.10] space-y-3 text-xs">
+                <div className="flex justify-between items-center">
+                  <span className="font-semibold text-slate-400 uppercase text-[10px] tracking-wider">Official Determination:</span>
+                  <span className="font-extrabold text-white text-sm">{officerDecision.decision}</span>
                 </div>
                 <div>
-                  <span className="font-semibold text-slate-500 block mb-1">Officer Comments:</span>
-                  <p className="p-2.5 bg-white dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-medium">
+                  <span className="font-semibold text-slate-400 uppercase text-[10px] tracking-wider block mb-1.5">Officer Comments:</span>
+                  <p className="p-3.5 bg-black/60 rounded-xl border border-white/[0.10] text-slate-200 font-normal leading-relaxed">
                     {officerDecision.comments}
                   </p>
                 </div>
-                <div className="text-[11px] text-slate-400 pt-1">
-                  Recorded by: {officerDecision.officer_email} on {new Date(officerDecision.decided_at).toLocaleString()}
+                <div className="text-[11px] text-slate-500 pt-1">
+                  Recorded by: <span className="text-slate-400 font-mono">{officerDecision.officer_email}</span> on {new Date(officerDecision.decided_at).toLocaleString()}
                 </div>
               </div>
             ) : (
-              <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 text-xs">
-                <span className="text-slate-500">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 bg-white/[0.06] rounded-xl border border-white/[0.10] text-xs">
+                <span className="text-slate-400">
                   No final determination has been recorded yet for this bidder.
                 </span>
                 <button
                   onClick={() => setIsDecisionOpen(true)}
-                  className="px-4 py-2 font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-xs"
+                  className="px-5 py-2.5 font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 transition-all cursor-pointer shrink-0"
                 >
                   Record Officer Decision
                 </button>
@@ -501,11 +506,11 @@ function VerificationContent() {
 
 export default function VerificationPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100/60 dark:bg-slate-950">
+    <div className="min-h-screen flex flex-col bg-black text-white selection:bg-blue-600/30 selection:text-white">
       <Navbar />
-      <div className="flex-1 flex">
+      <div className="flex-1 flex max-w-[1720px] w-full mx-auto">
         <Sidebar />
-        <Suspense fallback={<div className="p-6">Loading verification console...</div>}>
+        <Suspense fallback={<div className="p-8 text-slate-400">Loading verification console...</div>}>
           <VerificationContent />
         </Suspense>
       </div>

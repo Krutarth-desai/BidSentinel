@@ -4,7 +4,9 @@ setlocal
 
 cd /d "%~dp0"
 
-IF EXIST "backend\.venv\Scripts\python.exe" (
+IF EXIST "backend\venv\Scripts\python.exe" (
+    "backend\venv\Scripts\python.exe" run.py %*
+) ELSE IF EXIST "backend\.venv\Scripts\python.exe" (
     "backend\.venv\Scripts\python.exe" run.py %*
 ) ELSE (
     python run.py %*

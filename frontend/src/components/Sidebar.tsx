@@ -26,39 +26,43 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 shrink-0 border-r border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col justify-between p-4 min-h-[calc(100vh-4rem)]">
-      <div className="space-y-1">
-        <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-          Navigation
+    <aside className="w-68 shrink-0 flex flex-col justify-between p-4 my-6 ml-6 lg:ml-10 rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/[0.10] shadow-[0_4px_30px_rgba(0,0,0,0.6)] min-h-[calc(100vh-8rem)]">
+      <div className="space-y-3">
+        <div className="px-3 pt-2 pb-1 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+          Core Navigation
         </div>
-        {links.map((item) => {
-          const Icon = item.icon;
-          const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname?.startsWith(item.href));
+        <nav className="space-y-2">
+          {links.map((item) => {
+            const Icon = item.icon;
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/dashboard" && pathname?.startsWith(item.href));
 
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold transition-all ${
-                isActive
-                  ? "bg-blue-600 text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
-              }`}
-            >
-              <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-slate-500"}`} />
-              <span>{item.label}</span>
-            </Link>
-          );
-        })}
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`nav-item ${isActive ? "active" : ""}`}
+              >
+                <Icon className="w-4 h-4 nav-icon shrink-0" />
+                <span className="truncate">{item.label}</span>
+                {isActive && (
+                  <span className="absolute right-3 w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_#3b82f6]" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
-      <div className="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 rounded-xl text-xs space-y-2">
-        <div className="flex items-center gap-1.5 font-bold text-blue-900 dark:text-blue-200 text-[11px] uppercase tracking-wide">
+      {/* GeM Prototype Notice Panel */}
+      <div className="p-3.5 bg-blue-500/[0.06] border border-blue-500/20 rounded-xl text-xs space-y-1.5 mt-6">
+        <div className="flex items-center gap-1.5 font-bold text-blue-400 text-[10px] uppercase tracking-wider">
           <HelpCircle className="w-3.5 h-3.5" />
           <span>SIH 2026 Prototype</span>
         </div>
-        <p className="text-[11px] text-blue-800/80 dark:text-blue-300/80 leading-relaxed">
-          AI-assisted decision support system. Final qualification remains with the Procurement Officer.
+        <p className="text-[11px] text-slate-400 leading-relaxed font-normal">
+          AI decision support framework. Final qualification remains with the Procurement Officer.
         </p>
       </div>
     </aside>

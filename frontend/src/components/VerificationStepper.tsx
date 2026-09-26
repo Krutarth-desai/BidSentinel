@@ -17,7 +17,7 @@ const STEPS = [
   "Cross-validating entities & statutory bindings",
   "Applying deterministic procurement rules",
   "Computing dimensional compliance score & risk",
-  "Synthesizing AI findings & officer advisory"
+  "Synthesizing AI findings & officer advisory",
 ];
 
 export function VerificationStepper({ isRunning, onComplete }: VerificationStepperProps) {
@@ -49,15 +49,15 @@ export function VerificationStepper({ isRunning, onComplete }: VerificationStepp
   if (!isRunning) return null;
 
   return (
-    <div className="p-5 bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-xl my-4 animate-in fade-in duration-200">
-      <div className="flex items-center gap-2 mb-3">
-        <Sparkles className="w-4 h-4 text-blue-600 animate-spin" />
-        <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-200">
+    <div className="p-6 bg-white/[0.06] backdrop-blur-2xl border border-blue-500/35 rounded-[20px] my-6 shadow-[0_4px_30px_rgba(0,0,0,0.6),0_0_25px_rgba(59,130,246,0.15)] animate-in fade-in duration-200">
+      <div className="flex items-center gap-2.5 mb-4">
+        <Sparkles className="w-4 h-4 text-blue-400 animate-spin" />
+        <h4 className="text-xs font-bold uppercase tracking-wider text-blue-300">
           AI Multi-Stage Verification Pipeline Running...
         </h4>
       </div>
 
-      <div className="space-y-1.5 text-xs font-mono">
+      <div className="space-y-2 text-xs font-mono">
         {STEPS.map((stepText, idx) => {
           const isDone = idx < currentStep;
           const isCurrent = idx === currentStep;
@@ -65,25 +65,25 @@ export function VerificationStepper({ isRunning, onComplete }: VerificationStepp
           return (
             <div
               key={stepText}
-              className={`flex items-center justify-between py-0.5 transition-colors ${
+              className={`flex items-center justify-between py-1 transition-colors ${
                 isDone
-                  ? "text-emerald-700 dark:text-emerald-400 font-semibold"
+                  ? "text-emerald-400 font-semibold"
                   : isCurrent
-                  ? "text-blue-700 dark:text-blue-300 font-bold"
-                  : "text-slate-400 dark:text-slate-600"
+                  ? "text-blue-300 font-bold"
+                  : "text-slate-500"
               }`}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 {isDone ? (
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 ) : isCurrent ? (
-                  <Loader2 className="w-3.5 h-3.5 text-blue-600 animate-spin shrink-0" />
+                  <Loader2 className="w-4 h-4 text-blue-400 animate-spin shrink-0" />
                 ) : (
-                  <span className="w-3.5 h-3.5 rounded-full border border-slate-300 dark:border-slate-700 inline-block shrink-0" />
+                  <span className="w-3.5 h-3.5 rounded-full border border-white/[0.12] inline-block shrink-0" />
                 )}
                 <span>{stepText}</span>
               </div>
-              <span className="text-[11px]">
+              <span className="text-[11px] font-bold">
                 {isDone ? "✓" : isCurrent ? "..." : ""}
               </span>
             </div>

@@ -12,6 +12,7 @@ import {
   AlertTriangle,
   Award,
   ArrowRight,
+  FileText,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Sidebar } from "@/components/Sidebar";
@@ -54,63 +55,86 @@ export default function BiddersPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100/60 dark:bg-slate-950">
+    <div className="min-h-screen flex flex-col bg-black text-white selection:bg-blue-600/30 selection:text-white">
       <Navbar />
 
-      <div className="flex-1 flex">
+      <div className="flex-1 flex max-w-[1720px] w-full mx-auto">
         <Sidebar />
 
-        <main className="flex-1 p-6 max-w-7xl mx-auto space-y-6">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
-            <div>
-              <span className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
-                GeM Procurement Registry
-              </span>
-              <h1 className="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mt-0.5">
-                Bidder Profiles & Compliance Roster
-              </h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Multi-source cross-checked statutory identities and document dossiers.
-              </p>
-            </div>
+        <main className="flex-1 p-6 lg:p-10 space-y-8 min-w-0">
+          {/* Header Card */}
+          <div className="relative rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.6)] overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16" />
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
 
-            <div className="flex items-center gap-2">
-              <Link
-                href="/verification"
-                className="px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-xs flex items-center gap-1.5"
-              >
-                <ShieldCheck className="w-4 h-4" />
-                <span>Open Verification Console</span>
-              </Link>
+            <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                    GEM PROCUREMENT REGISTRY
+                  </span>
+                </div>
+                <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
+                  Bidder Profiles &amp; Compliance Roster
+                </h1>
+                <p className="text-xs lg:text-sm text-slate-400 font-normal leading-relaxed">
+                  Multi-source cross-checked statutory identities, tax records, and document dossiers.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 shrink-0">
+                <button
+                  onClick={loadBidders}
+                  className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.10] hover:border-blue-400/40 hover:-translate-y-0.5 text-slate-400 hover:text-white transition-all cursor-pointer"
+                  title="Refresh Bidders"
+                >
+                  <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin text-blue-400" : ""}`} />
+                </button>
+
+                <Link
+                  href="/verification"
+                  className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(59,130,246,0.35)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-blue-400/40 hover:-translate-y-0.5 flex items-center gap-2"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Open Verification Console</span>
+                </Link>
+              </div>
             </div>
           </div>
 
           {/* Filters & Search Toolbar */}
-          <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col sm:flex-row gap-3 items-center justify-between">
-            <div className="relative w-full sm:w-80">
-              <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400 pointer-events-none" />
+          <div className="rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.10] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row gap-4 items-center justify-between">
+            <div className="relative w-full sm:w-96">
+              <Search className="w-4 h-4 absolute left-3.5 top-3 text-slate-500 pointer-events-none" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by company name, PAN, or GSTIN..."
-                className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-white/[0.10] bg-white/[0.06] text-white placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.09] focus:ring-1 focus:ring-blue-500/30 transition-all"
               />
             </div>
 
-            <div className="flex items-center gap-2 w-full sm:w-auto">
-              <Filter className="w-3.5 h-3.5 text-slate-400" />
-              <span className="text-xs font-semibold text-slate-500">Risk Filter:</span>
-              <div className="flex rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden text-xs">
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-400">
+                <Filter className="w-3.5 h-3.5 text-slate-500" />
+                <span className="text-[11px] uppercase tracking-wider">Risk Level:</span>
+              </div>
+              <div className="flex rounded-xl border border-white/[0.08] bg-white/[0.02] p-1 gap-1 text-xs">
                 {["ALL", "LOW", "MEDIUM", "HIGH"].map((lvl) => (
                   <button
                     key={lvl}
                     onClick={() => setRiskFilter(lvl)}
-                    className={`px-3 py-1 font-semibold transition-colors ${
+                    className={`px-3.5 py-1.5 rounded-lg font-bold text-[11px] transition-all cursor-pointer ${
                       riskFilter === lvl
-                        ? "bg-blue-600 text-white"
-                        : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-50"
+                        ? lvl === "HIGH"
+                          ? "bg-red-500/20 text-red-300 border border-red-500/30 shadow-[0_0_12px_rgba(239,68,68,0.2)]"
+                          : lvl === "MEDIUM"
+                          ? "bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-[0_0_12px_rgba(245,158,11,0.2)]"
+                          : lvl === "LOW"
+                          ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-[0_0_12px_rgba(16,185,129,0.2)]"
+                          : "bg-blue-600 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                        : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
                     }`}
                   >
                     {lvl}
@@ -121,88 +145,100 @@ export default function BiddersPage() {
           </div>
 
           {/* Bidder Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredBidders.map((b) => (
               <div
                 key={b.bidder_id}
-                className="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 dark:hover:border-blue-700 transition-all flex flex-col justify-between"
+                className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-blue-500/35 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(50,110,255,0.12)] flex flex-col justify-between group overflow-hidden"
               >
+                {/* Subtle top accent based on risk level */}
+                <div
+                  className={`absolute top-0 left-6 right-6 h-[2px] rounded-b ${
+                    b.risk_level === "HIGH"
+                      ? "bg-red-500/60"
+                      : b.risk_level === "MEDIUM"
+                      ? "bg-amber-500/60"
+                      : "bg-emerald-500/60"
+                  }`}
+                />
+
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <div>
-                      <span className="font-mono text-[11px] font-bold text-blue-600 dark:text-blue-400">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="space-y-0.5">
+                      <span className="font-mono text-[10px] font-bold text-blue-400 block tracking-wider">
                         {b.bidder_id}
                       </span>
-                      <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 line-clamp-1">
+                      <h3 className="font-bold text-sm text-white line-clamp-1 group-hover:text-blue-300 transition-colors">
                         {b.company_name}
                       </h3>
                     </div>
                     <StatusBadge status={b.risk_level || "LOW"} size="sm" />
                   </div>
 
-                  <div className="flex flex-wrap gap-1.5 my-2.5">
+                  <div className="flex flex-wrap gap-1.5 my-3">
                     {b.claimed_msme_benefit && (
-                      <span className="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/25 text-[10px] font-bold uppercase tracking-wider">
                         MSME ({b.msme_category || "SMALL"})
                       </span>
                     )}
                     {b.claimed_startup_benefit && (
-                      <span className="px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/25 text-[10px] font-bold uppercase tracking-wider">
                         DPIIT STARTUP
                       </span>
                     )}
                     {b.oem_authorized && (
-                      <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25 text-[10px] font-bold uppercase tracking-wider">
                         OEM AUTH
                       </span>
                     )}
                   </div>
 
-                  <div className="space-y-1 text-xs text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800">
+                  <div className="space-y-1.5 text-xs text-slate-400 pt-3 border-t border-white/[0.04]">
                     <div className="flex justify-between">
-                      <span>PAN:</span>
-                      <strong className="font-mono text-slate-700 dark:text-slate-300">{b.pan}</strong>
+                      <span className="text-[11px] text-slate-500">PAN:</span>
+                      <strong className="font-mono text-slate-200">{b.pan}</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span>GSTIN:</span>
-                      <strong className="font-mono text-slate-700 dark:text-slate-300">{b.gstin}</strong>
+                      <span className="text-[11px] text-slate-500">GSTIN:</span>
+                      <strong className="font-mono text-slate-200">{b.gstin}</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span>Local Content:</span>
-                      <strong className="text-slate-700 dark:text-slate-300">{b.declared_local_content}%</strong>
+                      <span className="text-[11px] text-slate-500">Local Content:</span>
+                      <strong className="text-white font-semibold">{b.declared_local_content}%</strong>
                     </div>
                   </div>
 
                   {b.notes && (
-                    <p className="text-[11px] text-slate-500 mt-2 bg-slate-50 dark:bg-slate-800/40 p-2 rounded border border-slate-100 dark:border-slate-800 line-clamp-2">
+                    <p className="text-[11px] text-slate-400 mt-3 bg-white/[0.02] p-3 rounded-xl border border-white/[0.04] line-clamp-2 leading-relaxed">
                       {b.notes}
                     </p>
                   )}
                 </div>
 
-                <div className="pt-4 mt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="pt-5 mt-4 border-t border-white/[0.06] flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                      Score
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
+                      Compliance Score
                     </span>
-                    <span className="text-lg font-black text-slate-900 dark:text-slate-100">
+                    <span className="text-xl font-extrabold text-white">
                       {b.compliance_score || 0}
-                      <span className="text-xs text-slate-400 font-normal">/100</span>
+                      <span className="text-xs text-slate-500 font-normal"> / 100</span>
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <Link
                       href={`/bidders/${encodeURIComponent(b.bidder_id)}`}
-                      className="px-2.5 py-1 text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-md transition-colors"
+                      className="px-3 py-1.5 text-xs font-semibold bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/[0.08] rounded-xl transition-all"
                     >
                       Dossier
                     </Link>
                     <Link
                       href={`/verification?bidder=${encodeURIComponent(b.bidder_id)}`}
-                      className="px-3 py-1 text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors shadow-xs"
+                      className="px-3.5 py-1.5 text-xs font-bold bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 hover:text-blue-300 border border-blue-500/30 rounded-xl transition-all shadow-[0_0_12px_rgba(59,130,246,0.15)] flex items-center gap-1"
                     >
-                      Verify
+                      <span>Verify</span>
+                      <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
                 </div>
