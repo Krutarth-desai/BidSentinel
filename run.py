@@ -44,6 +44,11 @@ class Colors:
 # Disable colors on Windows cmd if ANSI not supported
 if os.name == "nt":
     os.system("")
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
 
 def print_banner():
     print(f"""
