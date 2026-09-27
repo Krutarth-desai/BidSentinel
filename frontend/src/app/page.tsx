@@ -45,9 +45,9 @@ export default function LoginPage() {
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 shrink-0 rounded-[10px] bg-[#1C1A17] border border-[#A4864E]/30 flex items-center justify-center overflow-hidden shadow-xs">
             <img
-              src="/bidsentinel-logo.png"
+              src="/finalogo.png"
               alt="BidSentinel Icon"
-              className="w-[140px] max-w-none h-auto mix-blend-screen shrink-0 -ml-1"
+              className="w-full h-full object-cover mix-blend-screen"
             />
           </div>
           <div>
@@ -60,9 +60,7 @@ export default function LoginPage() {
                   Sentinel
                 </span>
               </div>
-              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#A4864E]/12 text-[#725C3A] border border-[#A4864E]/25 uppercase tracking-wider hidden sm:inline-block">
-                GEM SIH &apos;26
-              </span>
+
             </div>
             <p className="text-[9px] font-bold tracking-[0.18em] text-[#625F57] uppercase mt-0.5">
               INTELLIGENT TENDER COMPLIANCE
@@ -80,9 +78,9 @@ export default function LoginPage() {
             <div className="flex justify-center mb-3">
               <div className="w-14 h-14 rounded-[14px] bg-[#1C1A17] border border-[#A4864E]/30 flex items-center justify-center overflow-hidden shadow-xs">
                 <img
-                  src="/bidsentinel-logo.png"
+                  src="/finalogo.png"
                   alt="BidSentinel Icon"
-                  className="w-[180px] max-w-none h-auto mix-blend-screen shrink-0 -ml-1.5"
+                  className="w-full h-full object-cover mix-blend-screen"
                 />
               </div>
             </div>

@@ -245,7 +245,7 @@ export default function AuditPage() {
                 <button
                   onClick={handleVerifyChain}
                   disabled={isVerifyingChain}
-                  className="px-5 py-3 rounded-[10px] bg-[#24221E] hover:bg-[#36332E] text-[#F5F2EB] font-black text-xs tracking-wider uppercase shadow-sm border border-[#24221E]/20 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
+                  className="px-5 py-3 rounded-[10px] text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] font-black text-xs tracking-wider uppercase shadow-sm hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
                 >
                   <ShieldCheck className={`w-4 h-4 ${isVerifyingChain ? "animate-spin text-[#A4864E]" : "text-[#F5F2EB]"}`} />
                   <span>{isVerifyingChain ? "Verifying Hashes..." : "Verify Hash Chain"}</span>
@@ -462,7 +462,7 @@ export default function AuditPage() {
                   onClick={() => setSelectedFilter(f.id)}
                   className={`px-3.5 py-1.5 rounded-[10px] font-bold text-[11px] uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                     selectedFilter === f.id
-                      ? "bg-[#24221E] text-[#F5F2EB] shadow-sm border border-[#24221E]/20 font-black hover:-translate-y-0.5"
+                      ? "text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] shadow-sm font-black hover:-translate-y-0.5"
                       : "bg-[#C9C5BC]/40 border border-[#24221E]/10 text-[#625F57] hover:text-[#24221E] hover:bg-[#C9C5BC]"
                   }`}
                 >
@@ -538,9 +538,13 @@ export default function AuditPage() {
                         </span>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="px-2.5 py-1 rounded-full bg-[#188A5E]/15 text-[#188A5E] border border-[#188A5E]/30 font-bold text-[10px] tracking-wider uppercase">
-                          {log.result || "VERIFIED"}
-                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {(log.result || "VERIFIED").split(", ").map((resItem: string, idx: number) => (
+                            <span key={idx} className="px-2.5 py-1 rounded-[6px] bg-[#188A5E]/15 text-[#188A5E] border border-[#188A5E]/30 font-bold text-[10px] tracking-wider uppercase whitespace-nowrap shadow-sm">
+                              {resItem}
+                            </span>
+                          ))}
+                        </div>
                       </td>
                       <td className="py-4 px-4 text-right">
                         <button
@@ -610,7 +614,7 @@ export default function AuditPage() {
                 <span className="text-[11px] font-bold text-[#625F57] uppercase tracking-wider">
                   Cryptographically Committed Payload:
                 </span>
-                <pre className="p-4 bg-[#24221E] rounded-[10px] border border-[#24221E]/20 font-mono text-xs text-[#F5F2EB] overflow-x-auto leading-relaxed">
+                <pre className="p-4 bg-[#24221E] rounded-[10px] font-mono text-xs text-[#F5F2EB] overflow-x-auto leading-relaxed">
                   {JSON.stringify(inspectLog.details || {}, null, 2)}
                 </pre>
               </div>

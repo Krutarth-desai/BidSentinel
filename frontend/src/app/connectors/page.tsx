@@ -191,7 +191,7 @@ export default function ConnectorsPage() {
                 <button
                   onClick={handlePingAll}
                   disabled={isPinging}
-                  className="px-5 py-3 rounded-[10px] bg-[#24221E] hover:bg-[#36332E] text-[#F5F2EB] font-black text-xs tracking-wider uppercase shadow-sm border border-[#24221E]/20 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
+                  className="px-5 py-3 rounded-[10px] text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] font-black text-xs tracking-wider uppercase shadow-sm hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
                 >
                   <Activity className={`w-4 h-4 ${isPinging ? "animate-spin text-[#A4864E]" : "text-[#F5F2EB]"}`} />
                   <span>{isPinging ? "Pinging Gateways..." : pingSuccess ? "10/10 Online ✓" : "Ping All Gateways"}</span>
@@ -495,7 +495,7 @@ export default function ConnectorsPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="px-6 py-3 font-black text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] flex items-center justify-center gap-2.5 transition-all shadow-sm disabled:opacity-50 cursor-pointer shrink-0 border border-[#24221E]/20 hover:-translate-y-0.5"
+                className="px-6 py-3 font-black text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] rounded-[10px] flex items-center justify-center gap-2.5 transition-all shadow-sm disabled:opacity-50 cursor-pointer shrink-0 hover:-translate-y-0.5"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isLoading ? "Querying Adapter..." : "Execute Lookup"}</span>
@@ -519,7 +519,7 @@ export default function ConnectorsPage() {
                   </button>
                 </div>
 
-                <pre className="p-6 rounded-[14px] bg-[#24221E] text-[#F5F2EB] font-mono text-xs overflow-x-auto border border-[#24221E]/20 shadow-inner leading-relaxed">
+                <pre className="p-6 rounded-[14px] bg-[#24221E] text-[#F5F2EB] font-mono text-xs overflow-x-auto shadow-inner leading-relaxed">
                   {JSON.stringify(queryResponse, null, 2)}
                 </pre>
               </div>

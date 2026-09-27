@@ -21,7 +21,7 @@ export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
     norm === "LOW"
   ) {
     style =
-      "bg-[#188A5E]/15 text-[#188A5E] border-[#188A5E]/30 shadow-sm";
+      "bg-[#4A6D5E]/15 text-[#4A6D5E] border-[#4A6D5E]/30 shadow-sm";
     Icon = CheckCircle2;
     label = norm === "LOW" ? "LOW RISK" : norm;
   } else if (
@@ -31,7 +31,7 @@ export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
     norm === "CLARIFICATION_REQUESTED"
   ) {
     style =
-      "bg-[#D97706]/15 text-[#D97706] border-[#D97706]/30 shadow-sm";
+      "bg-[#A4704E]/15 text-[#A4704E] border-[#A4704E]/30 shadow-sm";
     Icon = AlertTriangle;
     label = norm === "MEDIUM" ? "MEDIUM RISK" : "REVIEW REQUIRED";
   } else if (
@@ -41,12 +41,12 @@ export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
     norm === "REJECTED"
   ) {
     style =
-      "bg-[#D95757]/15 text-[#D95757] border-[#D95757]/30 shadow-sm";
+      "bg-[#8B4545]/15 text-[#8B4545] border-[#8B4545]/30 shadow-sm";
     Icon = XCircle;
     label = norm === "HIGH" ? "HIGH RISK" : norm;
   } else if (norm === "MISSING") {
     style =
-      "bg-[#D95757]/15 text-[#D95757] border-[#D95757]/30 shadow-sm";
+      "bg-[#8B4545]/15 text-[#8B4545] border-[#8B4545]/30 shadow-sm";
     Icon = AlertTriangle;
     label = "MISSING";
   } else if (norm === "NOT_APPLICABLE") {

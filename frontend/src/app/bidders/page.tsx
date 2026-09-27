@@ -164,12 +164,12 @@ export default function BiddersPage() {
                     className={`px-3.5 py-1.5 rounded-[8px] font-bold text-[11px] transition-all cursor-pointer ${
                       riskFilter === lvl
                         ? lvl === "HIGH"
-                          ? "bg-red-500/20 text-red-800 border border-red-500/35"
+                          ? "bg-[#8B4545]/15 text-[#8B4545] border border-[#8B4545]/30"
                           : lvl === "MEDIUM"
-                          ? "bg-amber-500/20 text-amber-800 border border-amber-500/35"
+                          ? "bg-[#A4704E]/15 text-[#A4704E] border border-[#A4704E]/30"
                           : lvl === "LOW"
-                          ? "bg-emerald-500/20 text-emerald-800 border border-emerald-500/35"
-                          : "bg-gradient-to-r from-[#A4864E] to-[#725C3A] text-[#F1EEE6]"
+                          ? "bg-[#4A6D5E]/15 text-[#4A6D5E] border border-[#4A6D5E]/30"
+                          : "bg-gradient-to-r from-[#A4864E] to-[#725C3A] text-[#F1EEE6] border border-transparent"
                         : "text-[#625F57] hover:text-[#24221E] hover:bg-black/[0.04]"
                     }`}
                   >
@@ -180,23 +180,18 @@ export default function BiddersPage() {
             </div>
           </div>
 
-          {/* Dense Asymmetrical Self-Packing Bento Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 [grid-auto-flow:dense] gap-6 items-stretch">
+          {/* Uniform Grid Layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
             {filteredBidders.map((b) => {
-              const isHighRisk = b.risk_level === "HIGH";
-              const gridSpanClass = isHighRisk
-                ? "col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2"
-                : "col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1";
-
               return (
                 <div
                   key={b.bidder_id}
-                  className={`${gridSpanClass} bento-card p-6 flex flex-col justify-between group overflow-hidden ${
+                  className={`col-span-1 bento-card p-6 flex flex-col justify-between group overflow-hidden ${
                     b.risk_level === "HIGH"
-                      ? "bento-glow-red border-red-500/30"
+                      ? "bento-glow-red border-[#8B4545]/30"
                       : b.risk_level === "MEDIUM"
-                      ? "bento-glow-amber border-amber-500/25"
-                      : "bento-glow-emerald"
+                      ? "bento-glow-bronze border-[#A4704E]/30"
+                      : "bento-glow-emerald border-[#4A6D5E]/30"
                   }`}
                 >
                   <div>
@@ -205,7 +200,7 @@ export default function BiddersPage() {
                         <span className="font-mono text-[10px] font-bold text-[#725C3A] block tracking-wider">
                           {b.bidder_id}
                         </span>
-                        <h3 className="font-bold text-sm text-[#24221E] line-clamp-1">
+                        <h3 className="font-bold text-sm text-[#24221E] line-clamp-2 min-h-[40px]">
                           {b.company_name}
                         </h3>
                       </div>
@@ -246,7 +241,7 @@ export default function BiddersPage() {
                     </div>
 
                     {b.notes && (
-                      <p className="text-[11px] text-[#625F57] mt-3 bg-[#E3DFD6] p-3 rounded-[10px] border border-black/[0.06] line-clamp-2 leading-relaxed">
+                      <p className="text-[11px] text-[#625F57] mt-3 bg-[#E3DFD6] p-3 rounded-[10px] border border-black/[0.06] leading-relaxed">
                         {b.notes}
                       </p>
                     )}

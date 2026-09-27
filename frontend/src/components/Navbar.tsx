@@ -15,9 +15,9 @@ export function Navbar() {
           <Link href="/dashboard" className="flex items-center gap-3 group">
             <div className="w-10 h-10 shrink-0 rounded-[10px] bg-[#1C1A17] border border-[#A4864E]/30 flex items-center justify-center overflow-hidden shadow-xs group-hover:scale-105 transition-transform duration-200">
               <img
-                src="/bidsentinel-logo.png"
+                src="/finalogo.png"
                 alt="BidSentinel Icon"
-                className="w-[140px] max-w-none h-auto mix-blend-screen shrink-0 -ml-1"
+                className="w-full h-full object-cover mix-blend-screen"
               />
             </div>
             <div>
@@ -30,9 +30,7 @@ export function Navbar() {
                     Sentinel
                   </span>
                 </div>
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#A4864E]/12 text-[#725C3A] border border-[#A4864E]/25 uppercase tracking-wider shrink-0 hidden sm:inline-block">
-                  GEM SIH &apos;26
-                </span>
+
               </div>
               <p className="text-[9px] font-bold tracking-[0.18em] text-[#625F57] uppercase mt-0.5">
                 INTELLIGENT TENDER COMPLIANCE
@@ -43,8 +41,8 @@ export function Navbar() {
 
         {/* Center: Search Bar */}
         <div className="hidden md:flex flex-1 max-w-xl mx-8 items-center justify-center">
-          <div className="relative w-full">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#817C72]">
+          <div className="relative w-full group">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#A4864E]/70 group-hover:text-[#A4864E] transition-colors">
               <Search className="w-4 h-4" />
             </div>
             <input
@@ -52,7 +50,7 @@ export function Navbar() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tenders, bidders, or compliance criteria…"
-              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-[10px] bg-[#C2BDB3]/60 border border-black/[0.10] text-[#24221E] placeholder-[#817C72] focus:outline-none focus:border-[#A4864E]/60 focus:bg-[#D8D4CB] focus:ring-1 focus:ring-[#A4864E]/20 transition-all duration-200"
+              className="w-full pl-11 pr-4 py-3 text-xs font-medium rounded-[14px] bg-[#E3DFD6] hover:bg-[#EAE6DD] border border-black/[0.08] hover:border-[#A4864E]/40 text-[#24221E] placeholder-[#817C72] focus:outline-none focus:border-[#A4864E]/60 focus:bg-[#F1EEE6] focus:ring-2 focus:ring-[#A4864E]/20 transition-all duration-300 shadow-[0_2px_10px_-2px_rgba(40,35,25,0.05)]"
             />
           </div>
         </div>

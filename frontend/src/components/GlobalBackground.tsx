@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 export function GlobalBackground() {
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#C9C5BC]"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#B6B1A6]"
       aria-hidden="true"
     >
-      {/* Base B2 Warm Greige Foundation (#C9C5BC) */}
-      <div className="absolute inset-0 bg-[#C9C5BC] transition-colors duration-1000" />
+      {/* Base B2 Warm Greige Foundation (#B6B1A6) */}
+      <div className="absolute inset-0 bg-[#B6B1A6] transition-colors duration-1000" />
 
       {/* Broad Soft Ambient Architectural Lighting */}
       <div className="ambient-light-primary absolute rounded-full pointer-events-none opacity-25 blur-[200px] transition-all duration-1000" />

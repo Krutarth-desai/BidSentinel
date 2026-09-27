@@ -76,9 +76,9 @@ export default function ReportPage() {
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-9 h-9 shrink-0 rounded-[8px] bg-[#1C1A17] border border-[#A4864E]/30 flex items-center justify-center overflow-hidden print:bg-slate-900">
                     <img
-                      src="/bidsentinel-logo.png"
+                      src="/finalogo.png"
                       alt="BidSentinel Icon"
-                      className="w-[125px] max-w-none h-auto mix-blend-screen shrink-0 -ml-1"
+                      className="w-full h-full object-cover mix-blend-screen"
                     />
                   </div>
                   <div>

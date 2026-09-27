@@ -196,12 +196,14 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div className="my-6 space-y-2">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl lg:text-6xl font-black text-emerald-700 tracking-tight">
-                    {avgComplianceVal}
-                  </span>
-                  <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider">
+              <div className="my-auto py-4 space-y-3">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <div className="px-5 py-2.5 rounded-[12px] bg-emerald-500/15 border border-emerald-500/30 inline-flex items-center justify-center shadow-inner">
+                    <span className="text-5xl font-black text-emerald-700 tracking-tight leading-none">
+                      {avgComplianceVal}
+                    </span>
+                  </div>
+                  <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider shrink-0 mt-1">
                     Concordance
                   </span>
                 </div>
@@ -211,7 +213,7 @@ export default function DashboardPage() {
               </div>
 
               {/* Progress gauge bar */}
-              <div className="space-y-1.5 pt-2 border-t border-black/[0.08]">
+              <div className="space-y-1.5 pt-4 border-t border-black/[0.08] mt-auto">
                 <div className="flex items-center justify-between text-[10px] text-[#625F57] font-medium">
                   <span>Concordance Health</span>
                   <span className="text-emerald-700 font-bold">Optimal</span>
@@ -241,10 +243,12 @@ export default function DashboardPage() {
                     <FileSpreadsheet className="w-4.5 h-4.5" />
                   </div>
                 </div>
-                <div className="text-4xl font-black text-[#24221E] tracking-tight mb-1">
-                  {activeTendersVal}
+                <div className="px-4 py-2 rounded-[12px] bg-[#24221E]/5 border border-[#24221E]/10 inline-flex items-center justify-center mb-2 shadow-inner">
+                  <span className="text-4xl font-black text-[#24221E] tracking-tight leading-none">
+                    {activeTendersVal}
+                  </span>
                 </div>
-                <p className="text-xs text-[#625F57] font-normal">Tenders under evaluation</p>
+                <p className="text-xs text-[#625F57] font-normal mt-1">Tenders under evaluation</p>
               </div>
 
               {/* Warm Mini Chart Accent */}
@@ -271,36 +275,42 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Bidders Screened — Mid Metric Block (Span 4) */}
             <div className="sm:col-span-6 lg:col-span-4 bento-card bento-glow-bronze p-6 flex flex-col justify-between group relative overflow-hidden">
-              <div className="flex items-center justify-between text-[#625F57] mb-3">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#625F57]">
-                  Bidders Screened
-                </span>
-                <div className="w-9 h-9 rounded-[10px] bg-[#725C3A]/15 border border-[#725C3A]/30 text-[#725C3A] flex items-center justify-center shrink-0">
-                  <Users className="w-4.5 h-4.5" />
+              <div>
+                <div className="flex items-center justify-between text-[#625F57] mb-3">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#625F57]">
+                    Bidders Screened
+                  </span>
+                  <div className="w-9 h-9 rounded-[10px] bg-[#725C3A]/15 border border-[#725C3A]/30 text-[#725C3A] flex items-center justify-center shrink-0">
+                    <Users className="w-4.5 h-4.5" />
+                  </div>
                 </div>
+                <div className="px-4 py-2 rounded-[12px] bg-[#725C3A]/10 border border-[#725C3A]/20 inline-flex items-center justify-center mb-2 shadow-inner">
+                  <span className="text-4xl font-black text-[#24221E] tracking-tight leading-none">
+                    {biddersScreenedVal}
+                  </span>
+                </div>
+                <p className="text-xs text-[#625F57] font-normal mt-1">Synthetic bidder dossiers</p>
               </div>
-              <div className="text-4xl font-black text-[#24221E] tracking-tight mb-1">
-                {biddersScreenedVal}
-              </div>
-              <p className="text-xs text-[#625F57] font-normal">Synthetic bidder dossiers</p>
             </div>
 
-            {/* Pending Decisions — Compact Metric Block (Span 3) */}
-            <div className="sm:col-span-12 lg:col-span-3 bento-card bento-glow-amber p-6 flex flex-col justify-between group relative overflow-hidden">
-              <div className="flex items-center justify-between text-[#625F57] mb-3">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#625F57]">
-                  Pending Decisions
-                </span>
-                <div className="w-9 h-9 rounded-[10px] bg-amber-500/15 border border-amber-500/30 text-amber-700 flex items-center justify-center shrink-0">
-                  <Clock className="w-4.5 h-4.5" />
+            <div className="sm:col-span-12 lg:col-span-3 bento-card bento-glow-bronze p-6 flex flex-col justify-between group relative overflow-hidden">
+              <div>
+                <div className="flex items-center justify-between text-[#625F57] mb-3">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#625F57]">
+                    Pending Decisions
+                  </span>
+                  <div className="w-9 h-9 rounded-[10px] bg-[#A4704E]/15 border border-[#A4704E]/30 text-[#A4704E] flex items-center justify-center shrink-0">
+                    <Clock className="w-4.5 h-4.5" />
+                  </div>
                 </div>
+                <div className="px-4 py-2 rounded-[12px] bg-[#A4704E]/15 border border-[#A4704E]/30 inline-flex items-center justify-center mb-2 shadow-inner">
+                  <span className="text-4xl font-black text-[#A4704E] tracking-tight leading-none">
+                    {pendingDecisionsVal}
+                  </span>
+                </div>
+                <p className="text-xs text-[#625F57] font-normal mt-1">Awaiting officer sign-off</p>
               </div>
-              <div className="text-4xl font-black text-amber-700 tracking-tight mb-1">
-                {pendingDecisionsVal}
-              </div>
-              <p className="text-xs text-[#625F57] font-normal">Awaiting officer sign-off</p>
             </div>
           </div>
 

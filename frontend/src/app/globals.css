@@ -240,34 +240,81 @@ html, body {
 /* ── Sidebar & Nav Styles ─────────────────────────────────── */
 
 .nav-item {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(80, 70, 55, 0.08);
-  color: #625F57;
+  background: rgba(234, 230, 221, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 8px -2px rgba(40, 35, 25, 0.05);
+  backdrop-filter: blur(12px);
+  color: #4A4740;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  border-radius: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   position: relative;
-  transition: all 200ms ease;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #A4864E;
+  transform: scaleY(0);
+  transition: transform 300ms ease;
+  transform-origin: center;
+  border-radius: 12px 0 0 12px;
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.50);
-  border-color: rgba(164, 134, 78, 0.25);
+  background: rgba(234, 230, 221, 0.55);
+  border-color: rgba(164, 134, 78, 0.3);
   color: #24221E;
-  transform: translateY(-1px);
+  transform: translateX(4px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 12px -4px rgba(40, 35, 25, 0.1);
+}
+
+.nav-item:hover::before {
+  transform: scaleY(0.4);
 }
 
 .nav-item.active {
-  background: rgba(164, 134, 78, 0.14);
-  border: 1px solid rgba(164, 134, 78, 0.32);
-  box-shadow: 0 2px 12px -2px rgba(164, 134, 78, 0.12);
-  color: #24221E;
-  font-weight: 600;
+  background: #24221E;
+  border: 1px solid #36332E;
+  box-shadow: 0 8px 24px -4px rgba(40, 35, 25, 0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+  color: #F1EEE6;
+  font-weight: 700;
+  transform: translateX(6px);
+}
+
+.nav-item.active .nav-icon {
+  color: #C2A96D;
+}
+
+.nav-item.active::before {
+  transform: scaleY(1);
+  background: linear-gradient(to bottom, #EAD7A1, #A4864E);
+  box-shadow: 2px 0 12px rgba(194, 169, 109, 0.4);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(164, 134, 78, 0.3);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(164, 134, 78, 0.6);
 }
 
 .nav-item.active .nav-icon {

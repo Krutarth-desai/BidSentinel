@@ -117,9 +117,9 @@ export default function BidderDetailPage() {
 
             <Link
               href={`/verification?bidder=${encodeURIComponent(bidderId)}`}
-              className="px-5 py-2.5 text-xs font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] transition-all duration-200 shadow-sm border border-[#24221E]/20 flex items-center gap-2"
+              className="px-5 py-2.5 text-xs font-bold text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] rounded-[10px] transition-all duration-200 shadow-md flex items-center gap-2"
             >
-              <ShieldCheck className="w-4 h-4 text-[#F5F2EB]" />
+              <ShieldCheck className="w-4 h-4 text-[#F1EEE6]" />
               <span>Run AI Verification for this Bidder</span>
             </Link>
           </div>
@@ -215,9 +215,9 @@ export default function BidderDetailPage() {
                 </div>
                 <Link
                   href={`/verification?bidder=${encodeURIComponent(bidderId)}`}
-                  className="w-full py-2.5 px-4 text-xs font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] transition-all shadow-sm flex items-center justify-center gap-2 border border-[#24221E]/20"
+                  className="w-full py-2.5 px-4 text-xs font-bold text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] rounded-[10px] transition-all shadow-md flex items-center justify-center gap-2"
                 >
-                  <ShieldCheck className="w-4 h-4 text-[#F5F2EB]" />
+                  <ShieldCheck className="w-4 h-4 text-[#F1EEE6]" />
                   <span>Execute AI Scrutiny</span>
                 </Link>
               </div>
@@ -238,9 +238,9 @@ export default function BidderDetailPage() {
 
               <button
                 onClick={() => setShowUploadModal(true)}
-                className="px-4 py-2 text-xs font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] transition-all shadow-sm hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer border border-[#24221E]/20"
+                className="px-4 py-2 text-xs font-bold text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] rounded-[10px] transition-all shadow-md hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
               >
-                <Upload className="w-3.5 h-3.5 text-[#F5F2EB]" />
+                <Upload className="w-3.5 h-3.5 text-[#F1EEE6]" />
                 <span>Upload Document</span>
               </button>
             </div>
@@ -369,7 +369,7 @@ export default function BidderDetailPage() {
                 <button
                   type="submit"
                   disabled={isUploading}
-                  className="px-5 py-2.5 font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] shadow-sm transition-all cursor-pointer disabled:opacity-50 border border-[#24221E]/20"
+                  className="px-5 py-2.5 font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] shadow-sm transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isUploading ? "Uploading & OCR..." : "Upload & Classify"}
                 </button>
@@ -483,7 +483,7 @@ export default function BidderDetailPage() {
               {/* Raw JSON Technical View */}
               <div className="space-y-1.5">
                 <span className="text-[11px] font-semibold text-[#625F57] uppercase tracking-wider">Raw Extracted Payload:</span>
-                <pre className="text-[11px] font-mono bg-[#24221E] text-[#F5F2EB] p-4 rounded-[10px] overflow-x-auto border border-[#24221E]/20">
+                <pre className="text-[11px] font-mono bg-[#24221E] text-[#F5F2EB] p-4 rounded-[10px] overflow-x-auto">
                   {JSON.stringify(inspectDoc.extracted_data || {}, null, 2)}
                 </pre>
               </div>

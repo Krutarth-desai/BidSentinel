@@ -267,7 +267,7 @@ function VerificationContent() {
           <button
             onClick={handleRunVerification}
             disabled={isVerifying}
-            className="w-full py-4 rounded-[10px] bg-[#24221E] hover:bg-[#36332E] text-[#F5F2EB] font-extrabold text-xs uppercase tracking-wider shadow-sm border border-[#24221E]/20 hover:-translate-y-0.5 flex items-center justify-center gap-2.5 transition-all duration-200 disabled:opacity-50 cursor-pointer shrink-0"
+            className="w-full py-4 rounded-[10px] text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] font-extrabold text-xs uppercase tracking-wider shadow-sm hover:-translate-y-0.5 flex items-center justify-center gap-2.5 transition-all duration-200 disabled:opacity-50 cursor-pointer shrink-0"
           >
             <Sparkles className="w-4 h-4 text-[#F5F2EB] animate-pulse" />
             <span>{isVerifying ? "Verifying Rules..." : "RUN AI VERIFICATION"}</span>
@@ -290,11 +290,11 @@ function VerificationContent() {
             <div className="bento-card p-8 space-y-6 bg-[#D8D4CB] border border-[#24221E]/10">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-[#24221E]/10">
                 <div className="flex items-center gap-5">
-                  <div className="w-18 h-18 rounded-[14px] bg-[#A4864E]/15 border border-[#A4864E]/30 flex flex-col items-center justify-center shadow-sm">
-                    <span className="text-3xl font-extrabold text-[#A4864E] leading-none">
+                  <div className="px-6 py-4 shrink-0 rounded-[16px] bg-[#A4864E]/10 border border-[#A4864E]/25 flex flex-col items-center justify-center shadow-inner">
+                    <span className="text-5xl font-black text-[#A4864E] leading-none tracking-tight">
                       {verificationResult.compliance_score}
                     </span>
-                    <span className="text-[10px] font-bold text-[#625F57] uppercase tracking-wider mt-1">/ 100</span>
+                    <span className="text-[10px] font-bold text-[#625F57] uppercase tracking-wider mt-1.5">/ 100</span>
                   </div>
                   <div>
                     <div className="flex items-center gap-3">
@@ -313,21 +313,21 @@ function VerificationContent() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 shrink-0">
+                <div className="flex flex-col gap-2.5 shrink-0 min-w-[160px]">
                   <Link
                     href={`/reports/${encodeURIComponent(selectedTenderId)}/${encodeURIComponent(selectedBidderId)}`}
                     target="_blank"
-                    className="px-4 py-2.5 text-xs font-semibold text-[#625F57] hover:text-[#24221E] bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 rounded-[10px] flex items-center gap-2 transition-all cursor-pointer shadow-sm"
+                    className="w-full px-5 py-2 text-xs font-bold text-[#8F7448] bg-[#A4864E]/10 hover:bg-[#8A703E] hover:text-[#F1EEE6] hover:border-[#8A703E] rounded-[10px] shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer border border-[#A4864E]/20 group"
                   >
-                    <Printer className="w-3.5 h-3.5 text-[#A4864E]" />
+                    <Printer className="w-4 h-4 text-[#8F7448] group-hover:text-[#F1EEE6] transition-colors" />
                     <span>Print Dossier</span>
                   </Link>
 
                   <button
                     onClick={() => setIsDecisionOpen(true)}
-                    className="px-5 py-2.5 text-xs font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] shadow-sm flex items-center gap-2 transition-all cursor-pointer border border-[#24221E]/20"
+                    className="w-full px-5 py-2 text-xs font-bold text-[#8F7448] bg-[#A4864E]/10 hover:bg-[#8A703E] hover:text-[#F1EEE6] hover:border-[#8A703E] rounded-[10px] shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer border border-[#A4864E]/20 group"
                   >
-                    <Scale className="w-4 h-4 text-[#F5F2EB]" />
+                    <Scale className="w-4 h-4 text-[#8F7448] group-hover:text-[#F1EEE6] transition-colors" />
                     <span>Sign Decision</span>
                   </button>
                 </div>
@@ -441,7 +441,7 @@ function VerificationContent() {
                   </span>
                   <button
                     onClick={() => setIsDecisionOpen(true)}
-                    className="w-full py-2.5 font-bold text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] shadow-sm hover:-translate-y-0.5 transition-all cursor-pointer border border-[#24221E]/20"
+                    className="w-full py-2.5 font-bold text-[#F1EEE6] bg-gradient-to-r from-[#A4864E] to-[#725C3A] hover:from-[#8A703E] hover:to-[#5E4C2F] rounded-[10px] shadow-sm hover:-translate-y-0.5 transition-all cursor-pointer"
                   >
                     Record Officer Decision
                   </button>

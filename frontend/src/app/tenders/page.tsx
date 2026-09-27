@@ -171,22 +171,22 @@ export default function TendersPage() {
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="border-b border-black/[0.08] text-[10px] font-extrabold uppercase tracking-widest text-[#817C72]">
-                    <th className="py-3 px-4">Tender ID</th>
-                    <th className="py-3 px-4">Tender Name</th>
-                    <th className="py-3 px-4">Organization / Department</th>
-                    <th className="py-3 px-4">Est. Value (INR)</th>
-                    <th className="py-3 px-4">AI Requirements</th>
-                    <th className="py-3 px-4">Status</th>
-                    <th className="py-3 px-4 text-right">Actions</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Tender ID</th>
+                    <th className="py-3 px-4 w-[35%] min-w-[250px]">Tender Name</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Organization</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Est. Value (INR)</th>
+                    <th className="py-3 px-4 whitespace-nowrap">AI Requirements</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Status</th>
+                    <th className="py-3 px-4 text-right whitespace-nowrap">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-black/[0.06]">
                   {tenders.map((t) => (
                     <tr key={t.tender_id} className="hover:bg-black/[0.03] transition-colors duration-150">
-                      <td className="py-4 px-4 font-mono font-bold text-[#725C3A]">
+                      <td className="py-4 px-4 font-mono font-bold text-[#725C3A] whitespace-nowrap">
                         {t.tender_id}
                       </td>
-                      <td className="py-4 px-4 max-w-sm">
+                      <td className="py-4 px-4">
                         <span className="font-bold text-[#24221E] block leading-snug">
                           {t.title}
                         </span>
@@ -194,35 +194,35 @@ export default function TendersPage() {
                           {t.category || "Goods"}
                         </span>
                       </td>
-                      <td className="py-4 px-4 text-[#625F57]">
+                      <td className="py-4 px-4 text-[#625F57] whitespace-nowrap">
                         {t.department}
                       </td>
-                      <td className="py-4 px-4 font-mono font-bold text-[#24221E]">
+                      <td className="py-4 px-4 font-mono font-bold text-[#24221E] whitespace-nowrap">
                         ₹{t.estimated_value_inr?.toLocaleString("en-IN") || "4,50,00,000"}
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 whitespace-nowrap">
                         <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#A4864E]/12 text-[#725C3A] border border-[#A4864E]/25 font-bold text-[10px] uppercase tracking-wide">
                           <Layers className="w-3 h-3" />
                           <span>{t.requirements_count || 10} Extracted Rules</span>
                         </span>
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 whitespace-nowrap">
                         <StatusBadge status={t.status || "ACTIVE"} size="sm" />
                       </td>
                       <td className="py-4 px-4 text-right">
                         <div className="flex items-center justify-end gap-2.5">
                           <Link
                             href={`/tenders/${encodeURIComponent(t.tender_id)}`}
-                            className="px-3 py-1.5 text-xs font-semibold bg-[#E3DFD6] hover:bg-[#EEEAE1] text-[#24221E] border border-black/[0.10] rounded-[8px] transition-all"
+                            className="inline-flex items-center justify-center h-8 whitespace-nowrap px-3 text-xs font-semibold bg-[#E3DFD6] hover:bg-[#EEEAE1] text-[#24221E] border border-black/[0.10] rounded-[8px] transition-all"
                           >
                             View Criteria
                           </Link>
                           <Link
                             href={`/verification?tender=${encodeURIComponent(t.tender_id)}`}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#A4864E]/15 hover:bg-[#A4864E]/25 text-[#725C3A] hover:text-[#24221E] border border-[#A4864E]/30 rounded-[8px] transition-all"
+                            className="inline-flex items-center justify-center h-8 whitespace-nowrap gap-1.5 px-3 text-xs font-semibold bg-[#A4864E]/15 hover:bg-[#A4864E]/25 text-[#725C3A] hover:text-[#24221E] border border-[#A4864E]/30 rounded-[8px] transition-all"
                           >
                             <span>Verify Bids</span>
-                            <ArrowRight className="w-3 h-3" />
+                            <ArrowRight className="w-3.5 h-3.5" />
                           </Link>
                         </div>
                       </td>
