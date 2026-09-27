@@ -140,7 +140,7 @@ export interface OfficerDecision {
 }
 
 export interface AuditLog {
-  id: number;
+  id: number | string;
   timestamp: string;
   user: string;
   action: string;
@@ -148,6 +148,7 @@ export interface AuditLog {
   entity_id?: string;
   source: string;
   result?: string;
+  hash?: string;
   details?: Record<string, any>;
 }
 

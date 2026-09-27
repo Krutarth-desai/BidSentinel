@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { GlobalBackground } from "@/components/GlobalBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,9 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark h-full bg-black">
-      <body className={`${inter.className} min-h-full bg-black text-white selection:bg-blue-600/30 selection:text-white flex flex-col antialiased`}>
-        {children}
+    <html lang="en" className="h-full bg-[#C9C5BC]">
+      <body className={`${inter.className} min-h-full bg-[#C9C5BC] text-[#24221E] selection:bg-[#A4864E]/20 selection:text-[#24221E] flex flex-col antialiased relative`}>
+        <GlobalBackground />
+        <div className="relative z-10 flex-1 flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );

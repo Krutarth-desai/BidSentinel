@@ -161,7 +161,6 @@ export default function AuditPage() {
     try {
       const data = await api.getAuditLogs(100);
       if (data && data.length > 0) {
-        // Merge with hashes if backend doesn't have them
         const enriched = data.map((l, i) => ({
           ...l,
           hash: l.hash || `0x${Math.abs(Math.sin(i + 1) * 16777215).toString(16).slice(0, 4)}...${Math.abs(Math.cos(i + 1) * 16777215).toString(16).slice(0, 4)}`,
@@ -207,185 +206,201 @@ export default function AuditPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white selection:bg-blue-600/30 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-transparent text-[#24221E] relative overflow-x-clip font-sans selection:bg-[#A4864E]/20 selection:text-[#24221E]">
       <Navbar />
 
-      <div className="flex-1 flex max-w-[1720px] w-full mx-auto">
+      <div className="flex-1 flex max-w-[1720px] w-full mx-auto relative z-10">
         <Sidebar />
 
         <main className="flex-1 p-6 lg:p-10 space-y-8 min-w-0">
           {/* ========================================================
-              Hero Section: Cryptographic Audit Ledger
+              Hero & Active Merkle Security Split (8:4 Bento Split)
              ======================================================== */}
-          <div className="relative rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-8 lg:p-10 shadow-[0_4px_30px_rgba(0,0,0,0.6)] overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left 8-Col: Hero Overview */}
+            <div className="lg:col-span-8 bento-card relative overflow-hidden p-8 lg:p-10 shadow-sm flex flex-col justify-between bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#A4864E]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#24221E]/10 to-transparent pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="space-y-2 max-w-3xl">
+              <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                  <span className="text-[10px] font-bold text-[#A4864E] uppercase tracking-widest px-3 py-1 rounded-full bg-[#A4864E]/15 border border-[#A4864E]/30">
                     CRYPTOGRAPHIC AUDIT &amp; GOVERNANCE LEDGER
                   </span>
-                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
-                    <Fingerprint className="w-3 h-3" />
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#188A5E]/15 border border-[#188A5E]/30 text-[#188A5E] text-[10px] font-bold uppercase tracking-wider">
+                    <Fingerprint className="w-3.5 h-3.5" />
                     <span>SHA-256 Chained</span>
                   </div>
                 </div>
-                <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                <h1 className="text-3xl lg:text-4xl font-extrabold text-[#24221E] tracking-tight leading-tight">
                   Immutable Procurement Audit Trail
                 </h1>
-                <p className="text-sm text-slate-400 font-normal leading-relaxed pt-1">
+                <p className="text-sm text-[#625F57] font-normal leading-relaxed max-w-2xl">
                   Cryptographically structured, tamper-evident chronological ledger recording all AI evaluations, statutory connector lookups, and administrative determinations.
                 </p>
               </div>
 
-              {/* Actions on the right */}
-              <div className="flex items-center gap-3 shrink-0">
+              {/* Action Toolbar inside Hero */}
+              <div className="relative z-10 flex items-center gap-3 mt-8 pt-6 border-t border-[#24221E]/10">
                 <button
                   onClick={handleVerifyChain}
                   disabled={isVerifyingChain}
-                  className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs tracking-wider uppercase shadow-[0_0_20px_rgba(59,130,246,0.35)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-blue-400/40 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
+                  className="px-5 py-3 rounded-[10px] bg-[#24221E] hover:bg-[#36332E] text-[#F5F2EB] font-black text-xs tracking-wider uppercase shadow-sm border border-[#24221E]/20 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
                 >
-                  <ShieldCheck className={`w-4 h-4 ${isVerifyingChain ? "animate-spin text-amber-300" : "text-blue-200"}`} />
+                  <ShieldCheck className={`w-4 h-4 ${isVerifyingChain ? "animate-spin text-[#A4864E]" : "text-[#F5F2EB]"}`} />
                   <span>{isVerifyingChain ? "Verifying Hashes..." : "Verify Hash Chain"}</span>
                 </button>
 
                 <button
                   onClick={loadLogs}
-                  className="p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.10] hover:border-blue-400/40 hover:-translate-y-0.5 text-slate-400 hover:text-white transition-all cursor-pointer shadow-[0_2px_12px_rgba(0,0,0,0.4)]"
+                  className="p-3 rounded-[10px] bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 hover:border-[#A4864E]/40 hover:-translate-y-0.5 text-[#625F57] hover:text-[#24221E] transition-all cursor-pointer shadow-sm"
                   title="Refresh Audit Trail"
                 >
-                  <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin text-blue-400" : ""}`} />
+                  <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin text-[#A4864E]" : ""}`} />
                 </button>
+              </div>
+            </div>
+
+            {/* Right 4-Col: Merkle Root & Consensus Health Card */}
+            <div className="lg:col-span-4 bento-card p-7 flex flex-col justify-between space-y-6 bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="p-2 bg-[#A4864E]/15 border border-[#A4864E]/30 rounded-[10px] text-[#A4864E]">
+                      <Key className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-bold text-[#24221E] uppercase tracking-wider">
+                      Merkle Root Security
+                    </span>
+                  </div>
+                  <span className="w-2 h-2 rounded-full bg-[#188A5E] shadow-sm animate-pulse" />
+                </div>
+
+                <div className="space-y-1.5 p-3.5 bg-[#C9C5BC]/60 rounded-[10px] border border-[#24221E]/10">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#625F57] block">
+                    Active SHA-256 Merkle Root Hash
+                  </span>
+                  <span className="font-mono text-xs text-[#A4864E] block break-all font-medium">
+                    0x9c48f219e831ab0d45ee901844b2ca5590c1f4e72ba68c3e8002931a7ff8b012
+                  </span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#24221E]/10 space-y-2.5 text-xs">
+                <div className="flex items-center justify-between text-[#625F57]">
+                  <span>Consensus Engine</span>
+                  <span className="font-mono text-[#24221E] font-semibold">PoA (NIC GovNode)</span>
+                </div>
+                <div className="flex items-center justify-between text-[#625F57]">
+                  <span>Ledger Integrity State</span>
+                  <span className="text-[#188A5E] font-bold flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> 100% Sealed
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* ========================================================
-              Audit Security KPI Cards (4 Individual Glass Cards)
-             ======================================================== */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1: Chained Events (Blue) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-blue-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(50,110,255,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-blue-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-blue-300 transition-colors">
+              Audit Security KPI Cards (5:4:3 Asymmetrical Bento Cluster)
+              ======================================================== */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {/* Card 1: Chained Events (5 Spans - Primary Weight) */}
+            <div className="md:col-span-12 lg:col-span-5 bento-card p-6 hover:-translate-y-0.5 transition-all duration-200 group overflow-hidden relative bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#A4864E]/50 rounded-b" />
+              <div className="flex items-center justify-between text-[#625F57] mb-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#625F57] group-hover:text-[#24221E] transition-colors">
                   Chained Events
                 </span>
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-[10px] bg-[#A4864E]/15 border border-[#A4864E]/30 text-[#A4864E] flex items-center justify-center shadow-sm">
                   <Database className="w-4 h-4" />
                 </div>
               </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-1">
+              <div className="text-3xl lg:text-4xl font-extrabold text-[#24221E] tracking-tight mb-1">
                 142
               </div>
-              <p className="text-xs text-slate-400 font-normal">100% Cryptographically Sealed</p>
+              <p className="text-xs text-[#625F57] font-normal">100% Cryptographically Sealed</p>
 
               {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
+              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity">
                 <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="audit-grad-blue" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#A4864E" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#A4864E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <path d="M0,36 Q30,22 65,28 T130,16 T170,20 T200,6 L200,48 L0,48 Z" fill="url(#audit-grad-blue)" />
-                  <path d="M0,36 Q30,22 65,28 T130,16 T170,20 T200,6" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M0,36 Q30,22 65,28 T130,16 T170,20 T200,6" fill="none" stroke="#A4864E" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
 
-            {/* Card 2: Officer Determinations (Violet) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-purple-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(168,85,247,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-purple-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-purple-300 transition-colors">
+            {/* Card 2: Officer Decisions (4 Spans - Medium Weight) */}
+            <div className="md:col-span-6 lg:col-span-4 bento-card p-6 hover:-translate-y-0.5 transition-all duration-200 group overflow-hidden relative bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#A4864E]/50 rounded-b" />
+              <div className="flex items-center justify-between text-[#625F57] mb-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#625F57] group-hover:text-[#24221E] transition-colors">
                   Officer Decisions
                 </span>
-                <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-[10px] bg-[#A4864E]/15 border border-[#A4864E]/30 text-[#A4864E] flex items-center justify-center shadow-sm">
                   <Lock className="w-4 h-4" />
                 </div>
               </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-1">
+              <div className="text-3xl lg:text-4xl font-extrabold text-[#24221E] tracking-tight mb-1">
                 49
               </div>
-              <p className="text-xs text-slate-400 font-normal">Signed administrative records</p>
+              <p className="text-xs text-[#625F57] font-normal">Signed administrative records</p>
 
               {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
+              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity">
                 <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="audit-grad-purple" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#A4864E" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#A4864E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <path d="M0,38 Q35,30 75,20 T145,24 T180,10 T200,4 L200,48 L0,48 Z" fill="url(#audit-grad-purple)" />
-                  <path d="M0,38 Q35,30 75,20 T145,24 T180,10 T200,4" fill="none" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M0,38 Q35,30 75,20 T145,24 T180,10 T200,4" fill="none" stroke="#A4864E" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
 
-            {/* Card 3: Connector Lookups (Emerald) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-emerald-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(16,185,129,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-emerald-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-emerald-300 transition-colors">
-                  Connector Lookups
+            {/* Card 3: Connector Lookups & Integrity Alerts (3 Spans - Compact Dual Metric) */}
+            <div className="md:col-span-6 lg:col-span-3 bento-card p-6 hover:-translate-y-0.5 transition-all duration-200 group overflow-hidden relative flex flex-col justify-between bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#188A5E]/50 rounded-b" />
+              <div className="flex items-center justify-between text-[#625F57] mb-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#625F57] group-hover:text-[#188A5E] transition-colors">
+                  Lookups &amp; Alerts
                 </span>
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-[10px] bg-[#188A5E]/15 border border-[#188A5E]/30 text-[#188A5E] flex items-center justify-center shadow-sm">
                   <Cpu className="w-4 h-4" />
                 </div>
               </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-emerald-400 tracking-tight mb-1">
-                78
+
+              <div className="grid grid-cols-2 gap-3 my-1">
+                <div>
+                  <div className="text-2xl font-extrabold text-[#188A5E] tracking-tight">78</div>
+                  <p className="text-[10px] text-[#625F57] font-normal">Connector Queries</p>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-[#188A5E] tracking-tight">0</div>
+                  <p className="text-[10px] text-[#625F57] font-normal">Tamper Alerts</p>
+                </div>
               </div>
-              <p className="text-xs text-slate-400 font-normal">Statutory API transactions</p>
 
               {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
+              <div className="mt-3 pt-2 -mx-6 -mb-6 h-10 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity">
                 <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="audit-grad-emerald" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#188A5E" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#188A5E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <path d="M0,32 Q35,22 70,26 T135,14 T175,18 T200,6 L200,48 L0,48 Z" fill="url(#audit-grad-emerald)" />
-                  <path d="M0,32 Q35,22 70,26 T135,14 T175,18 T200,6" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Card 4: Integrity Violations (Green/Amber) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-emerald-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(16,185,129,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-emerald-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-emerald-300 transition-colors">
-                  Tamper Alerts
-                </span>
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                  <CheckCircle2 className="w-4 h-4" />
-                </div>
-              </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-emerald-400 tracking-tight mb-1">
-                0
-              </div>
-              <p className="text-xs text-slate-400 font-normal">Zero integrity anomalies detected</p>
-
-              {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
-                <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="audit-grad-zero" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,44 L200,44 L200,48 L0,48 Z" fill="url(#audit-grad-zero)" />
-                  <path d="M0,44 L200,44" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M0,32 Q35,22 70,26 T135,14 T175,18 T200,6" fill="none" stroke="#188A5E" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
@@ -394,16 +409,16 @@ export default function AuditPage() {
           {/* ========================================================
               Merkle Root & Hash Chain Status Banner
              ======================================================== */}
-          <div className="rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.10] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="bento-card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#D8D4CB] border border-[#24221E]/10">
             <div className="flex items-center gap-3.5">
-              <div className="p-2.5 bg-blue-500/10 border border-blue-500/25 rounded-xl text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+              <div className="p-2.5 bg-[#A4864E]/15 border border-[#A4864E]/30 rounded-[10px] text-[#A4864E]">
                 <Key className="w-4 h-4" />
               </div>
               <div className="space-y-0.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#625F57] block">
                   Active Cryptographic Merkle Root
                 </span>
-                <span className="font-mono text-xs text-slate-200 block truncate">
+                <span className="font-mono text-xs text-[#24221E] block truncate">
                   0x9c48f219e831ab0d45ee901844b2ca5590c1f4e72ba68c3e8002931a7ff8b012
                 </span>
               </div>
@@ -411,26 +426,26 @@ export default function AuditPage() {
 
             <div className="flex items-center gap-4 shrink-0 text-xs">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] animate-pulse" />
-                <span className="font-semibold text-emerald-400">Node Sync: Synchronized</span>
+                <span className="w-2 h-2 rounded-full bg-[#188A5E] shadow-sm animate-pulse" />
+                <span className="font-semibold text-[#188A5E]">Node Sync: Synchronized</span>
               </div>
-              <span className="text-slate-600">|</span>
-              <span className="text-slate-400 font-mono text-[11px]">Consensus: PoA (NIC GovNode)</span>
+              <span className="text-[#817C72]">|</span>
+              <span className="text-[#625F57] font-mono text-[11px]">Consensus: PoA (NIC GovNode)</span>
             </div>
           </div>
 
           {/* ========================================================
               Search & Filter Toolbar
              ======================================================== */}
-          <div className="rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.10] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row gap-4 items-center justify-between">
+          <div className="bento-card p-5 flex flex-col sm:flex-row gap-4 items-center justify-between bg-[#D8D4CB] border border-[#24221E]/10">
             <div className="relative w-full sm:w-96">
-              <Search className="w-4 h-4 absolute left-3.5 top-3 text-slate-500 pointer-events-none" />
+              <Search className="w-4 h-4 absolute left-3.5 top-3 text-[#817C72] pointer-events-none" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search action, officer email, entity ID, or hash..."
-                className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-white/[0.10] bg-white/[0.06] text-white placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.09] focus:ring-1 focus:ring-blue-500/30 transition-all"
+                className="w-full pl-10 pr-4 py-2.5 text-xs rounded-[10px] border border-[#24221E]/10 bg-[#C9C5BC]/60 text-[#24221E] placeholder-[#817C72] focus:outline-none focus:border-[#A4864E] focus:bg-[#C9C5BC] transition-all"
               />
             </div>
 
@@ -445,10 +460,10 @@ export default function AuditPage() {
                 <button
                   key={f.id}
                   onClick={() => setSelectedFilter(f.id)}
-                  className={`px-3.5 py-1.5 rounded-xl font-bold text-[11px] uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-[10px] font-bold text-[11px] uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                     selectedFilter === f.id
-                      ? "bg-blue-600 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)] border border-blue-400/40 hover:-translate-y-0.5"
-                      : "bg-white/[0.02] border border-white/[0.06] text-slate-400 hover:text-white hover:bg-white/[0.05]"
+                      ? "bg-[#24221E] text-[#F5F2EB] shadow-sm border border-[#24221E]/20 font-black hover:-translate-y-0.5"
+                      : "bg-[#C9C5BC]/40 border border-[#24221E]/10 text-[#625F57] hover:text-[#24221E] hover:bg-[#C9C5BC]"
                   }`}
                 >
                   {f.label}
@@ -460,17 +475,17 @@ export default function AuditPage() {
           {/* ========================================================
               Audit Logs Table
              ======================================================== */}
-          <div className="rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-7 shadow-[0_4px_30px_rgba(0,0,0,0.6)] space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+          <div className="bento-card p-7 space-y-6 bg-[#D8D4CB] border border-[#24221E]/10">
+            <div className="flex items-center justify-between pb-4 border-b border-[#24221E]/10">
               <div>
-                <h2 className="text-base font-bold text-white tracking-tight">
+                <h2 className="text-base font-bold text-[#24221E] tracking-tight">
                   Chained Ledger Records ({filteredLogs.length})
                 </h2>
-                <p className="text-xs text-slate-400 font-normal mt-0.5">
+                <p className="text-xs text-[#625F57] font-normal mt-0.5">
                   Chronological tamper-evident records signed with SHA-256 digital seals
                 </p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+              <span className="text-[10px] font-mono text-[#625F57] uppercase tracking-widest px-2.5 py-1 rounded-[8px] bg-[#C9C5BC] border border-[#24221E]/10">
                 Real-Time Append-Only Log
               </span>
             </div>
@@ -478,59 +493,59 @@ export default function AuditPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-white/[0.08] text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    <th className="py-3 px-4">Timestamp (UTC)</th>
-                    <th className="py-3 px-4">Actor / System User</th>
-                    <th className="py-3 px-4">Action Code</th>
-                    <th className="py-3 px-4">Target Entity</th>
-                    <th className="py-3 px-4">Cryptographic Seal</th>
-                    <th className="py-3 px-4">Result State</th>
-                    <th className="py-3 px-4 text-right">Proof</th>
+                  <tr className="border-b border-[#24221E]/10 text-[10px] font-bold uppercase tracking-wider text-[#625F57]">
+                    <th className="py-3.5 px-4">Timestamp (UTC)</th>
+                    <th className="py-3.5 px-4">Actor / System User</th>
+                    <th className="py-3.5 px-4">Action Code</th>
+                    <th className="py-3.5 px-4">Target Entity</th>
+                    <th className="py-3.5 px-4">Cryptographic Seal</th>
+                    <th className="py-3.5 px-4">Result State</th>
+                    <th className="py-3.5 px-4 text-right">Proof</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/[0.04]">
+                <tbody className="divide-y divide-[#24221E]/08">
                   {filteredLogs.map((log) => (
-                    <tr key={log.id} className="hover:bg-white/[0.05] transition-colors duration-150">
-                      <td className="py-4 px-4 font-mono text-slate-400 whitespace-nowrap text-[11px]">
+                    <tr key={log.id} className="hover:bg-[#C9C5BC]/50 transition-colors duration-150">
+                      <td className="py-4 px-4 font-mono text-[#625F57] whitespace-nowrap text-[11px]">
                         {log.timestamp}
                       </td>
                       <td className="py-4 px-4">
-                        <span className="font-semibold text-white block">
+                        <span className="font-semibold text-[#24221E] block">
                           {log.user}
                         </span>
-                        <span className="text-[10px] text-slate-500 font-mono">
+                        <span className="text-[10px] text-[#817C72] font-mono">
                           ID: {log.id}
                         </span>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="font-mono font-bold text-blue-400">
+                        <span className="font-mono font-bold text-[#A4864E]">
                           {log.action}
                         </span>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/[0.10] text-slate-300 font-semibold text-[10px] uppercase tracking-wider">
+                        <span className="px-2 py-0.5 rounded-[8px] bg-[#C9C5BC] border border-[#24221E]/10 text-[#625F57] font-semibold text-[10px] uppercase tracking-wider">
                           {log.entity}
                         </span>
                         {log.entity_id && (
-                          <span className="font-mono text-blue-400 block text-[11px] mt-1">
+                          <span className="font-mono text-[#A4864E] block text-[11px] mt-1">
                             {log.entity_id}
                           </span>
                         )}
                       </td>
-                      <td className="py-4 px-4 font-mono text-[11px] text-emerald-400">
-                        <span className="bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      <td className="py-4 px-4 font-mono text-[11px] text-[#188A5E]">
+                        <span className="bg-[#188A5E]/15 px-2 py-0.5 rounded-[8px] border border-[#188A5E]/30">
                           {log.hash || "0x9f1a...44c2"}
                         </span>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 font-bold text-[10px] tracking-wider uppercase">
+                        <span className="px-2.5 py-1 rounded-full bg-[#188A5E]/15 text-[#188A5E] border border-[#188A5E]/30 font-bold text-[10px] tracking-wider uppercase">
                           {log.result || "VERIFIED"}
                         </span>
                       </td>
                       <td className="py-4 px-4 text-right">
                         <button
                           onClick={() => setInspectLog(log)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/25 rounded-lg transition-all shadow-[0_0_12px_rgba(59,130,246,0.1)] cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#24221E] bg-[#A4864E]/15 hover:bg-[#A4864E]/25 border border-[#A4864E]/30 rounded-[8px] transition-all shadow-sm cursor-pointer hover:-translate-y-0.5"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Inspect</span>
@@ -547,70 +562,70 @@ export default function AuditPage() {
 
       {/* Cryptographic Proof Modal */}
       {inspectLog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="w-full max-w-2xl bg-black/95 rounded-[22px] shadow-[0_12px_60px_rgba(0,0,0,0.9)] border border-white/[0.12] overflow-hidden flex flex-col backdrop-blur-2xl">
-            <div className="flex items-center justify-between px-7 py-5 border-b border-white/[0.08] bg-white/[0.02]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#24221E]/60 backdrop-blur-md">
+          <div className="w-full max-w-2xl bg-[#E3DFD6] rounded-[24px] shadow-2xl border border-[#24221E]/15 overflow-hidden flex flex-col backdrop-blur-2xl text-[#24221E]">
+            <div className="flex items-center justify-between px-7 py-5 border-b border-[#24221E]/10 bg-[#D8D4CB]/50">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-blue-500/10 text-blue-400 border border-blue-500/25 rounded-xl shadow-[0_0_12px_rgba(59,130,246,0.2)]">
+                <div className="p-2.5 bg-[#A4864E]/15 text-[#A4864E] border border-[#A4864E]/30 rounded-[10px] shadow-sm">
                   <Fingerprint className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white">
+                  <h3 className="text-base font-bold text-[#24221E]">
                     Cryptographic Audit Event Proof
                   </h3>
-                  <p className="text-xs text-slate-400 font-mono">
+                  <p className="text-xs text-[#625F57] font-mono">
                     Record ID: {inspectLog.id} • Action: {inspectLog.action}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setInspectLog(null)}
-                className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-white/[0.05] transition-colors cursor-pointer"
+                className="p-2 text-[#625F57] hover:text-[#24221E] rounded-[10px] hover:bg-[#C9C5BC] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="p-7 space-y-5 max-h-[75vh] overflow-y-auto">
-              <div className="p-4 bg-white/[0.02] rounded-xl border border-white/[0.06] grid grid-cols-2 gap-4 text-xs">
+              <div className="p-4 bg-[#D8D4CB] rounded-[10px] border border-[#24221E]/10 grid grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Timestamp:</span>
-                  <span className="font-mono text-white text-sm">{inspectLog.timestamp}</span>
+                  <span className="text-[#625F57] block text-[10px] uppercase font-bold tracking-wider">Timestamp:</span>
+                  <span className="font-mono text-[#24221E] text-sm">{inspectLog.timestamp}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">User / Initiator:</span>
-                  <span className="text-white text-sm font-semibold">{inspectLog.user}</span>
+                  <span className="text-[#625F57] block text-[10px] uppercase font-bold tracking-wider">User / Initiator:</span>
+                  <span className="text-[#24221E] text-sm font-semibold">{inspectLog.user}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Entity &amp; Target:</span>
-                  <span className="font-mono text-blue-400 text-sm">{inspectLog.entity} ({inspectLog.entity_id || "N/A"})</span>
+                  <span className="text-[#625F57] block text-[10px] uppercase font-bold tracking-wider">Entity &amp; Target:</span>
+                  <span className="font-mono text-[#A4864E] text-sm">{inspectLog.entity} ({inspectLog.entity_id || "N/A"})</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Verification Seal:</span>
-                  <span className="font-mono text-emerald-400 text-sm font-bold">{inspectLog.hash}</span>
+                  <span className="text-[#625F57] block text-[10px] uppercase font-bold tracking-wider">Verification Seal:</span>
+                  <span className="font-mono text-[#188A5E] text-sm font-bold">{inspectLog.hash}</span>
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <span className="text-[11px] font-bold text-[#625F57] uppercase tracking-wider">
                   Cryptographically Committed Payload:
                 </span>
-                <pre className="p-4 bg-black rounded-xl border border-white/[0.08] font-mono text-xs text-slate-300 overflow-x-auto leading-relaxed">
+                <pre className="p-4 bg-[#24221E] rounded-[10px] border border-[#24221E]/20 font-mono text-xs text-[#F5F2EB] overflow-x-auto leading-relaxed">
                   {JSON.stringify(inspectLog.details || {}, null, 2)}
                 </pre>
               </div>
 
-              <div className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center gap-2 text-xs text-emerald-400 font-medium">
+              <div className="p-3.5 bg-[#188A5E]/15 border border-[#188A5E]/30 rounded-[10px] flex items-center gap-2 text-xs text-[#188A5E] font-medium">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>SHA-256 Merkle inclusion proof verified against GeM NIC GovNode root certificate.</span>
               </div>
             </div>
 
-            <div className="flex items-center justify-between px-7 py-4 border-t border-white/[0.08] bg-white/[0.02] text-xs">
-              <span className="text-slate-500 font-mono text-[11px]">Audit Block: 0x9021 • PoA Consensus</span>
+            <div className="flex items-center justify-between px-7 py-4 border-t border-[#24221E]/10 bg-[#D8D4CB]/50 text-xs">
+              <span className="text-[#625F57] font-mono text-[11px]">Audit Block: 0x9021 • PoA Consensus</span>
               <button
                 onClick={() => setInspectLog(null)}
-                className="px-5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-colors cursor-pointer"
+                className="px-5 py-2 text-xs font-semibold text-[#24221E] bg-[#C9C5BC] hover:bg-[#C9C5BC]/80 border border-[#24221E]/10 rounded-[10px] transition-colors cursor-pointer"
               >
                 Close Proof
               </button>

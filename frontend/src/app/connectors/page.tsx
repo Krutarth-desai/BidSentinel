@@ -155,174 +155,184 @@ export default function ConnectorsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white selection:bg-blue-600/30 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-transparent text-[#24221E] relative overflow-x-clip font-sans selection:bg-[#A4864E]/20 selection:text-[#24221E]">
       <Navbar />
 
-      <div className="flex-1 flex max-w-[1720px] w-full mx-auto">
+      <div className="flex-1 flex max-w-[1720px] w-full mx-auto relative z-10">
         <Sidebar />
 
         <main className="flex-1 p-6 lg:p-10 space-y-8 min-w-0">
           {/* ========================================================
-              Hero Section: Government Connectors Bus
+              Hero & Active Bus Status Split (8:4 Bento Split)
              ======================================================== */}
-          <div className="relative rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-8 lg:p-10 shadow-[0_4px_30px_rgba(0,0,0,0.6)] overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left 8-Col: Hero Overview */}
+            <div className="lg:col-span-8 bento-card relative overflow-hidden p-8 lg:p-10 shadow-sm flex flex-col justify-between bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#A4864E]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#24221E]/10 to-transparent pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="space-y-2 max-w-3xl">
+              <div className="relative z-10 space-y-3.5">
                 <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                  <span className="text-[10px] font-bold text-[#A4864E] uppercase tracking-widest px-3 py-1 rounded-full bg-[#A4864E]/15 border border-[#A4864E]/30">
                     EXTENSIBLE STATUTORY INTEGRATION BUS
                   </span>
                   <PrototypeBadge />
                 </div>
-                <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                <h1 className="text-3xl lg:text-4xl font-extrabold text-[#24221E] tracking-tight leading-tight">
                   Government Authority Connectors
                 </h1>
-                <p className="text-sm text-slate-400 font-normal leading-relaxed pt-1">
+                <p className="text-sm text-[#625F57] font-normal leading-relaxed max-w-2xl">
                   Standardized high-speed connector adapters interfacing directly with statutory registries including GSTN, MCA-21, CBDT, EPFO, ESIC, DPIIT, and CVC Watchlists.
                 </p>
               </div>
 
-              {/* Actions on the right */}
-              <div className="flex items-center gap-3 shrink-0">
+              {/* Action Toolbar inside Hero */}
+              <div className="relative z-10 flex items-center gap-3 mt-8 pt-6 border-t border-[#24221E]/10">
                 <button
                   onClick={handlePingAll}
                   disabled={isPinging}
-                  className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs tracking-wider uppercase shadow-[0_0_20px_rgba(59,130,246,0.35)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-blue-400/40 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
+                  className="px-5 py-3 rounded-[10px] bg-[#24221E] hover:bg-[#36332E] text-[#F5F2EB] font-black text-xs tracking-wider uppercase shadow-sm border border-[#24221E]/20 hover:-translate-y-0.5 flex items-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
                 >
-                  <Activity className={`w-4 h-4 ${isPinging ? "animate-spin text-amber-300" : "text-blue-200"}`} />
+                  <Activity className={`w-4 h-4 ${isPinging ? "animate-spin text-[#A4864E]" : "text-[#F5F2EB]"}`} />
                   <span>{isPinging ? "Pinging Gateways..." : pingSuccess ? "10/10 Online ✓" : "Ping All Gateways"}</span>
                 </button>
+              </div>
+            </div>
+
+            {/* Right 4-Col: Bus Telemetry Card */}
+            <div className="lg:col-span-4 bento-card p-7 flex flex-col justify-between space-y-6 bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="p-2 bg-[#A4864E]/15 border border-[#A4864E]/30 rounded-[10px] text-[#A4864E]">
+                      <Network className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-bold text-[#24221E] uppercase tracking-wider">
+                      Gateway Bus Health
+                    </span>
+                  </div>
+                  <span className="w-2 h-2 rounded-full bg-[#188A5E] shadow-sm animate-pulse" />
+                </div>
+
+                <div className="space-y-2 p-3.5 bg-[#C9C5BC]/60 rounded-[12px] border border-[#24221E]/10">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[#625F57]">Endpoint Status:</span>
+                    <span className="text-[#188A5E] font-bold">10/10 Online</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[#625F57]">Bus Encryption:</span>
+                    <span className="text-[#A4864E] font-mono font-semibold">mTLS / TLS 1.3</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#24221E]/10 flex items-center justify-between text-xs text-[#625F57]">
+                <span>Avg Processing Latency</span>
+                <span className="font-mono text-[#24221E] font-bold text-sm">38ms</span>
               </div>
             </div>
           </div>
 
           {/* ========================================================
-              Connector Bus Health KPI Cards (4 Individual Glass Cards)
-             ======================================================== */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1: Active Gateways (Blue) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-blue-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(50,110,255,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-blue-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-blue-300 transition-colors">
+              Connector Bus Health KPI Cards (5:4:3 Asymmetrical Bento Cluster)
+              ======================================================== */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {/* Card 1: Connected Gateways (5 Spans - Primary Weight) */}
+            <div className="md:col-span-12 lg:col-span-5 bento-card p-6 hover:-translate-y-0.5 transition-all duration-200 group overflow-hidden relative bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#A4864E]/50 rounded-b" />
+              <div className="flex items-center justify-between text-[#625F57] mb-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#625F57] group-hover:text-[#24221E] transition-colors">
                   Connected Gateways
                 </span>
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-[10px] bg-[#A4864E]/15 border border-[#A4864E]/30 text-[#A4864E] flex items-center justify-center shadow-sm">
                   <Network className="w-4 h-4" />
                 </div>
               </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-1">
-                10 <span className="text-xl text-slate-500 font-normal">/ 10</span>
+              <div className="text-3xl lg:text-4xl font-extrabold text-[#24221E] tracking-tight mb-1">
+                10 <span className="text-xl text-[#817C72] font-normal">/ 10</span>
               </div>
-              <p className="text-xs text-slate-400 font-normal">All official endpoints online</p>
+              <p className="text-xs text-[#625F57] font-normal">All official endpoints online</p>
 
               {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
+              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity">
                 <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="conn-grad-blue" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#A4864E" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#A4864E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <path d="M0,32 Q40,24 80,26 T140,16 T180,18 T200,8 L200,48 L0,48 Z" fill="url(#conn-grad-blue)" />
-                  <path d="M0,32 Q40,24 80,26 T140,16 T180,18 T200,8" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M0,32 Q40,24 80,26 T140,16 T180,18 T200,8" fill="none" stroke="#A4864E" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
 
-            {/* Card 2: Concordance Match Rate (Emerald) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-emerald-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(16,185,129,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-emerald-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-emerald-300 transition-colors">
+            {/* Card 2: Concordance Match Rate (4 Spans - Medium Weight) */}
+            <div className="md:col-span-6 lg:col-span-4 bento-card p-6 hover:-translate-y-0.5 transition-all duration-200 group overflow-hidden relative bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#188A5E]/50 rounded-b" />
+              <div className="flex items-center justify-between text-[#625F57] mb-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#625F57] group-hover:text-[#188A5E] transition-colors">
                   Concordance Rate
                 </span>
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-[10px] bg-[#188A5E]/15 border border-[#188A5E]/30 text-[#188A5E] flex items-center justify-center shadow-sm">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
               </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-emerald-400 tracking-tight mb-1">
+              <div className="text-3xl lg:text-4xl font-extrabold text-[#188A5E] tracking-tight mb-1">
                 98.4%
               </div>
-              <p className="text-xs text-slate-400 font-normal">Cross-registry entity match accuracy</p>
+              <p className="text-xs text-[#625F57] font-normal">Cross-registry entity match accuracy</p>
 
               {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
+              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity">
                 <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="conn-grad-emerald" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#188A5E" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#188A5E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <path d="M0,38 Q35,26 70,22 T140,16 T180,12 T200,4 L200,48 L0,48 Z" fill="url(#conn-grad-emerald)" />
-                  <path d="M0,38 Q35,26 70,22 T140,16 T180,12 T200,4" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M0,38 Q35,26 70,22 T140,16 T180,12 T200,4" fill="none" stroke="#188A5E" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
 
-            {/* Card 3: Average Query Latency (Violet) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-purple-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(168,85,247,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-purple-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-purple-300 transition-colors">
-                  Average Latency
+            {/* Card 3: Bus Latency & Debarment Watchlists (3 Spans - Dual Micro Metric) */}
+            <div className="md:col-span-6 lg:col-span-3 bento-card p-6 hover:-translate-y-0.5 transition-all duration-200 group overflow-hidden relative flex flex-col justify-between bg-[#D8D4CB] border border-[#24221E]/10">
+              <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#A4864E]/50 rounded-b" />
+              <div className="flex items-center justify-between text-[#625F57] mb-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#625F57] group-hover:text-[#A4864E] transition-colors">
+                  Telemetry &amp; Watchlists
                 </span>
-                <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-[10px] bg-[#A4864E]/15 border border-[#A4864E]/30 text-[#A4864E] flex items-center justify-center shadow-sm">
                   <Zap className="w-4 h-4" />
                 </div>
               </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-1">
-                38ms
+
+              <div className="grid grid-cols-2 gap-3 my-1">
+                <div>
+                  <div className="text-2xl font-extrabold text-[#24221E] tracking-tight">38ms</div>
+                  <p className="text-[10px] text-[#625F57] font-normal">Avg Latency</p>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-[#D97706] tracking-tight">3</div>
+                  <p className="text-[10px] text-[#625F57] font-normal">Debarment Lists</p>
+                </div>
               </div>
-              <p className="text-xs text-slate-400 font-normal">Real-time mock adapter bus</p>
 
               {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
+              <div className="mt-3 pt-2 -mx-6 -mb-6 h-10 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity">
                 <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="conn-grad-purple" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#A4864E" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#A4864E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <path d="M0,28 Q35,32 75,20 T145,26 T180,14 T200,8 L200,48 L0,48 Z" fill="url(#conn-grad-purple)" />
-                  <path d="M0,28 Q35,32 75,20 T145,26 T180,14 T200,8" fill="none" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Card 4: Statutory Watchlists (Amber) */}
-            <div className="relative rounded-[20px] bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border border-white/[0.10] hover:border-amber-500/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(245,158,11,0.14)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden group">
-              <div className="absolute top-0 left-6 right-6 h-[2px] bg-amber-500/50 rounded-b" />
-              <div className="flex items-center justify-between text-slate-400 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-amber-300 transition-colors">
-                  Debarment Watchlists
-                </span>
-                <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center">
-                  <Shield className="w-4 h-4" />
-                </div>
-              </div>
-              <div className="text-3xl lg:text-4xl font-extrabold text-amber-400 tracking-tight mb-1">
-                3
-              </div>
-              <p className="text-xs text-slate-400 font-normal">CVC, GeM &amp; CBDT defaulter lists</p>
-
-              {/* Glowing Line Chart at bottom */}
-              <div className="mt-4 pt-2 -mx-6 -mb-6 h-12 relative overflow-hidden pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity">
-                <svg className="w-full h-full" viewBox="0 0 200 48" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="conn-grad-amber" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,26 Q40,36 80,24 T140,28 T180,18 T200,22 L200,48 L0,48 Z" fill="url(#conn-grad-amber)" />
-                  <path d="M0,26 Q40,36 80,24 T140,28 T180,18 T200,22" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M0,28 Q35,32 75,20 T145,26 T180,14 T200,8" fill="none" stroke="#A4864E" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
@@ -330,33 +340,33 @@ export default function ConnectorsPage() {
 
           {/* ========================================================
               Quick Presets Scenarios Bar
-             ======================================================== */}
-          <div className="rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.10] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2.5">
+              ======================================================== */}
+          <div className="bento-card p-5 bg-[#D8D4CB] border border-[#24221E]/10">
+            <span className="text-[10px] font-bold text-[#625F57] uppercase tracking-widest block mb-2.5">
               1-Click Connector Validation Presets:
             </span>
             <div className="flex flex-wrap gap-2 text-xs">
               <button
                 onClick={() => handleQuickPreset("gst", "27DEMOA1234F1Z5")}
-                className="px-3.5 py-1.5 rounded-xl bg-white/[0.03] hover:bg-blue-600/15 border border-white/[0.08] hover:border-blue-500/40 text-slate-300 hover:text-white hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
+                className="px-3.5 py-1.5 rounded-[10px] bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 text-[#625F57] hover:text-[#24221E] hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
               >
                 GSTN: 27DEMOA1234F1Z5 (Compliant)
               </button>
               <button
                 onClick={() => handleQuickPreset("udyam", "UDYAM-MH-12-0001001")}
-                className="px-3.5 py-1.5 rounded-xl bg-white/[0.03] hover:bg-blue-600/15 border border-white/[0.08] hover:border-blue-500/40 text-slate-300 hover:text-white hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
+                className="px-3.5 py-1.5 rounded-[10px] bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 text-[#625F57] hover:text-[#24221E] hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
               >
                 Udyam: UDYAM-MH-12-0001001 (Small Enterprise)
               </button>
               <button
                 onClick={() => handleQuickPreset("mca", "U12345MH2020PTC100001")}
-                className="px-3.5 py-1.5 rounded-xl bg-white/[0.03] hover:bg-blue-600/15 border border-white/[0.08] hover:border-blue-500/40 text-slate-300 hover:text-white hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
+                className="px-3.5 py-1.5 rounded-[10px] bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 text-[#625F57] hover:text-[#24221E] hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
               >
                 MCA21: U12345MH2020PTC100001 (Active Private Ltd)
               </button>
               <button
                 onClick={() => handleQuickPreset("blacklist", "DEMOB7890C")}
-                className="px-3.5 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/25 text-red-300 hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
+                className="px-3.5 py-1.5 rounded-[10px] bg-[#D95757]/15 hover:bg-[#D95757]/25 border border-[#D95757]/30 text-[#D95757] hover:-translate-y-0.5 transition-all cursor-pointer font-medium"
               >
                 Watchlist: DEMOB7890C (CVC Debarred)
               </button>
@@ -364,11 +374,12 @@ export default function ConnectorsPage() {
           </div>
 
           {/* ========================================================
-              Connectors Grid (10 Government Registries)
-             ======================================================== */}
+              Connectors Grid (Asymmetrical Featured vs Standard Tiles)
+              ======================================================== */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {connectors.map((c) => {
               const isSelected = selectedConnector === c.id;
+              const isPrimary = c.id === "gst" || c.id === "mca" || c.id === "udyam";
               const meta = CONNECTOR_METADATA[c.id] || {
                 latency: "35ms",
                 protocol: "REST / JSON",
@@ -379,51 +390,54 @@ export default function ConnectorsPage() {
                 <div
                   key={c.id}
                   onClick={() => handleSelectConnector(c.id)}
-                  className={`relative p-6 rounded-[22px] border cursor-pointer transition-all duration-200 hover:-translate-y-0.5 flex flex-col justify-between group overflow-hidden ${
-                    isSelected
-                      ? "bg-blue-600/15 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.25)]"
-                      : "bg-white/[0.06] hover:bg-white/[0.09] backdrop-blur-xl border-white/[0.10] hover:border-blue-500/40 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_18px_rgba(50,110,255,0.12)]"
-                  }`}
+                  className={`bento-card ${isPrimary ? "md:col-span-2 lg:col-span-2" : "md:col-span-1 lg:col-span-1"} ${
+                    isSelected ? "border-[#A4864E] shadow-md bg-[#D8D4CB]" : "bg-[#D8D4CB] border-[#24221E]/10"
+                  } p-6 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 flex flex-col justify-between group overflow-hidden relative border`}
                 >
-                  {/* Subtle top indicator bar */}
+                  {/* Top glowing bar */}
                   <div
                     className={`absolute top-0 left-6 right-6 h-[2px] rounded-b transition-colors ${
-                      isSelected ? "bg-blue-400" : "bg-transparent group-hover:bg-white/20"
+                      isSelected ? "bg-[#A4864E]" : "bg-transparent group-hover:bg-[#24221E]/20"
                     }`}
                   />
 
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-extrabold text-blue-400">
+                        {isPrimary && (
+                          <span className="px-2 py-0.5 rounded-[8px] bg-[#A4864E]/15 border border-[#A4864E]/30 text-[10px] font-bold text-[#A4864E] uppercase tracking-wider">
+                            Primary Registry
+                          </span>
+                        )}
+                        <span className="font-mono text-xs font-extrabold text-[#A4864E]">
                           {c.name}
                         </span>
-                        <span className="text-[10px] font-mono text-slate-500">
+                        <span className="text-[10px] font-mono text-[#625F57]">
                           {meta.protocol}
                         </span>
                       </div>
-                      <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 text-[10px] font-bold uppercase">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#188A5E]/15 text-[#188A5E] border border-[#188A5E]/30 text-[10px] font-bold uppercase shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#188A5E] animate-pulse" />
                         <span>{meta.latency}</span>
                       </div>
                     </div>
 
-                    <h3 className="font-bold text-sm text-white mt-1 leading-snug group-hover:text-blue-300 transition-colors">
+                    <h3 className="font-bold text-sm text-[#24221E] mt-1 leading-snug group-hover:text-[#A4864E] transition-colors">
                       {c.title}
                     </h3>
 
-                    <p className="text-xs text-slate-400 font-normal mt-2 leading-relaxed">
+                    <p className="text-xs text-[#625F57] font-normal mt-2 leading-relaxed">
                       {meta.description}
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3.5 border-t border-white/[0.04] flex items-center justify-between text-xs">
-                    <span className="text-[10px] font-mono text-slate-500 uppercase">
+                  <div className="mt-5 pt-3.5 border-t border-[#24221E]/10 flex items-center justify-between text-xs">
+                    <span className="text-[10px] font-mono text-[#625F57] uppercase">
                       ID: {c.id}
                     </span>
                     <span
                       className={`font-bold text-xs flex items-center gap-1.5 transition-colors ${
-                        isSelected ? "text-blue-400" : "text-slate-400 group-hover:text-white"
+                        isSelected ? "text-[#A4864E]" : "text-[#625F57] group-hover:text-[#24221E]"
                       }`}
                     >
                       <span>{isSelected ? "Active Lookup" : "Select & Test"}</span>
@@ -437,27 +451,27 @@ export default function ConnectorsPage() {
 
           {/* ========================================================
               Interactive Diagnostic Query Console Box
-             ======================================================== */}
-          <div className="rounded-[22px] bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.6)] space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/[0.06]">
+              ======================================================== */}
+          <div className="bento-card p-8 space-y-6 bg-[#D8D4CB] border border-[#24221E]/10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#24221E]/10">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-blue-500/10 border border-blue-500/25 rounded-xl text-blue-400">
+                <div className="p-2.5 bg-[#A4864E]/15 border border-[#A4864E]/30 rounded-[10px] text-[#A4864E] shadow-sm">
                   <Database className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-base font-bold text-white tracking-tight">
+                  <h2 className="text-base font-bold text-[#24221E] tracking-tight">
                     Live Connector Diagnostic Query Console
                   </h2>
-                  <p className="text-xs text-slate-400 font-normal mt-0.5">
+                  <p className="text-xs text-[#625F57] font-normal mt-0.5">
                     Execute real-time synthetic queries against standardized adapter schemas
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+                <span className="text-[11px] text-[#625F57] uppercase tracking-wider font-semibold">
                   Active Adapter:
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/25 font-mono text-xs font-bold">
+                <span className="px-3 py-1 rounded-[8px] bg-[#A4864E]/15 text-[#A4864E] border border-[#A4864E]/30 font-mono text-xs font-bold shadow-sm">
                   {selectedConnector.toUpperCase()}
                 </span>
               </div>
@@ -465,7 +479,7 @@ export default function ConnectorsPage() {
 
             <form onSubmit={handleTestQuery} className="flex flex-col sm:flex-row gap-3 text-xs">
               <div className="relative flex-1">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 font-mono text-xs">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#817C72] font-mono text-xs">
                   ID:
                 </div>
                 <input
@@ -473,7 +487,7 @@ export default function ConnectorsPage() {
                   value={queryInput}
                   onChange={(e) => setQueryInput(e.target.value)}
                   placeholder="Enter query identifier (GSTIN, Udyam No, PAN, CIN, etc.)..."
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/[0.08] bg-black text-white placeholder-slate-500 font-mono text-xs focus:outline-none focus:border-blue-500/50"
+                  className="w-full pl-10 pr-4 py-3 rounded-[10px] border border-[#24221E]/10 bg-[#C9C5BC]/60 text-[#24221E] placeholder-[#817C72] font-mono text-xs focus:outline-none focus:border-[#A4864E] transition-all"
                   required
                 />
               </div>
@@ -481,7 +495,7 @@ export default function ConnectorsPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="px-6 py-3 font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-[0_0_20px_rgba(59,130,246,0.35)] disabled:opacity-50 cursor-pointer shrink-0"
+                className="px-6 py-3 font-black text-[#F5F2EB] bg-[#24221E] hover:bg-[#36332E] rounded-[10px] flex items-center justify-center gap-2.5 transition-all shadow-sm disabled:opacity-50 cursor-pointer shrink-0 border border-[#24221E]/20 hover:-translate-y-0.5"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isLoading ? "Querying Adapter..." : "Execute Lookup"}</span>
@@ -492,20 +506,20 @@ export default function ConnectorsPage() {
             {queryResponse && (
               <div className="space-y-2 pt-2 animate-in fade-in duration-200">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#625F57] uppercase tracking-wider">
+                    <Terminal className="w-3.5 h-3.5 text-[#188A5E]" />
                     <span>Standardized Registry JSON Payload</span>
                   </div>
                   <button
                     onClick={handleCopyResponse}
-                    className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-[10px] bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 text-xs text-[#625F57] hover:text-[#24221E] transition-all cursor-pointer"
                   >
-                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? <Check className="w-3.5 h-3.5 text-[#188A5E]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copied ? "Copied" : "Copy JSON"}</span>
                   </button>
                 </div>
 
-                <pre className="p-6 rounded-2xl bg-black text-emerald-400 font-mono text-xs overflow-x-auto border border-white/[0.08] shadow-inner leading-relaxed">
+                <pre className="p-6 rounded-[14px] bg-[#24221E] text-[#F5F2EB] font-mono text-xs overflow-x-auto border border-[#24221E]/20 shadow-inner leading-relaxed">
                   {JSON.stringify(queryResponse, null, 2)}
                 </pre>
               </div>

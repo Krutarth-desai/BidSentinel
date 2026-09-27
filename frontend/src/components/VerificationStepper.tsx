@@ -49,10 +49,10 @@ export function VerificationStepper({ isRunning, onComplete }: VerificationStepp
   if (!isRunning) return null;
 
   return (
-    <div className="p-6 bg-white/[0.06] backdrop-blur-2xl border border-blue-500/35 rounded-[20px] my-6 shadow-[0_4px_30px_rgba(0,0,0,0.6),0_0_25px_rgba(59,130,246,0.15)] animate-in fade-in duration-200">
+    <div className="p-6 bg-[#E3DFD6] backdrop-blur-2xl border border-[#24221E]/15 rounded-[20px] my-6 shadow-md animate-in fade-in duration-200">
       <div className="flex items-center gap-2.5 mb-4">
-        <Sparkles className="w-4 h-4 text-blue-400 animate-spin" />
-        <h4 className="text-xs font-bold uppercase tracking-wider text-blue-300">
+        <Sparkles className="w-4 h-4 text-[#A4864E] animate-spin" />
+        <h4 className="text-xs font-bold uppercase tracking-wider text-[#24221E]">
           AI Multi-Stage Verification Pipeline Running...
         </h4>
       </div>
@@ -67,19 +67,19 @@ export function VerificationStepper({ isRunning, onComplete }: VerificationStepp
               key={stepText}
               className={`flex items-center justify-between py-1 transition-colors ${
                 isDone
-                  ? "text-emerald-400 font-semibold"
+                  ? "text-[#188A5E] font-semibold"
                   : isCurrent
-                  ? "text-blue-300 font-bold"
-                  : "text-slate-500"
+                  ? "text-[#24221E] font-bold"
+                  : "text-[#817C72]"
               }`}
             >
               <div className="flex items-center gap-2.5">
                 {isDone ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#188A5E] shrink-0" />
                 ) : isCurrent ? (
-                  <Loader2 className="w-4 h-4 text-blue-400 animate-spin shrink-0" />
+                  <Loader2 className="w-4 h-4 text-[#A4864E] animate-spin shrink-0" />
                 ) : (
-                  <span className="w-3.5 h-3.5 rounded-full border border-white/[0.12] inline-block shrink-0" />
+                  <span className="w-3.5 h-3.5 rounded-full border border-[#24221E]/20 inline-block shrink-0" />
                 )}
                 <span>{stepText}</span>
               </div>

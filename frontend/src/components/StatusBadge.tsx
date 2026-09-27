@@ -9,7 +9,7 @@ interface StatusBadgeProps {
 export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
   const norm = (status || "").toUpperCase();
 
-  let style = "bg-white/[0.06] text-slate-300 border-white/[0.10]";
+  let style = "bg-[#C9C5BC] text-[#625F57] border-[#24221E]/10";
   let Icon = HelpCircle;
   let label = status;
 
@@ -21,7 +21,7 @@ export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
     norm === "LOW"
   ) {
     style =
-      "bg-emerald-500/10 text-emerald-400 border-emerald-500/25 shadow-[0_0_12px_rgba(16,185,129,0.1)]";
+      "bg-[#188A5E]/15 text-[#188A5E] border-[#188A5E]/30 shadow-sm";
     Icon = CheckCircle2;
     label = norm === "LOW" ? "LOW RISK" : norm;
   } else if (
@@ -31,7 +31,7 @@ export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
     norm === "CLARIFICATION_REQUESTED"
   ) {
     style =
-      "bg-amber-500/10 text-amber-300 border-amber-500/25 shadow-[0_0_12px_rgba(245,158,11,0.1)]";
+      "bg-[#D97706]/15 text-[#D97706] border-[#D97706]/30 shadow-sm";
     Icon = AlertTriangle;
     label = norm === "MEDIUM" ? "MEDIUM RISK" : "REVIEW REQUIRED";
   } else if (
@@ -41,16 +41,16 @@ export function StatusBadge({ status, size = "md" }: StatusBadgeProps) {
     norm === "REJECTED"
   ) {
     style =
-      "bg-red-500/10 text-red-400 border-red-500/30 shadow-[0_0_12px_rgba(239,68,68,0.15)]";
+      "bg-[#D95757]/15 text-[#D95757] border-[#D95757]/30 shadow-sm";
     Icon = XCircle;
     label = norm === "HIGH" ? "HIGH RISK" : norm;
   } else if (norm === "MISSING") {
     style =
-      "bg-red-500/10 text-red-400 border-red-500/30 shadow-[0_0_12px_rgba(239,68,68,0.15)]";
+      "bg-[#D95757]/15 text-[#D95757] border-[#D95757]/30 shadow-sm";
     Icon = AlertTriangle;
     label = "MISSING";
   } else if (norm === "NOT_APPLICABLE") {
-    style = "bg-white/[0.06] text-slate-400 border-white/[0.10]";
+    style = "bg-[#C9C5BC] text-[#625F57] border-[#24221E]/10";
     Icon = MinusCircle;
     label = "NOT APPLICABLE";
   }

@@ -13,32 +13,32 @@ export function ScoreBreakdown({ score }: ScoreBreakdownProps) {
       value: score.statutory,
       max: score.statutory_max,
       icon: Shield,
-      color: "text-blue-400 bg-blue-500/10 border border-blue-500/20",
-      barColor: "bg-blue-500 shadow-[0_0_8px_#3b82f6]",
+      color: "text-[#A4864E] bg-[#A4864E]/15 border border-[#A4864E]/30",
+      barColor: "bg-[#A4864E]",
     },
     {
       label: "Tender-Specific Criteria",
       value: score.tender_specific,
       max: score.tender_specific_max,
       icon: Award,
-      color: "text-purple-400 bg-purple-500/10 border border-purple-500/20",
-      barColor: "bg-purple-500 shadow-[0_0_8px_#a855f7]",
+      color: "text-[#A4864E] bg-[#A4864E]/15 border border-[#A4864E]/30",
+      barColor: "bg-[#A4864E]",
     },
     {
       label: "Document Verification",
       value: score.document_verification,
       max: score.document_verification_max,
       icon: FileCheck,
-      color: "text-emerald-400 bg-emerald-500/10 border border-emerald-500/20",
-      barColor: "bg-emerald-500 shadow-[0_0_8px_#10b981]",
+      color: "text-[#188A5E] bg-[#188A5E]/15 border border-[#188A5E]/30",
+      barColor: "bg-[#188A5E]",
     },
     {
       label: "Government Data Match",
       value: score.govt_verification,
       max: score.govt_verification_max,
       icon: Landmark,
-      color: "text-amber-400 bg-amber-500/10 border border-amber-500/20",
-      barColor: "bg-amber-500 shadow-[0_0_8px_#f59e0b]",
+      color: "text-[#D97706] bg-[#D97706]/15 border border-[#D97706]/30",
+      barColor: "bg-[#D97706]",
     },
   ];
 
@@ -51,10 +51,10 @@ export function ScoreBreakdown({ score }: ScoreBreakdownProps) {
         return (
           <div
             key={item.label}
-            className="p-4 bg-white/[0.06] hover:bg-white/[0.09] border border-white/[0.10] hover:border-blue-400/30 rounded-xl space-y-2 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.4),0_0_15px_rgba(50,110,255,0.12)] transition-all duration-200"
+            className="p-4 bg-[#C9C5BC]/60 hover:bg-[#C9C5BC] border border-[#24221E]/10 hover:border-[#A4864E]/30 rounded-xl space-y-2 hover:-translate-y-0.5 shadow-sm transition-all duration-200"
           >
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">
+              <span className="text-[10px] font-bold text-[#625F57] uppercase tracking-wider truncate">
                 {item.label}
               </span>
               <div className={`p-1.5 rounded-lg ${item.color}`}>
@@ -63,14 +63,14 @@ export function ScoreBreakdown({ score }: ScoreBreakdownProps) {
             </div>
 
             <div className="flex items-baseline justify-between">
-              <span className="text-xl font-extrabold text-white">
+              <span className="text-xl font-extrabold text-[#24221E]">
                 {item.value}
-                <span className="text-xs text-slate-500 font-normal"> / {item.max}</span>
+                <span className="text-xs text-[#625F57] font-normal"> / {item.max}</span>
               </span>
-              <span className="text-xs font-bold text-slate-300">{pct}%</span>
+              <span className="text-xs font-bold text-[#24221E]">{pct}%</span>
             </div>
 
-            <div className="w-full bg-white/[0.10] h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-[#C9C5BC] h-1.5 rounded-full overflow-hidden">
               <div
                 className={`h-full ${item.barColor} rounded-full transition-all duration-500`}
                 style={{ width: `${Math.min(100, Math.max(5, pct))}%` }}
